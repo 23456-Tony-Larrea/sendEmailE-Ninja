@@ -21,3 +21,7 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 
 // Route::get('usuario', '\usuarioController');
 Route::get('/usuarios', [UsuarioController::class, 'index']);
+Route::get('/usuario/{usuario}', [UsuarioController::class, 'show']);
+Route::post('/usuario', [UsuarioController::class, 'store']);
+Route::put('/usuario/{usuario}', [UsuarioController::class, 'update']);
+// Route::post('logueo', [UsuarioController::class, 'singin']);

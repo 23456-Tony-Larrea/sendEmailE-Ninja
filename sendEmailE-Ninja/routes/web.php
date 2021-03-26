@@ -18,3 +18,4 @@ Route::get('/', function () {
 });
 
 Route::get('/send-email',[MailController::class,'sendEmail']);
+
