@@ -15,7 +15,7 @@ class RolUsuario extends Migration
     {
         Schema::create('rolUsuario',function(Blueprint $table){
             $table->bigIncrements('id');
-            $table->foreignId('usuario_id')->constrained('usuario');
+            $table->foreignId('usuario_id')->constrained('usuarios');
             $table->foreignId('rol_id')->constrained('rol');
             $table->timestamps();
         });
