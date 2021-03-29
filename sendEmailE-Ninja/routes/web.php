@@ -23,3 +23,5 @@ Route::get('/send-email',[MailController::class,'sendEmail']);
 Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+
+
