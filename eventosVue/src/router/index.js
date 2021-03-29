@@ -2,16 +2,15 @@ import Vue from 'vue'
 import VueRouter from 'vue-router'
 import Home from '../views/Home.vue'
 import Dashboard from '../views/Dashboard.vue';
-
 import Editar from '../views/Editar.vue';
 import Nuevo from '../views/Nuevo.vue';
  import Registro from '../views/Registro.vue';
-
+ import Portada from '../views/Portada.vue'
 Vue.use(VueRouter)
 
 const routes = [
   {
-    path: '/',
+    path: '/admin',
     name: 'Home',
     component: Home
   },
@@ -34,6 +33,11 @@ const routes = [
     path:'/registro',
     name:'Registro',
     component:Registro
+  },
+  {
+  path:'/',
+  name:'Portada',
+  component:Portada
   }
 ]
 
