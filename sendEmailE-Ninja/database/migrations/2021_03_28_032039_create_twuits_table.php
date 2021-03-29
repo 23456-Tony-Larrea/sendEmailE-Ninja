@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class RolUsuario extends Migration
+class CreateTwuitsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,10 +13,10 @@ class RolUsuario extends Migration
      */
     public function up()
     {
-        Schema::create('rolUsuario',function(Blueprint $table){
+        Schema::create('twuits',function(Blueprint $table){
             $table->bigIncrements('id');
-            $table->foreignId('usuario_id')->constrained('usuarios');
-            $table->foreignId('rol_id')->constrained('rol');
+            $table->date('fecha');
+            $table->string('publicaciones');
             $table->timestamps();
         });
     }
@@ -28,6 +28,6 @@ class RolUsuario extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('rolUsuario');
+        Schema::dropIfExists('twuits');
     }
 }
