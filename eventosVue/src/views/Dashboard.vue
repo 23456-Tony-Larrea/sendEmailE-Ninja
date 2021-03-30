@@ -24,20 +24,19 @@
                         <td>{{ user.nombres }}</td>
                         <td>{{ user.apellidos }}</td>
                         <td>{{ user.telefono }}</td>
-                        <td>{{ user.correo }}</td>
+                        <td>{{ user.correo }}</td>                 
                     </tr>
             
                 </tbody>
                 </table>
 
             </div>
-
-        <Footer />
     </div>
+    
 </template>
 <script>
 import Header from '@/components/Header.vue';
-import Footer from '@/components/Footer.vue';
+
 import axios from 'axios';
 export default {
     name:"Dashboard",
@@ -49,14 +48,13 @@ export default {
     },
     components:{
         Header,
-        Footer
+
     },
     methods:{
           
             editar(id){
                 this.$router.push('/editar/' + id);
-                  
-            },
+               },
             nuevo(){
                 this.$router.push('/nuevo');
             }

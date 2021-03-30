@@ -51,7 +51,6 @@ export default {
   name:"Editar",
   components:{
     Header,
-
   },
   data:function(){
     return {
@@ -65,7 +64,10 @@ export default {
         "telefono":"",
         "correo":"",
          "estado_id":1  
-        }
+        },
+   formDisconnect:{
+     "estado_id":2
+   }     
     }
   },
   methods:{
@@ -73,22 +75,22 @@ export default {
           this.form.id = this.$route.params.id;
           axios.put("http://127.0.0.1:8000/api/usuarios/"+this.form.id,this.form)
           .then( data =>{
-              this.alerta = true;
-             this.alert_msg = data.data.result.alert_msg;
-              this.$router.push("/dashboard");
+           console.log(data);
+            this.$toaster.success('editar con exito.');
+            this.$router.push('/dashboard');  
           })
+          
       },
       salir(){
         this.$router.push("/dashboard");
       },
       eliminar(){
-        var enviar = {
-            "id" : this.form.id    
-        };
-        axios.delete("http://127.0.0.1:8000/api/usuarios/", { headers : enviar})
+         this.form.id = this.$route.params.id;
+        axios.put("http://127.0.0.1:8000/api/usuarios/"+this.form.id,this.formDisconnect)
         .then( datos => {
             console.log(datos);
-           this.$router.push("/dashboard");
+              this.$toaster.success('el usuario fue dado de baja con exito.');
+             this.$router.push("/dashboard"); 
         });
 
       }

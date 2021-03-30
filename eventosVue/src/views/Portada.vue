@@ -10,7 +10,7 @@
             
             <!-- Icon -->
                 <div class="fadeIn first">
-                  <img src="@/assets/eventosvue.jpg" id="icon" alt="User Icon"/>
+                  <img src="@/assets/eventos.png" id="icon" alt="User Icon"/>
                 </div>
 
             <p class="lead">¿Te ha sucedido que te enteras de un evento interesante muy tarde?</p>
@@ -38,7 +38,7 @@ export default {
 }
 </script>
 
-<style>
+<style scoped>
 html {
   background-color: #c5e2f6;
 }

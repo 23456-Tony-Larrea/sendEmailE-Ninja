@@ -4,7 +4,10 @@ import router from './router'
 import { BootstrapVue, IconsPlugin } from 'bootstrap-vue'
 import VueAxios from 'vue-axios'
 import Axios from 'axios'
-
+import Toaster from 'v-toaster'
+import 'v-toaster/dist/v-toaster.css'
+  
+Vue.use(Toaster, {timeout: 5000})
 
 Vue.config.productionTip = false
 Vue.use(BootstrapVue);

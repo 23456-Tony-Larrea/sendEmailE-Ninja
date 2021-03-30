@@ -40,13 +40,10 @@
 
 
             </div>
-        <!-- <Footer /> -->
-
     </div>
 </template>
 <script>
 import Header from '@/components/Header.vue'
-//import Footer from '@/components/Footer.vue'
 import axios from 'axios';
 export default {
     name:"Nuevo",
@@ -64,7 +61,6 @@ export default {
     },
     components:{
         Header,
-        //Footer
     },
     methods:{
         guardar(){
@@ -78,7 +74,7 @@ export default {
                 console.log(e);
                  this.makeToast("Error","Error al guardar","error");
             })
-        },
+        }, 
         salir(){
             this.$router.push("/dashboard");
         },

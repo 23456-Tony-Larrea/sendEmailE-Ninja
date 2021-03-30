@@ -6,7 +6,7 @@ import Editar from '../views/Editar.vue';
 import Nuevo from '../views/Nuevo.vue';
 import Registro from '../views/Registro.vue';
 import Portada from '../views/Portada.vue';
-
+import Usuario from '../views/Usuarios.vue';
 Vue.use(VueRouter)
 
 const routes = [
@@ -39,6 +39,11 @@ const routes = [
   path:'/',
   name:'Portada',
   component:Portada
+  },
+  {
+  path:'/usuarios',
+  name:'Usuarios',
+  component: Usuario
   }
 ]
 
