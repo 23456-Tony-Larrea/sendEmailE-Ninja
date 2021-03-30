@@ -14,7 +14,8 @@ class UsuarioController extends Controller
      */
     public function index()
     {
-        return usuario::get();
+        // return usuario::Where('estado_id',1)->latest()->paginate(2);
+        return usuario::Where('estado_id',1)->get();
     }
 
     /**

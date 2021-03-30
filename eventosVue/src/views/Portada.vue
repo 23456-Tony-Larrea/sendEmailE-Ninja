@@ -46,8 +46,9 @@ export default {
 }
 </script>
 
-<style  scoped>
-    .izquierda{
-        text-align: left;
+<style >
+    
+    .site-wrapper{
+      background-color: #c5e2f6;
     }
 </style>
