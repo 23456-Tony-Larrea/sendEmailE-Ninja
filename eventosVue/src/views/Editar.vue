@@ -6,13 +6,13 @@
                     <div class="form-group left">
                        <label for="" class="control-label col-sm-2">Nombre</label>
                        <div class="col-sm-10">
-                          <input type="text" class="form-control" name="nombre" id="nombre" v-model="form.name">
+                          <input type="text" class="form-control" name="nombre" id="nombre" v-model="form.nombres">
                        </div>
                     </div>
                     <div class="form-group left">
-                       <label for="" class="control-label col-sm-2">Direccion</label>
+                       <label for="" class="control-label col-sm-2">Apellidos</label>
                        <div class="col-sm-10">
-                          <input type="text" class="form-control" name="direccion" id="direccion" v-model="form.apellido">
+                          <input type="text" class="form-control" name="direccion" id="direccion" v-model="form.apellidos">
                        </div>
                     </div>
                     <div class="form-group left row">
@@ -53,10 +53,10 @@ export default {
   data:function(){
     return {
         form:{
-          "nameId":"",
-          "name" : "",
-          "lastname": "", 
-          "phoneNumber" : "",
+          "id":"",
+          "nombres" : "",
+          "apellidos": "", 
+          "telefono" : "",
           "correo":"",
           "token" : "" 
         }
@@ -64,7 +64,7 @@ export default {
   },
   methods:{
       editar(){
-          axios.put("http://aquivaelapi.com",this.form)
+          axios.put("http://127.0.0.1:8000/api/usuarios/",this.form)
           .then( data =>{
               console.log(data);
           })
@@ -74,10 +74,10 @@ export default {
       },
       eliminar(){
         var enviar = {
-            "pacienteId" : this.form.pacienteId,
+            "id" : this.form.id,
             "token" : this.form.token
         };
-        axios.delete("http://aquivaelapi.com", { headers : enviar})
+        axios.delete("http://127.0.0.1:8000/api/usuarios/", { headers : enviar})
         .then( datos => {
             console.log(datos);
            this.$router.push("/dashboard");
@@ -86,13 +86,13 @@ export default {
       }
   },
   mounted:function(){
-      this.form.pacienteId = this.$route.params.id;
-      axios.get("http://aquivaelapi.com?/id"+ this.form.pacienteId)
+      this.form.id = this.$route.params.id;
+      axios.get("http://127.0.0.1:8000/api/usuarios/"+ this.form.id)
       .then( datos => {
         
-        this.form.name = datos.data[0].name;
-        this.form.lastname = datos.data[0].lastname;
-        this.form.phoneNumber = datos.data[0].phoneNumber;
+        this.form.nombres = datos.data[0].nombres;
+        this.form.apellidos = datos.data[0].apellidos;
+        this.form.telefono = datos.data[0].telefono;
         this.form.correo = datos.data[0].correo;
         this.form.token = localStorage.getItem("token");
         console.log(this.form);

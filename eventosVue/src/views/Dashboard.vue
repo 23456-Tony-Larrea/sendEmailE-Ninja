@@ -19,12 +19,12 @@
                     </tr>
                 </thead>
                 <tbody>
-                    <tr v-for="user in Listapacientes" :key="user.userId" v-on:click="editar(user.userId)">
-                        <th scope="row">{{ user.userId}}</th>
-                        <td>{{ user.Nombre }}</td>
-                        <td>{{ user.Apellido }}</td>
-                        <td>{{ user.Telefono }}</td>
-                        <td>{{ user.Correo }}</td>
+                    <tr v-for="user in Listauser" :key="user.id" v-on:click="editar(user.id)">
+                        <th scope="row">{{ user.id}}</th>
+                        <td>{{ user.nombres }}</td>
+                        <td>{{ user.apellidos }}</td>
+                        <td>{{ user.telefono }}</td>
+                        <td>{{ user.correo }}</td>
                     </tr>
             
                 </tbody>
@@ -60,9 +60,9 @@ export default {
             }
     },
     mounted:function(){
-        let direccion = "http://aquivaelapi/=" + this.pagina;
+        let direccion = "http://127.0.0.1:8000/api/usuarios/";
         axios.get(direccion).then( data =>{
-            this.Listapacientes = data.data;
+            this.Listauser = data.data;
         });
     }
 }

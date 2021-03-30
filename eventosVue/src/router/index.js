@@ -4,8 +4,9 @@ import Home from '../views/Home.vue'
 import Dashboard from '../views/Dashboard.vue';
 import Editar from '../views/Editar.vue';
 import Nuevo from '../views/Nuevo.vue';
- import Registro from '../views/Registro.vue';
- import Portada from '../views/Portada.vue'
+import Registro from '../views/Registro.vue';
+import Portada from '../views/Portada.vue';
+
 Vue.use(VueRouter)
 
 const routes = [

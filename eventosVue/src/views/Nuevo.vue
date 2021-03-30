@@ -8,26 +8,26 @@
                     <div class="form-group left">
                        <label for="" class="control-label col-sm-2">Nombre</label>
                        <div class="col-sm-10">
-                          <input type="text" class="form-control" name="nombre" id="nombre" v-model="form.name">
+                          <input type="text" class="form-control" name="nombre" id="nombre" v-model="form.nombres">
                        </div>
                     </div>
                     <div class="form-group left">
                        <label for="" class="control-label col-sm-2">Apellido</label>
                        <div class="col-sm-10">
-                          <input type="text" class="form-control" name="direccion" id="direccion" v-model="form.lastname">
+                          <input type="text" class="form-control" name="direccion" id="direccion" v-model="form.apellidos">
                        </div>
                     </div>
                     <div class="form-group left row">
                       <div class="col">
                             <label for="" class="control-label col-sm-3">telefono</label>
                             <div class="col-sm-7">
-                                <input type="text" class="form-control" name="correo" id="correo" v-model="form.phoneNumber">
+                                <input type="text" class="form-control" name="correo" id="correo" v-model="form.telefono">
                             </div>
                         </div>
                         <div class="col">
                           <label for="" class="control-label col-sm-5">Correo</label>
                           <div class="col-sm-7">
-                              <input type="text" class="form-control" name="codigopostal" id="codigopostal" v-model="form.email">
+                              <input type="text" class="form-control" name="codigopostal" id="codigopostal" v-model="form.correo">
                           </div>
                         </div> 
                     </div>
@@ -53,10 +53,11 @@ export default {
     data:function(){
         return {
             form:{
-                "name" : "",
-                "lastname": "", 
-                "phoneNumber" : "",
-                "email":"",
+                "nombres" : "",
+                "apellidos": "", 
+                "telefono" : "",
+                "correo":"",
+                "estado_id":1,
                 "token" : "" 
             }
         }
@@ -68,10 +69,10 @@ export default {
     methods:{
         guardar(){
             this.form.token = localStorage.getItem("token");
-            axios.post("http://aquivaelapi.com",this.form)
+            axios.post("http://127.0.0.1:8000/api/usuarios/",this.form)
             .then(data =>{
                 console.log(data);
-                this.makeToast("Hecho","Paciente creado","success");
+                this.makeToast("Hecho","Usuario creado","success");
                 this.$router.push("/dashboard");
             }).catch( e =>{
                 console.log(e);
