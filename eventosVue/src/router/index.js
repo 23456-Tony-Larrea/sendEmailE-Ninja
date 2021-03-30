@@ -6,8 +6,7 @@ import Editar from '../views/Editar.vue';
 import Nuevo from '../views/Nuevo.vue';
 import Registro from '../views/Registro.vue';
 import Portada from '../views/Portada.vue';
-import Usuarios from '../views/Usuarios.vue';
-import Portada from '../views/Portada.vue'
+
 Vue.use(VueRouter)
 
 const routes = [
@@ -36,11 +35,6 @@ const routes = [
     name:'Registro',
     component:Registro
   },
-  {
-    path:'/usuarios',
-    name:'Usuarios',
-    component:Usuarios
-    },
   {
   path:'/',
   name:'Portada',
