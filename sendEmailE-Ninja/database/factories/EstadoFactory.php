@@ -23,6 +23,7 @@ class EstadoFactory extends Factory
     {
         return [
             'nombre' => 'Activo',
+            // 'nombre' => $this->faker->text('Activo','Inactivo')
         ];
     }
 }
