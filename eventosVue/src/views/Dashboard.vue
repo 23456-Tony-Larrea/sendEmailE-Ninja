@@ -52,8 +52,10 @@ export default {
         Footer
     },
     methods:{
+          
             editar(id){
                 this.$router.push('/editar/' + id);
+                  
             },
             nuevo(){
                 this.$router.push('/nuevo');

@@ -9,7 +9,7 @@
                           <input type="text" class="form-control" name="nombre" id="nombre" v-model="form.nombres">
                        </div>
                     </div>
-                    <div class="form-group left">
+                     <div class="form-group left">
                        <label for="" class="control-label col-sm-2">Apellidos</label>
                        <div class="col-sm-10">
                           <input type="text" class="form-control" name="direccion" id="direccion" v-model="form.apellidos">
@@ -25,9 +25,13 @@
                         <div class="col">
                           <label for="" class="control-label col-sm-5">Correo</label>
                           <div class="col-sm-7">
-                              <input type="text" class="form-control" name="codigopostal" id="codigopostal" v-model="form.correo">
+                              <input type="text" class="form-control" name="correo" id="codigopostal" v-model="form.correo">
                           </div>
                         </div> 
+                        <div class="alert alert-danger" role="alert" v-if="alerta">
+                   {{alert_msg}}
+                </div>
+
                     </div>
                  
                    <div class="form-group">
@@ -37,7 +41,6 @@
                     </div> 
                 </form>
             </div>
-          <!-- <Footer />   -->
         </div>
     
 </template>
@@ -52,21 +55,27 @@ export default {
   },
   data:function(){
     return {
-        form:{
-          "id":"",
-          "nombres" : "",
-          "apellidos": "", 
-          "telefono" : "",
-          "correo":"",
-          "token" : "" 
+      id:null,
+        alerta: false,
+      alert_msg: "tus datos han sido actualizados exitosamente",
+    
+  form:{
+         "nombres":"",
+        "apellidos":"",
+        "telefono":"",
+        "correo":"",
+         "estado_id":1  
         }
     }
   },
   methods:{
       editar(){
-          axios.put("http://127.0.0.1:8000/api/usuarios/",this.form)
+          this.form.id = this.$route.params.id;
+          axios.put("http://127.0.0.1:8000/api/usuarios/"+this.form.id,this.form)
           .then( data =>{
-              console.log(data);
+              this.alerta = true;
+             this.alert_msg = data.data.result.alert_msg;
+              this.$router.push("/dashboard");
           })
       },
       salir(){
@@ -74,8 +83,7 @@ export default {
       },
       eliminar(){
         var enviar = {
-            "id" : this.form.id,
-            "token" : this.form.token
+            "id" : this.form.id    
         };
         axios.delete("http://127.0.0.1:8000/api/usuarios/", { headers : enviar})
         .then( datos => {
@@ -87,17 +95,15 @@ export default {
   },
   mounted:function(){
       this.form.id = this.$route.params.id;
+      console.log(this.form.id)
       axios.get("http://127.0.0.1:8000/api/usuarios/"+ this.form.id)
-      .then( datos => {
-        
-        this.form.nombres = datos.data[0].nombres;
-        this.form.apellidos = datos.data[0].apellidos;
-        this.form.telefono = datos.data[0].telefono;
-        this.form.correo = datos.data[0].correo;
-        this.form.token = localStorage.getItem("token");
-        console.log(this.form);
-
-      })
+      .then( datos => {    
+        console.log(datos);
+       this.form.nombres=datos.data.nombres;
+      this.form.apellidos=datos.data.apellidos;
+      this.form.telefono=datos.data.telefono;
+      this.form.correo=datos.data.correo;
+       })
      
   }  
 }
@@ -108,6 +114,6 @@ export default {
  };
  .margen{
    margin-left: 15px;
-   margin-right: 15px;;
+   margin-right: 15px;
  }
 </style>
