@@ -43,6 +43,27 @@ class UsuarioController extends Controller
         return $usuario;
     }
 
+    public function buscador(Request $request)
+    {
+        // $credentials = $request('buscador');
+        // print_r ($credentials);
+        // $usuario = Usuario::where('apellidos','like', `%{$credentials}%`)->get();
+        // return $usuario;
+        $data = $request->json()->all();
+        // $dataFilter = $data['filters']; 
+        // $usuario = Usuario::where('usuarios', function($query) use ($dataFilter) {
+        //     $query->where('nombres', $dataFilter['conditions']['text'])
+        //     ->orWhere('apellidos', $dataFilter['conditions']['text'])
+        //     ->where('estado_id', 1);
+        // })->with('usuario');
+        // return response()->json(['usuarios'=>$usuario],200);
+        $dataFilter = $data['filters'];
+        $usuario = Usuario::where(function($query) use ($dataFilter){
+            $query('apellidos','like', '%' .strtoupper($request->filter). '%',);
+        });
+        return $usuario;
+    }
+
     /**
      * Update the specified resource in storage.
      *
