@@ -1,36 +1,28 @@
 <template>
 
-
  <div class="site-wrapper">
 
       <div class="site-wrapper-inner">
 
         <div class="cover-container">
 
-          <div class="masthead clearfix">
-            <div class="inner">
-              <h3 class="masthead-brand">Cover</h3>
-              <nav>
-                <ul class="nav masthead-nav">
-                  <li class="active"><a href="#">Home</a></li>
-                  <li><a href="#">Features</a></li>
-                  <li><a href="#">Contact</a></li>
-                </ul>
-              </nav>
-            </div>
-          </div>
-
           <div class="inner cover">
-            <h1 class="cover-heading">Cover your page.</h1>
-            <p class="lead">Cover is a one-page template for building simple and beautiful home pages. Download, edit the text, and add your own fullscreen background photo to make it your own.</p>
-            <p class="lead">
-              <a href="#" class="btn btn-lg btn-default">Learn more</a>
-            </p>
-          </div>
+            
+            <!-- Icon -->
+                <div class="fadeIn first">
+                  <img src="@/assets/eventosvue.jpg" id="icon" alt="User Icon"/>
+                </div>
 
+            <p class="lead">¿Te ha sucedido que te enteras de un evento interesante muy tarde?</p>
+            <p class="leard">La plataforma eventos.ninja te ayuda
+                             a estar al día en los eventos en español diariamente.</p>
+          
+            <p class="leard">Además, si quieres que tu evento sea conocido por más personas, nosotros te ayudamos.</p>
+            <p class="lead">¡Sé parte de nuestra comunidad!</p>
+          </div>
           <div class="mastfoot">
             <div class="inner">
-              <p>Cover template for <a href="https://getbootstrap.com/">Bootstrap</a>, by <a href="https://twitter.com/mdo">@mdo</a>.</p>
+              <p><a href="https://openlab.ec/">Openlab</a>    <a href="https://www.buymeacoffee.com/eventosninja">Buy me a coffe</a></p>
             </div>
           </div>
 
@@ -46,9 +38,8 @@ export default {
 }
 </script>
 
-<style >
-    
-    .site-wrapper{
-      background-color: #c5e2f6;
-    }
+<style>
+html {
+  background-color: #c5e2f6;
+}
 </style>
