@@ -21,3 +21,4 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 
 Route::apiResource('/usuarios', UsuarioController::class);
 Route::post('/buscador', [UsuarioController::class, 'buscador']);
+Route::get('/usuariosInactivo', [UsuarioController::class, 'getInactivo']);
