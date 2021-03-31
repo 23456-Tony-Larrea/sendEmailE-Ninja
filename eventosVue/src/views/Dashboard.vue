@@ -6,8 +6,10 @@
 
                 <button class="btn btn-primary" v-on:click="nuevo()" >Nuevo Usuario</button>
                 <br><br>
-
-
+                <h5>Buscar Usuario:</h5>
+                <input type="text"> <button class="btn btn-success">Buscar</button> 
+                 <br>
+                 <br>
                 <table class="table table-hover">
                 <thead>
                     <tr>

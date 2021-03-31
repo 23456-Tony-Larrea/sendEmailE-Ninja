@@ -11,7 +11,7 @@
 
                 <!-- Login Form -->
                 <form v-on:submit.prevent="login">
-                  <input type="text" id="login" class="fadeIn second" name="login" placeholder="Usuario" v-model="usuario">
+                  <input type="text" id="login" class="fadeIn second" name="login" placeholder="email" v-model="email">
                   <input type="password" id="password" class="fadeIn third" name="login" placeholder="Password" v-model="password">
                   <input type="submit" class="fadeIn fourth" value="Ingresar">
                 </form>
@@ -39,27 +39,34 @@ export default {
   },
   data: function(){
     return {
-      usuario: "",
+      email: "",
       password: "",
       error: false,
-      error_msg: "",
+      error_msg: "mensaje",
     }
   },
   methods:{
     login(){
         let json = {
-          "usuario" : this.usuario,
+          "email" : this.email,
           "password": this.password
         };
-        axios.post('http://aquivaelapi.com/', json)
+        console.log(json);
+        axios.post('http://127.0.0.1:8000/api/login', json)
         .then( data =>{
-           if(data.data.status == "ok"){
-             localStorage.token = data.data.result.token;
-             this.$router.push('dashboard');
-           }else{
-             this.error = true;
-             this.error_msg = data.data.result.error_msg;
-           }
+         console.log(data.data);
+         if(data.data.message==="Unauthorized"){
+         this.$toaster.success('Usuario Incorecto.');
+            this.$router.push('/admin');
+         }else{
+          this.$toaster.success('Bienvenido Admin.');
+            this.$router.push('/dashboard');
+           
+         } 
+        }).catch(e=>{
+        console.log(e)
+        this.$toaster.success('Usuario incorrecto.');
+            this.$router.push('/admin');
         })
     }
   }
