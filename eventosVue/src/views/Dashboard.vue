@@ -4,13 +4,12 @@
 
             <div class="container izquierda">
 
-                <button class="btn btn-primary" v-on:click="nuevo()" >Nuevo Usuario</button>
-                <br><br>
-                <h5>Buscar Usuario:</h5>
-                <input type="text"> <button class="btn btn-success">Buscar</button> 
+                 <button class="btn btn-primary" v-on:click="nuevo()" >Nuevo Usuario</button>
+                <!-- <br><br>
+                 <input type="text" v-model="search" @keyup="buscar"> <button class="btn btn-success"  v-on:click="search()">Buscar</button>
                  <br>
-                 <br>
-                <table class="table table-hover">
+                 <br> -->
+                 <table class="table table-hover">
                 <thead>
                     <tr>
                         <th scope="col">Id</th>
@@ -45,7 +44,8 @@ export default {
     data(){
         return {
             Listauser:null,
-            pagina:1
+            pagina:1,
+            /* search:'' */
         }
     },
     components:{
@@ -59,15 +59,24 @@ export default {
                },
             nuevo(){
                 this.$router.push('/nuevo');
-            }
-    },
+             }, 
+            /*  search(){
+               this.direccion.search=this.$route.params.search;                  
+             } */
+},
     mounted:function(){
         let direccion = "http://127.0.0.1:8000/api/usuarios/";
         axios.get(direccion).then( data =>{
             this.Listauser = data.data;
         });
+    },
+    /* mountedSearch:function(){
+      let direccion = "http://127.0.0.1:8000/api/buscador";
+        axios.get(direccion).then( data =>{
+            this.search = data.data;
+        });
     }
-}
+ */}
 </script>
 <style  scoped>
     .izquierda{

@@ -15,7 +15,7 @@
                   <input type="password" id="password" class="fadeIn third" name="login" placeholder="Password" v-model="password">
                   <input type="submit" class="fadeIn fourth" value="Ingresar">
                 </form>
-                <router-link to="/registro">
+                <router-link to="/createAdmin">
                  <input type="button"  class="fadeIn fourth" value="Registro" >
                 </router-link>
                 <!-- Remind Passowrd -->

@@ -17,7 +17,9 @@
                   <input type="password" id="telefono" class="fadeIn third" name="telefono" placeholder="Contraseña" v-model="form.password">
                   <input type="submit" class="fadeIn fifth" value="Registrarme">
                 </form>
-                
+                  <router-link to="/admin">
+                 <input type="button"  class="fadeIn fourth" value="Regresar" >
+                </router-link>
               </div>
             </div>
 
