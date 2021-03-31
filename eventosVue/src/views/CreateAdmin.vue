@@ -13,9 +13,8 @@
                 <!-- Login Form -->
                 <form v-on:submit.prevent="login">
                   <input type="text" id="nombre" class="fadeIn second" name="nombre" placeholder="Nombre" v-model="user">
-                  <input type="text" id="apellido" class="fadeIn second" name="apellido" placeholder="Apellido" v-model="lastname">
-                  <input type="text" id="telefono" class="fadeIn third" name="telefono" placeholder="Teléfono" v-model="phoneNumber">
-                  <input type="text" id="email" class="fadeIn fourth" name="email" placeholder="Email" v-model="email">
+                  <input type="text" id="apellido" class="fadeIn second" name="apellido" placeholder="correo" v-model="email">
+                  <input type="password" id="telefono" class="fadeIn third" name="telefono" placeholder="Contraseña" v-model="password">
                   <input type="submit" class="fadeIn fifth" value="Registrarme">
                 </form>
                 
@@ -28,7 +27,7 @@
 import Header from '@/components/Header.vue';
 
 export default{
- name:"Usuarios",
+ name:"CreateAdmin",
      data(){
         return{
    Listauser:null,
