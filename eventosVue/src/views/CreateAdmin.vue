@@ -12,9 +12,9 @@
 
                 <!-- Login Form -->
                 <form v-on:submit.prevent="create">
-                  <input type="text" id="nombre" class="fadeIn second" name="nombre" placeholder="Nombre" v-model="form.name">
-                  <input type="text" id="apellido" class="fadeIn second" name="apellido" placeholder="correo" v-model="form.email">
-                  <input type="password" id="telefono" class="fadeIn third" name="telefono" placeholder="Contraseña" v-model="form.password">
+                  <input maxlength="19" minlength="4" type="text" id="nombre" class="fadeIn second" name="nombre" placeholder="Nombre" required="" pattern="[a-zA-Z]+">
+                  <input maxlength="30" minlength="19" type="text" id="nombre" class="fadeIn second" name="Email" value placeholder="Email" required="" pattern="El correo solo puede contener letras, numeros, puntos, guiones y guion bajo.">
+                  <input maxlength="8" minlength="12" type="text" id="nombre" class="fadeIn second" name="password" placeholder="Comtraseña" required="" pattern="[a-z0-9]+">
                   <input type="submit" class="fadeIn fifth" value="Registrarme">
                 </form>
                   <router-link to="/admin">

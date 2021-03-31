@@ -35,6 +35,7 @@ const routes = [
     name:'RegisterUser',
     component:RegisterUser
   },
+  
   {
   path:'/',
   name:'Portada',
@@ -44,7 +45,8 @@ const routes = [
   path:'/createAdmin',
   name:'CreateAdmin',
   component: CreateAdmin
-  }
+  },
+ 
 ]
 
 const router = new VueRouter({
