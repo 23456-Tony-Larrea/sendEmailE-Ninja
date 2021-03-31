@@ -18,11 +18,10 @@ use App\Http\Controllers\UsuarioController;
 Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
-
-Route::apiResource('/usuarios', UsuarioController::class);
 Route::post('/register',[UserController::class,'register']);
 Route::post('/login',[UserController::class,'login']);
-Route::post('/buscador', [UsuarioController::class, 'buscador']);
+Route::apiResource('/usuarios', UsuarioController::class);
+Route::post('/buscador', [UsuarioController::class, 'buscador']);   
 Route::group(['middleware'=>['auth:sanctum']],function(){
-Route::post('/logout',[UserController::class,'logout']);
+    Route::post('/logout',[UserController::class,'logout']); 
 });
