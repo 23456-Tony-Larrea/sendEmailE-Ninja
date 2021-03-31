@@ -31,7 +31,7 @@
 import Header from '@/components/Header.vue'
 import axios from 'axios';
  export default {
-    name:"Registro",
+    name:"RegisterUser",
     data:function(){
         return {
             form:{

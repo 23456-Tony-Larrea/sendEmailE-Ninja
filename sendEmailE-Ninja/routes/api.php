@@ -23,5 +23,5 @@ Route::post('/login',[UserController::class,'login']);
 Route::apiResource('/usuarios', UsuarioController::class);
 Route::post('/buscador', [UsuarioController::class, 'buscador']);   
 Route::group(['middleware'=>['auth:sanctum']],function(){
-    Route::post('/logout',[UserController::class,'logout']); 
+Route::post('/logout',[UserController::class,'logout']); 
 });

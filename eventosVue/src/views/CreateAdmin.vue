@@ -11,10 +11,10 @@
                 </div>
 
                 <!-- Login Form -->
-                <form v-on:submit.prevent="login">
-                  <input type="text" id="nombre" class="fadeIn second" name="nombre" placeholder="Nombre" v-model="user">
-                  <input type="text" id="apellido" class="fadeIn second" name="apellido" placeholder="correo" v-model="email">
-                  <input type="password" id="telefono" class="fadeIn third" name="telefono" placeholder="Contraseña" v-model="password">
+                <form v-on:submit.prevent="create">
+                  <input type="text" id="nombre" class="fadeIn second" name="nombre" placeholder="Nombre" v-model="form.name">
+                  <input type="text" id="apellido" class="fadeIn second" name="apellido" placeholder="correo" v-model="form.email">
+                  <input type="password" id="telefono" class="fadeIn third" name="telefono" placeholder="Contraseña" v-model="form.password">
                   <input type="submit" class="fadeIn fifth" value="Registrarme">
                 </form>
                 
@@ -24,20 +24,45 @@
 </div> 
 </template>
 <script>
-import Header from '@/components/Header.vue';
-
-export default{
- name:"CreateAdmin",
-     data(){
-        return{
-   Listauser:null,
-            pagina:1
+import Header from '@/components/Header.vue'
+import axios from 'axios';
+ export default {
+    name:"CreateAdmin",
+    data:function(){
+        return {
+            form:{
+                "name" : "",
+                "email": "", 
+                "password" : "",
+            }
         }
     },   
     components:{
         Header,
         
     },
+     methods:{
+        create(){
+          console.log(this.form)
+            axios.post("http://127.0.0.1:8000/api/register/",this.form)
+            .then(data =>{
+                console.log(data);
+                this.makeToast("Hecho","Usuario creado","success");
+            }).catch( e =>{
+                console.log(e);
+                 this.makeToast("Error","Error al guardar","error");
+            })
+            },
+             makeToast(titulo,texto,tipo) {
+            this.toastCount++
+            this.$bvToast.toast(texto, {
+            title: titulo,
+            variant: tipo,
+            autoHideDelay: 5000,
+            appendToast: true
+            })
+        }
+     }   
 }
 </script>
 <style scoped>

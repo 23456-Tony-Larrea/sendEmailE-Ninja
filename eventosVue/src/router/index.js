@@ -4,7 +4,7 @@ import Home from '../views/Home.vue';
 import Dashboard from '../views/Dashboard.vue';
 import Editar from '../views/Editar.vue';
 import Nuevo from '../views/Nuevo.vue';
-import Registro from '../views/Registro.vue';
+import RegisterUser from '../views/RegisterUser.vue';
 import Portada from '../views/Portada.vue';
 import CreateAdmin from '../views/CreateAdmin.vue';
 Vue.use(VueRouter)
@@ -31,9 +31,9 @@ const routes = [
     component: Nuevo
   },
   {
-    path:'/registro',
-    name:'Registro',
-    component:Registro
+    path:'/registerUser',
+    name:'RegisterUser',
+    component:RegisterUser
   },
   {
   path:'/',
