@@ -86,4 +86,8 @@ class UsuarioController extends Controller
     {
         //
     }
+
+    public function getInactivo(){
+        return usuario::Where('estado_id',2)->get();
+    }
 }

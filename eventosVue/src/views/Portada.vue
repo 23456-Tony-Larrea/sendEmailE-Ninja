@@ -20,17 +20,16 @@
             <p class="leard">Además, si quieres que tu evento sea conocido por más personas, nosotros te ayudamos.</p>
             <p class="lead">¡Sé parte de nuestra comunidad!</p>
           </div>
-          <div class="mastfoot">
-            <div class="inner">
-              <p><a href="https://openlab.ec/">Openlab</a>    <a href="https://www.buymeacoffee.com/eventosninja">Buy me a coffe</a></p>
+              
+             <b-col log="" class="pb-2"><b-button variant="primary" href="https://openlab.ec/">Openlab</b-button></b-col> 
+             <b-col loag="" class="pb-2"><b-button variant="primary" href="https://www.buymeacoffee.com/eventosninja">Buy me a coffe</b-button></b-col> 
+             <b-col log="" class="pb-2"><b-button variant="success" href="usuarios">twitter</b-button></b-col>
+           
             </div>
           </div>
 
         </div>
 
-      </div>
-
-    </div>
 </template>
 <script>
 export default {

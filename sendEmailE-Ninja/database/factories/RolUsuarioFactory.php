@@ -22,7 +22,8 @@ class RolUsuarioFactory extends Factory
     public function definition()
     {
         return [
-            'nombre' => $this->faker->name,
+            'usuario_id' => $this->faker->numberBetween(1,2),
+            'rol_id'=> $this->faker->numberBetween(1,2)
         ];
     }
 }

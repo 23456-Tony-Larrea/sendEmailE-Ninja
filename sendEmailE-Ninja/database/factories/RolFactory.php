@@ -22,7 +22,8 @@ class RolFactory extends Factory
     public function definition()
     {
         return [
-            //
+            'nombre' => 'Usuario',
+            'twuits_id'=> $this->faker->numberBetween(1,2),
         ];
     }
 }
