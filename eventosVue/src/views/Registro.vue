@@ -11,11 +11,11 @@
                 </div>
 
                 <!-- Login Form -->
-                <form v-on:submit.prevent="login">
-                  <input type="text" id="login" class="fadeIn second" name="login" placeholder="Nombre" v-model="user">
-                  <input type="text" id="password" class="fadeIn second" name="login" placeholder="Apellido" v-model="lastname">
-                  <input type="text" id="password" class="fadeIn second" name="login" placeholder="Telefono" v-model="phoneNumber">
-                  <input type="text" id="password" class="fadeIn second" name="login" placeholder="email" v-model="email">
+                <form v-on:submit.prevent="register">
+                  <input type="text" id="login" class="fadeIn second" name="login" placeholder="Nombre" v-model="form.nombres">
+                  <input type="text" id="password" class="fadeIn second" name="login" placeholder="Apellido" v-model="form.apellidos">
+                  <input type="text" id="password" class="fadeIn second" name="login" placeholder="Telefono" v-model="form.telefono">
+                  <input type="text" id="password" class="fadeIn second" name="login" placeholder="email" v-model="form.correo">
                   <input type="submit" class="fadeIn fourth" value="Registrarme">
                 </form>
                 <router-link to="/">
@@ -28,20 +28,48 @@
 </div> 
 </template>
 <script>
-import Header from '@/components/Header.vue';
-
-export default{
- name:"Registro",
-     data(){
-        return{
-   Listauser:null,
-            pagina:1
+import Header from '@/components/Header.vue'
+import axios from 'axios';
+ export default {
+    name:"Registro",
+    data:function(){
+        return {
+            form:{
+                "nombres" : "",
+                "apellidos": "", 
+                "telefono" : "",
+                "correo":"",
+                "estado_id":1,
+                "token" : "" 
+            }
         }
-    },   
+    },
     components:{
         Header,
-        
     },
+     methods:{
+        register(){
+            this.form.token = localStorage.getItem("token");
+            axios.post("http://127.0.0.1:8000/api/usuarios/",this.form)
+            .then(data =>{
+                console.log(data);
+                this.makeToast("Hecho","Usuario creado","success");
+            }).catch( e =>{
+                console.log(e);
+                 this.makeToast("Error","Error al guardar","error");
+            })
+            },
+
+             makeToast(titulo,texto,tipo) {
+            this.toastCount++
+            this.$bvToast.toast(texto, {
+            title: titulo,
+            variant: tipo,
+            autoHideDelay: 5000,
+            appendToast: true
+            })
+        }
+     }   
 }
 </script>
 <style scoped>
