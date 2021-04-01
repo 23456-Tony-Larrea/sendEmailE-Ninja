@@ -2,33 +2,55 @@
 
  <div class="site-wrapper">
 
-      <div class="site-wrapper-inner">
-
         <div class="cover-container">
 
-          <div class="inner cover">
+          <div class="inner cover" >
             
             <!-- Icon -->
                 <div class="fadeIn first">
-                  <img src="@/assets/eventos.png" id="icon" alt="User Icon"/>
+                  <img src="@/assets/logoninja.png" id="icon" alt="User Icon"/>
                 </div>
+            <h1 style="color:hsla(0,100%,50%,1);"> <strong>¿Te ha sucedido que te enteras de un evento <br>
+                    interesante muy tarde?</strong></h1> 
+                    <br>
 
-            <p class="lead">¿Te ha sucedido que te enteras de un evento interesante muy tarde?</p>
-            <p class="leard">La plataforma eventos.ninja te ayuda
-                             a estar al día en los eventos en español diariamente.</p>
-          
-            <p class="leard">Además, si quieres que tu evento sea conocido por más personas, nosotros te ayudamos.</p>
-            <p class="lead">¡Sé parte de nuestra comunidad!</p>
-          </div>
+
+             <table class="relleno">
+            <tr>
+                <td class="relleno" >
+                  <h4> La plataforma  <br>
+                   <strong>eventos.ninja</strong> te ayuda<br>
+              a estar al día en los <br>
+               eventos en español <br>
+               diariamente.</h4>
+               <a type="button" class="btn btn-light" href="registerUser">Registrarme</a>
+
+                </td>
+                <td class="relleno">
+                   <h4>Además, si quieres que tu evento <br>
+                   sea conocido por <br>
+                   más personas, nosotros <br>
+                   te ayudamos.</h4>
+
+                   <a type="button" class="btn btn-light" href="registerUser">Compartir</a>
+
+                    
+                </td>
+            </tr>
+        </table>
+        <br>
+        
+
+          <h2>¡Sé parte de <strong>nuestra comunidad!</strong></h2>
               
-             <b-col log="" class="pb-2"><b-button variant="primary" href="https://openlab.ec/">Openlab</b-button></b-col> 
-             <b-col loag="" class="pb-2"><b-button variant="primary" href="https://www.buymeacoffee.com/eventosninja">Buy me a coffe</b-button></b-col> 
-             <b-col log="" class="pb-2"><b-button variant="success" href="usuarios">twitter</b-button></b-col>
+            
+             <a type="button" class="btn btn-light" href="https://openlab.ec/">Compartir</a>
+            
            
-            </div>
-          </div>
-
         </div>
+      </div>
+
+  </div>
 
 </template>
 <script>
@@ -38,7 +60,13 @@ export default {
 </script>
 
 <style scoped>
-html {
-  background-color: #c5e2f6;
+
+.site-wrapper {
+  background-color: #ff5f45;
 }
+.relleno{
+  text-align: center;
+  width:76%;
+  }
+
 </style>
