@@ -17,10 +17,11 @@
                   <input   type="number" id="telefono" class="fadeIn second" name="telefono" placeholder="Telefono" required="" v-model="form.telefono">
                   <input   type="text" id="nombre" class="fadeIn second" name="Email" value placeholder="Email" required="" v-model="form.correo">
                   <input type="submit" class="fadeIn fourth" value="Registrarme">
-                </form>
-                <router-link to="/">
+                 <router-link to="/">
                  <input type="button"  class="fadeIn fourth" value="Regresar" >
                 </router-link>
+                </form>
+               
                 
               </div>
             </div>
@@ -156,10 +157,10 @@ h2.active {
 /* FORM TYPOGRAPHY*/
 
 input[type=button], input[type=submit], input[type=reset]  {
-  background-color: #56baed;
+  background-color: #ff5f45;
   border: none;
   color: white;
-  padding: 15px 80px;
+  padding: 20px 20px;
   text-align: center;
   text-decoration: none;
   display: inline-block;
@@ -175,10 +176,11 @@ input[type=button], input[type=submit], input[type=reset]  {
   -ms-transition: all 0.3s ease-in-out;
   -o-transition: all 0.3s ease-in-out;
   transition: all 0.3s ease-in-out;
+  top: 200px;
 }
 
 input[type=button]:hover, input[type=submit]:hover, input[type=reset]:hover  {
-  background-color: #39ace7;
+  background-color: #000000;
 }
 
 input[type=button]:active, input[type=submit]:active, input[type=reset]:active  {
@@ -357,6 +359,7 @@ input[type=password]:placeholder {
   -webkit-animation-delay: 1s;
   -moz-animation-delay: 1s;
   animation-delay: 1s;
+  
 }
 
 /* Simple CSS3 Fade-in Animation */

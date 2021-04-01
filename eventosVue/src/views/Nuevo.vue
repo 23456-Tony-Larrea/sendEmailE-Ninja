@@ -33,8 +33,8 @@
                     </div>
                    
                     <div class="form-group">
-                      <button type="button" class="btn btn-primary" v-on:click="guardar()" >Guardar</button>
-                      <button type="button" class="btn btn-dark margen" v-on:click="salir()"  >Salir</button>
+                       <button class="button" v-on:click="guardar()">Suscríbete</button>
+                       <button class="buttonuno" v-on:click="salir()" >Salir</button>
                     </div> 
                 </form>
 
@@ -95,4 +95,43 @@ export default {
 .left{
     text-align:  left;
 }
+.button {
+  display: inline-block;
+  padding: 15px 30px;
+  font-size: 24px;
+  cursor: pointer;
+  text-align: center;	
+  text-decoration: none;
+  outline: none;
+  color: #000000;
+  background-color: #ff5f45     ;
+  border: none;
+  border-radius: 15px;
+  box-shadow: 0 9px #d6d7d7;
+}
+
+.button:hover {background-color: #000000;
+box-shadow: 0 9px #262a25;
+color: #e9e7e6;
+}
+.buttonuno {
+  display: inline-block;
+  padding: 15px 30px;
+  font-size: 24px;
+  cursor: pointer;
+  text-align: center;	
+  text-decoration: none;
+  outline: none;
+  color: #e9e7e6;
+  background-color: #000000;
+  border: none;
+  border-radius: 15px;
+  box-shadow: 0 9px #d6d7d7;
+}
+
+.buttonuno:hover {background-color: #ff5f45;
+box-shadow: 0 9px #262a25;
+color:#000000;
+}
+
 </style>

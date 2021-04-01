@@ -3,10 +3,9 @@
         <Header/>
 
             <div class="container izquierda">
-
-                 <button class="btn btn-primary" v-on:click="nuevo()" >Nuevo Usuario</button>
+                  <button class="button"  v-on:click="nuevo()">Nuevo Usuario</button>
                 <br><br>
-                 <input type="text" v-model="buscador"> <button class="btn btn-success"  v-on:click="search(buscador)">Buscar</button>
+                 <input type="text" v-model="buscador"><button class="button"  v-on:click="search(buscador)">Buscar</button>
                  <br>
                  <br>
                  <table class="table table-hover">
@@ -86,4 +85,21 @@ export default {
     .izquierda{
         text-align: left;
     }
+     .button {
+  display: inline-block;
+  padding: 5px 10px;
+  font-size: 24px;
+  cursor: pointer;
+  text-align: center;	
+  text-decoration: none;
+  outline: none;
+  color: #000000;
+  background-color:#ff5f45;
+  border: none;
+  border-radius: 15px;
+}
+
+.button:hover {background-color: #000000;
+color: #e9e7e6;
+}
 </style>
