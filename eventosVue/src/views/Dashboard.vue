@@ -5,10 +5,10 @@
             <div class="container izquierda">
 
                  <button class="btn btn-primary" v-on:click="nuevo()" >Nuevo Usuario</button>
-                <!-- <br><br>
-                 <input type="text" v-model="search" @keyup="buscar"> <button class="btn btn-success"  v-on:click="search()">Buscar</button>
+                <br><br>
+                 <input type="text" v-model="buscador"> <button class="btn btn-success"  v-on:click="search(buscador)">Buscar</button>
                  <br>
-                 <br> -->
+                 <br>
                  <table class="table table-hover">
                 <thead>
                     <tr>
@@ -37,7 +37,6 @@
 </template>
 <script>
 import Header from '@/components/Header.vue';
-
 import axios from 'axios';
 export default {
     name:"Dashboard",
@@ -45,12 +44,11 @@ export default {
         return {
             Listauser:null,
             pagina:1,
-            /* search:'' */
+            buscador: null
         }
     },
     components:{
         Header,
-
     },
     methods:{
           
@@ -60,9 +58,15 @@ export default {
             nuevo(){
                 this.$router.push('/nuevo');
              }, 
-            /*  search(){
-               this.direccion.search=this.$route.params.search;                  
-             } */
+            search(filter){
+                console.log(filter);
+                let direccion = `http://127.0.0.1:8000/api/buscador?texto=${filter}`;
+                axios.get(direccion).then( data =>{
+                //this.search = data.data;
+                console.log(data);
+                this.Listauser = data.data;
+            });
+             } 
 },
     mounted:function(){
         let direccion = "http://127.0.0.1:8000/api/usuarios/";
