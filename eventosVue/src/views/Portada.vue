@@ -55,6 +55,8 @@
 </template>
 <script>
 export default {
+  created () {
+  },
     name:"Portada"
 }
 </script>
