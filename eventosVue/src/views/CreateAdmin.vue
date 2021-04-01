@@ -16,10 +16,11 @@
                   <input maxlength="30" minlength="19" type="text" id="nombre" class="fadeIn second" name="Email" value placeholder="Email" required="" pattern="El correo solo puede contener letras, numeros, puntos, guiones y guion bajo.">
                   <input maxlength="8" minlength="12" type="text" id="nombre" class="fadeIn second" name="password" placeholder="Comtraseña" required="" pattern="[a-z0-9]+">
                   <input type="submit" class="fadeIn fifth" value="Registrarme">
-                </form>
-                  <router-link to="/admin">
+                <router-link to="/admin">
                  <input type="button"  class="fadeIn fourth" value="Regresar" >
                 </router-link>
+                </form>
+                  
               </div>
             </div>
 
@@ -151,10 +152,10 @@ h2.active {
 /* FORM TYPOGRAPHY*/
 
 input[type=button], input[type=submit], input[type=reset]  {
-  background-color: #56baed;
+  background-color: #ff5f45;
   border: none;
   color: white;
-  padding: 15px 80px;
+  padding: 20px 20px;
   text-align: center;
   text-decoration: none;
   display: inline-block;
@@ -170,10 +171,12 @@ input[type=button], input[type=submit], input[type=reset]  {
   -ms-transition: all 0.3s ease-in-out;
   -o-transition: all 0.3s ease-in-out;
   transition: all 0.3s ease-in-out;
+  top: 200px;
 }
 
+
 input[type=button]:hover, input[type=submit]:hover, input[type=reset]:hover  {
-  background-color: #39ace7;
+  background-color: #000000;
 }
 
 input[type=button]:active, input[type=submit]:active, input[type=reset]:active  {

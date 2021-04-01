@@ -180,7 +180,7 @@ input[type=button], input[type=submit], input[type=reset]  {
 }
 
 input[type=button]:hover, input[type=submit]:hover, input[type=reset]:hover  {
-  background-color: #;
+  background-color: #000000;
 }
 
 input[type=button]:active, input[type=submit]:active, input[type=reset]:active  {
