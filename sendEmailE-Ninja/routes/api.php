@@ -21,7 +21,8 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 Route::post('/register',[UserController::class,'register']);
 Route::post('/login',[UserController::class,'login']);
 Route::apiResource('/usuarios', UsuarioController::class);
-Route::get('/buscador', [UsuarioController::class, 'buscador']);   
+Route::get('/buscador', [UsuarioController::class, 'buscador']);  
+Route::get('/sendEmail',[UserController::class,'resetPassword']); 
 Route::group(['middleware'=>['auth:sanctum']],function(){
 Route::post('/logout',[UserController::class,'logout']); 
 });

@@ -5,6 +5,9 @@ use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator; 
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Mail;
+use App\Mail\TestMail;
+
 class UserController extends Controller
 {
   public function register( Request $request)
@@ -62,6 +65,27 @@ public function logout( Request $request)
       'status code'=>200,
       'message'=>'token deleted succesfully' 
   ]);
+  }
+
+  public function resetPassword(Request $request){
+      $user = User::where('email', $request->email)->first();
+      if($user != null){
+          $str=rand();
+          $password_temp = md5($str);
+          $user->password = bcrypt($password_temp);
+          $user->save();
+          $details = [
+              'user'=> $user->name,
+              'password_temp'=>$password_temp
+          ];
+        //   Mail::to($user->email)->send(new TestMail($details));
+        Mail::to($user->email)->send(new TestMail($details));
+          return 'send';
+      }else{
+          return response()->json([
+              'message'=>'Este correo electronico no es valido'
+          ]);
+      }
   }
  
 }

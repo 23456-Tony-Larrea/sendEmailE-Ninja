@@ -29,6 +29,6 @@ class TestMail extends Mailable
      */
     public function build()
     {
-        return $this->subject('prueba')->view('emails.testEmail');
+        return $this->subject('laravel')->view('emails.TestEmail');
     }
 }
