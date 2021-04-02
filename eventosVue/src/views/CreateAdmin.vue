@@ -13,13 +13,15 @@
                 <!-- Login Form -->
                 <form v-on:submit.prevent="create">
                   <input  type="text" id="nombre" class="fadeIn second" name="nombre" placeholder="Nombre" required >
-                  <input  type="text" id="nombre" class="fadeIn second" name="Email" value placeholder="Email" required>
-                  <input  type="text" id="nombre" class="fadeIn second" name="password" placeholder="Comtraseña" >
-                  <input type="submit" class="fadeIn fifth" value="Registrarme">
+                  <input  type="email" id="nombre" class="fadeIn second" name="Email" value placeholder="Email" required>
+                  <input  type="password" id="nombre" class="fadeIn second" name="password" placeholder="Comtraseña" >
+                
+                  <input type="submit" class="fadeIn fifth" value="Registrarme" >
+                </form>
                 <router-link to="/admin">
                  <input type="button"  class="fadeIn fourth" value="Regresar" >
                 </router-link>
-                </form>
+                
                   
               </div>
             </div>

@@ -1,12 +1,17 @@
 <template>
   <div class="home">
       <div class="wrapper fadeInDown">
+        <br>
+        <br>
+        <br>
+        <br>
+        
               <div id="formContent">
                 <!-- Tabs Titles -->
 
                 <!-- Icon -->
                 <div class="fadeIn first">
-                  <img src="@/assets/eventos.png" id="icon" alt="User Icon" />
+                  <img src="@/assets/ninja.png" id="icon" alt="User Icon" />
                 </div>
 
                 <!-- Login Form -->
@@ -15,12 +20,14 @@
                   <input type="password" id="password" class="fadeIn third" name="login" placeholder="Password" v-model="password">
                   <br>
                   <input type="submit" value="Ingresar">
-                </form>
+               
                 <router-link to="/createAdmin">
                  <input type="button"  class="fadeIn fourth" value="Registro" >
                 </router-link>
-                <br>
+                 </form>
+                
                 <input type="submit"  class="fadeIn fourth" value="¿olvido su contraseña?" v-on:click="resetPassword()">
+                
                 <!-- Remind Passowrd -->
                 <div class="alert alert-danger" role="alert" v-if="error">
                    {{error_msg}}
@@ -180,7 +187,7 @@ input[type=button], input[type=submit], input[type=reset]  {
   background-color: #ff5f45;
   border: none;
   color: white;
-  padding: 15px 80px;
+  padding: 20px 20px;
   text-align: center;
   text-decoration: none;
   display: inline-block;
