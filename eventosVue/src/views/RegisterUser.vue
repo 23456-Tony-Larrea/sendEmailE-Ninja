@@ -12,17 +12,10 @@
 
                 <!-- Login Form -->
                 <form v-on:submit.prevent="register">
-<<<<<<< HEAD
                   <input  type="text" id="nombre" class="fadeIn second" name="nombre" placeholder="Nombre" required="" v-model="form.nombres">
                   <input  type="text" id="apellido" class="fadeIn second" name="apellido" placeholder="Apellido" required="" v-model="form.apellidos">
                   <input   type="number" id="telefono" class="fadeIn second" name="telefono" placeholder="Telefono" required="" v-model="form.telefono">
                   <input   type="text" id="nombre" class="fadeIn second" name="Email" value placeholder="Email" required="" v-model="form.correo">
-=======
-                  <input  type="text" minlength="4" id="nombre" class="fadeIn second" name="nombre" placeholder="Nombre" v-model="form.nombres" required>
-                  <input  type="text"   id="apellido" class="fadeIn second" name="apellido" placeholder="Apellido"  v-model="form.apellidos" required pattern="[A-Za-z0-9]{5,7}">
-                  <input type="number"  minlength="10"  id="telefono" class="fadeIn second" name="telefono" placeholder="Teléfono" v-model="form.telefono" required>
-                  <input type="email"  id="nombre" class="fadeIn second" name="Email" placeholder="Email" v-model="form.correo" required>
->>>>>>> 92008f8fc45f36c6b51ae8bef81eb5415c297776
                   <input type="submit" class="fadeIn fourth" value="Registrarme">
                  <router-link to="/">
                  <input type="button"  class="fadeIn fourth" value="Regresar" >
