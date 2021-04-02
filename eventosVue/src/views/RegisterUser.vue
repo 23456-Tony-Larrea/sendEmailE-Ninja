@@ -12,10 +12,10 @@
 
                 <!-- Login Form -->
                 <form v-on:submit.prevent="register">
-                  <input maxlength="19" minlength="4" type="text" id="nombre" class="fadeIn second" name="nombre" placeholder="Nombre" required="" pattern="[a-zA-Z]+">
-                  <input maxlength="19" minlength="4" type="text" id="apellido" class="fadeIn second" name="apellido" placeholder="Apellido" required="" pattern="[a-zA-Z]+">
-                  <input maxlength="13" minlength="4" type="text" id="telefono" class="fadeIn second" name="telefono" placeholder="Telefono" required="" pattern="[0-10]+">
-                  <input maxlength="30" minlength="19" type="text" id="nombre" class="fadeIn second" name="Email" value placeholder="Email" required="" pattern="El correo solo puede contener letras, numeros, puntos, guiones y guion bajo.">
+                  <input  type="text" minlength="4" id="nombre" class="fadeIn second" name="nombre" placeholder="Nombre" v-model="form.nombres" required>
+                  <input  type="text"   id="apellido" class="fadeIn second" name="apellido" placeholder="Apellido"  v-model="form.apellidos" required pattern="[A-Za-z0-9]{5,7}">
+                  <input type="number"  minlength="10"  id="telefono" class="fadeIn second" name="telefono" placeholder="Teléfono" v-model="form.telefono" required>
+                  <input type="email"  id="nombre" class="fadeIn second" name="Email" placeholder="Email" v-model="form.correo" required>
                   <input type="submit" class="fadeIn fourth" value="Registrarme">
                  <router-link to="/">
                  <input type="button"  class="fadeIn fourth" value="Regresar" >
@@ -192,6 +192,46 @@ input[type=button]:active, input[type=submit]:active, input[type=reset]:active  
 }
 
 input[type=text] {
+  background-color: #f6f6f6;
+  border: none;
+  color: #0d0d0d;
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 5px;
+  width: 85%;
+  border: 2px solid #f6f6f6;
+  -webkit-transition: all 0.5s ease-in-out;
+  -moz-transition: all 0.5s ease-in-out;
+  -ms-transition: all 0.5s ease-in-out;
+  -o-transition: all 0.5s ease-in-out;
+  transition: all 0.5s ease-in-out;
+  -webkit-border-radius: 5px 5px 5px 5px;
+  border-radius: 5px 5px 5px 5px;
+}
+input[type=email] {
+  background-color: #f6f6f6;
+  border: none;
+  color: #0d0d0d;
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 5px;
+  width: 85%;
+  border: 2px solid #f6f6f6;
+  -webkit-transition: all 0.5s ease-in-out;
+  -moz-transition: all 0.5s ease-in-out;
+  -ms-transition: all 0.5s ease-in-out;
+  -o-transition: all 0.5s ease-in-out;
+  transition: all 0.5s ease-in-out;
+  -webkit-border-radius: 5px 5px 5px 5px;
+  border-radius: 5px 5px 5px 5px;
+}
+input[type=number] {
   background-color: #f6f6f6;
   border: none;
   color: #0d0d0d;
