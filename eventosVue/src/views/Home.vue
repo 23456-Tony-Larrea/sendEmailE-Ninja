@@ -177,7 +177,7 @@ h2.active {
 /* FORM TYPOGRAPHY*/
 
 input[type=button], input[type=submit], input[type=reset]  {
-  background-color: #56baed;
+  background-color: #ff5f45;
   border: none;
   color: white;
   padding: 15px 80px;
@@ -199,7 +199,7 @@ input[type=button], input[type=submit], input[type=reset]  {
 }
 
 input[type=button]:hover, input[type=submit]:hover, input[type=reset]:hover  {
-  background-color: #39ace7;
+  background-color: black;
 }
 
 input[type=button]:active, input[type=submit]:active, input[type=reset]:active  {

@@ -7,15 +7,15 @@
 
                 <!-- Icon -->
                 <div class="fadeIn first">
-                  <img src="@/assets/usuario.jpg" id="icon" alt="User Icon" />
+                  <img src="@/assets/usuario.png" id="icon" alt="User Icon" />
                 </div>
 
                 <!-- Login Form -->
                 <form v-on:submit.prevent="register">
-                  <input maxlength="19" minlength="4" type="text" id="nombre" class="fadeIn second" name="nombre" placeholder="Nombre" required="" pattern="[a-zA-Z]+">
-                  <input maxlength="19" minlength="4" type="text" id="apellido" class="fadeIn second" name="apellido" placeholder="Apellido" required="" pattern="[a-zA-Z]+">
-                  <input maxlength="13" minlength="4" type="text" id="telefono" class="fadeIn second" name="telefono" placeholder="Telefono" required="" pattern="[0-10]+">
-                  <input maxlength="30" minlength="19" type="text" id="nombre" class="fadeIn second" name="Email" value placeholder="Email" required="" pattern="El correo solo puede contener letras, numeros, puntos, guiones y guion bajo.">
+                  <input maxlength="19" minlength="4" type="text" id="nombre" class="fadeIn second" name="nombre" placeholder="Nombre" v-model="form.nombres">
+                  <input maxlength="19" minlength="4" type="text" id="apellido" class="fadeIn second" name="apellido" placeholder="Apellido" v-model="form.apellidos">
+                  <input maxlength="13" minlength="4" type="text" id="telefono" class="fadeIn second" name="telefono" placeholder="Telefono" v-model="form.telefonos">
+                  <input maxlength="35" minlength="25" type="text" id="nombre" class="fadeIn second" name="Email" value placeholder="Email" v-model="form.email">
                   <input type="submit" class="fadeIn fourth" value="Registrarme">
                  <router-link to="/">
                  <input type="button"  class="fadeIn fourth" value="Regresar" >
