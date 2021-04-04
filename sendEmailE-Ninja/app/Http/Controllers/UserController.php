@@ -39,14 +39,14 @@ public function login(Request $request){
        'password'=>'required'
    ]);
   if($validator->fails()){
-      return response() -> json(['status code'=>400,
+      return response() -> json(['status_code'=>400,
       'message'=>'bad request'
       ]);
   }
   $credentials=request(['email','password']);
   if(!Auth::attempt($credentials)){
      return response()->json([
-     'status code'=>500,
+     'status_code'=>500,
      'message'=>'Unauthorized'
      ]); 
   }

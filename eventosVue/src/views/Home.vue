@@ -65,8 +65,8 @@ export default {
         axios.post('http://127.0.0.1:8000/api/login', json)
         .then( data =>{
          console.log(data.data);
-         if(data.data.message==="Unauthorized"){
-         this.$toaster.success('Usuario Incorecto.');
+         if(data.data.message==="Unauthorized" || data.data.message==="bad request" ){
+         this.$toaster.error('Usuario Incorecto.');
             this.$router.push('/admin');
          }else{
           this.$toaster.success('Bienvenido Admin.');
