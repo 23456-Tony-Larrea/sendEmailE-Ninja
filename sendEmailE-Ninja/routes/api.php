@@ -4,6 +4,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\UsuarioController;
+use Atymic\Twitter\Facades\Twitter;
 /*
 |--------------------------------------------------------------------------
 | API Routes
@@ -25,4 +26,8 @@ Route::get('/buscador', [UsuarioController::class, 'buscador']);
 Route::get('/sendEmail',[UserController::class,'resetPassword']); 
 Route::group(['middleware'=>['auth:sanctum']],function(){
 Route::post('/logout',[UserController::class,'logout']); 
+});
+Route::get('/tweet', function()
+{
+	return Twitter::getUserTimeline(['screen_name' => 'thujohn', 'count' => 20, 'response_format' => 'json']);
 });
