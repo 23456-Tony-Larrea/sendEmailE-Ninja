@@ -36,7 +36,7 @@
             <h1 style="color: #7c795d; font-family: 'Source Sans Pro', sans-serif; font-size: 28px; font-weight: 400; line-height: 32px; margin: 0 0 24px;">el siguiente token en tu perfil</h1>
             <h2 style=" font-size: 26px; font-weight: 300; color: #ffcc66; margin: 0 0 24px;">Recuerda cambiar tu contraseña</h2>
             </center>
-    <center><button style="
+    <center><p style="
 	
 	background:linear-gradient(to bottom, #ffec64 5%, #ffab23 100%);
 	background-color:#ffec64;
@@ -51,7 +51,7 @@
 	padding:6px 24px;
 	text-decoration:none;
 	text-shadow:0px 1px 0px #ffee66;
-  ">{{$details['password_temp']}}</button></center>
+  ">{{$details['password_temp']}}</p></center>
     <br>
     <p>Gracias</p>
             </div>
