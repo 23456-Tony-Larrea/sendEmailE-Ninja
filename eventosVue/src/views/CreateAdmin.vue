@@ -7,7 +7,7 @@
 
                 <!-- Icon -->
                 <div class="fadeIn first">
-                  <img src="@/assets/registo.png" id="icon" alt="User Icon" />
+                  <img src="@/assets/naranjaO.jpg" id="icon" alt="User Icon" />
                 </div>
 
                 <!-- Login Form -->

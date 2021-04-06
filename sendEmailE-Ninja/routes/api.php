@@ -27,7 +27,7 @@ Route::get('/sendEmail',[UserController::class,'resetPassword']);
 Route::group(['middleware'=>['auth:sanctum']],function(){
 Route::post('/logout',[UserController::class,'logout']); 
 });
-Route::get('/teewt', function ($hashtag) {
+/* Route::get('/teewt', function ($hashtag) {
     $twitters = Twitter::getSearch(['q' => $hashtag, 'count' => 50]);
     $sentimientos = ['negative', 'positive', 'neutral'];
     $twitters_array = $twitters->statuses;
@@ -38,4 +38,8 @@ Route::get('/teewt', function ($hashtag) {
     }
     $sentimiento_twitter = array_count_values($sentimientos);
     return view('twitter', compact('sentimiento_twitter', 'twitters_array', 'hashtag'));
-});
+}); */
+Route::get('/teewt', function()
+{
+	return Twitter::getUserTimeline(['screen_name' => 'thujohn', 'count' => 20, 'response_format' => 'json']);
+}); 

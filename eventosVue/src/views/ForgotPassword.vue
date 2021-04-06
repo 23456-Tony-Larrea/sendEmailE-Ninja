@@ -12,7 +12,7 @@
 
                 <!-- Login Form -->
                 <form v-on:submit.prevent="resetPassword">
-                  <input   type="text" id="nombre" class="fadeIn second" name="Email" value placeholder="Escriba su correo" v-model="form.email" required pattern="[a-zA-Z0-9_]+([.][a-zA-Z0-9_]+)*@[a-zA-Z0-9_]+([.][a-zA-Z0-9_]+)*[.][a-zA-Z]{1,5}">
+                  <input   type="text" id="nombre" class="fadeIn second" name="Email" value placeholder="Escriba su correo" v-model="email" required pattern="[a-zA-Z0-9_]+([.][a-zA-Z0-9_]+)*@[a-zA-Z0-9_]+([.][a-zA-Z0-9_]+)*[.][a-zA-Z]{1,5}">
                   <input type="submit" class="fadeIn fourth" value="Enviar">
                  <router-link to="/admin">
                  <input type="button"  class="fadeIn fourth" value="Regresar" >
@@ -32,10 +32,9 @@ import axios from 'axios';
     name:"ForgotPassword",
     data:function(){
         return {
-            form:{
-                "email":this.email,
+            email:""       
+            
             }
-        }
     },
     components:{
         Header,
