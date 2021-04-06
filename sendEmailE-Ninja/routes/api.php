@@ -45,6 +45,7 @@ Route::post('/logout',[UserController::class,'logout']);
 }); */
 Route::get('/teewt', function()
 {
-	return Twitter::getUserTimeline(['screen_name' => 'thujohn', 'count' => 20, 'response_format' => 'json']);
-}); 
+	return Twitter::getListStatuses(['list_id'=>1000]);
+    // return Twitter::getSearch(['q'=>'RT']);
+});
 
