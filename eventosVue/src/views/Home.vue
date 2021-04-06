@@ -45,7 +45,6 @@ import axios from 'axios';
 export default {
   name: 'Home',
   components: {
-
   },
   data: function(){
     return {
@@ -64,7 +63,7 @@ export default {
         console.log(json);
         axios.post('http://127.0.0.1:8000/api/login', json)
         .then( data =>{
-         console.log(data.data);
+        // console.log(data.data);
          if(data.data.message==="Unauthorized" || data.data.message==="bad request" ){
          this.$toaster.error('Usuario Incorecto.');
             this.$router.push('/admin');
@@ -74,7 +73,7 @@ export default {
            
          } 
         }).catch(e=>{
-        console.log(e)
+        //console.log(e)
         this.$toaster.error('Usuario incorrecto.');
             this.$router.push('/admin');
         })
@@ -82,7 +81,7 @@ export default {
     resetPassword(){
       axios.get(`http://127.0.0.1:8000/api/sendEmail?email=${this.email}`)
       .then(data =>{
-        // console.log(data);
+         console.log(data);
         if (data.data=="send"){
           this.$toaster.success('Se ha manado un correo por favor reviselo');
         }else{
