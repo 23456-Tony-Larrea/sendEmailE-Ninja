@@ -10,7 +10,7 @@ class Twuits extends Model
     use HasFactory;
 
     protected $fillable = [
-        'fecha',
+        // 'fecha',
         'publicaciones'
     ];
 }
