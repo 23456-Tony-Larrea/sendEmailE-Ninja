@@ -7,22 +7,19 @@
 
                 <!-- Icon -->
                 <div class="fadeIn first">
-                  <img src="@/assets/registo.png" id="icon" alt="User Icon" />
+                  <img src="@/assets/userO.png" id="icon" alt="User Icon" />
                 </div>
 
                 <!-- Login Form -->
-                <form v-on:submit.prevent="create">
-                  <input  type="text" id="nombre" class="fadeIn second" name="nombre" placeholder="Nombre" required v-model="form.name">
-                  <input  type="email" id="nombre" class="fadeIn second" name="Email" value placeholder="Email" required v-model="form.email">
-                  <input  type="password" id="nombre" class="fadeIn second" name="password" placeholder="Comtraseña" required v-model="form.password">
-                
-                  <input type="submit" class="fadeIn fifth" value="Registrarme" >
-                
-                <router-link to="/admin">
+                <form v-on:submit.prevent="register">
+                  <input  type="text" id="nombre" class="fadeIn second" name="nombre" placeholder="Nombre" required="" v-model="form.nombres">
+                  <input type="password" id="password" class="fadeIn third" name="password" placeholder="Password" v-model="password">
+                  <input type="submit" class="fadeIn fourth" value="Guardar">
+                 <router-link to="/">
                  <input type="button"  class="fadeIn fourth" value="Regresar" >
                 </router-link>
                 </form>
-                  
+               
               </div>
             </div>
 
@@ -32,24 +29,23 @@
 import Header from '@/components/HeaderAdmin.vue'
 import axios from 'axios';
  export default {
-    name:"CreateAdmin",
+    name:"RegisterUser",
     data:function(){
         return {
             form:{
-                "name" : "",
-                "email": "", 
-                "password" : "",
+                "nombres" : "",
+                "apellidos": "", 
+                "password" : "" 
             }
         }
-    },   
+    },
     components:{
         Header,
-        
     },
      methods:{
-        create(){
-          console.log(this.form)
-            axios.post("http://127.0.0.1:8000/api/register/",this.form)
+        register(){
+            this.form.token = localStorage.getItem("token");
+            axios.post("http://127.0.0.1:8000/api/usuarios/",this.form)
             .then(data =>{
                 console.log(data);
                 this.makeToast("Hecho","Usuario creado","success");
@@ -58,6 +54,7 @@ import axios from 'axios';
                  this.makeToast("Error","Error al guardar","error");
             })
             },
+
              makeToast(titulo,texto,tipo) {
             this.toastCount++
             this.$bvToast.toast(texto, {
@@ -176,7 +173,6 @@ input[type=button], input[type=submit], input[type=reset]  {
   top: 200px;
 }
 
-
 input[type=button]:hover, input[type=submit]:hover, input[type=reset]:hover  {
   background-color: #000000;
 }
@@ -209,27 +205,6 @@ input[type=text] {
   -webkit-border-radius: 5px 5px 5px 5px;
   border-radius: 5px 5px 5px 5px;
 }
-input[type=email] {
-  background-color: #f6f6f6;
-  border: none;
-  color: #0d0d0d;
-  padding: 15px 32px;
-  text-align: center;
-  text-decoration: none;
-  display: inline-block;
-  font-size: 16px;
-  margin: 5px;
-  width: 85%;
-  border: 2px solid #f6f6f6;
-  -webkit-transition: all 0.5s ease-in-out;
-  -moz-transition: all 0.5s ease-in-out;
-  -ms-transition: all 0.5s ease-in-out;
-  -o-transition: all 0.5s ease-in-out;
-  transition: all 0.5s ease-in-out;
-  -webkit-border-radius: 5px 5px 5px 5px;
-  border-radius: 5px 5px 5px 5px;
-}
-
 input[type=password]:focus {
   background-color: #fff;
   border-bottom: 2px solid #5fbae9;
@@ -340,20 +315,16 @@ input[type=password]:placeholder {
 }
 
 .fadeIn.third {
-   -webkit-animation-delay: 0.6s;
-  -moz-animation-delay: 0.6s;
-  animation-delay: 0.6s;
+  -webkit-animation-delay: 0.8s;
+  -moz-animation-delay: 0.8s;
+  animation-delay: 0.8s;
 }
 
 .fadeIn.fourth {
   -webkit-animation-delay: 1s;
   -moz-animation-delay: 1s;
   animation-delay: 1s;
-}
-.fadeIn.fourth {
-  -webkit-animation-delay: 1s;
-  -moz-animation-delay: 1s;
-  animation-delay: 1s;
+  
 }
 
 /* Simple CSS3 Fade-in Animation */

@@ -3,6 +3,7 @@
 <div>
       <b-navbar toggleable="lg" type="dark" variant="info">
                          <img src="@/assets/ninja.png" id="icon" alt="User Icon" class="imagen"/>
+                         
       </b-navbar>
         <br><br>
 </div>

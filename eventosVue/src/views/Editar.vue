@@ -45,7 +45,7 @@
     
 </template>
 <script>
-import Header from '@/components/Header.vue';
+import Header from '@/components/HeaderAdmin.vue';
 import axios from 'axios';
 export default {
   name:"Editar",
