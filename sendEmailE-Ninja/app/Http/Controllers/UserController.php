@@ -87,5 +87,33 @@ public function logout( Request $request)
           ]);
       }
   }
+  public function showUser(User $user)
+  {
+      return $user;
+  }
+
+  public function uptadeUser( Request $request, User $user)
+{
+    $validator= Validator::make($request->all(),[
+        'name'=>'required',
+        'email'=>'required|email',
+        'password'=>'required'
+    ]);
+    if($validator->fails()){
+    return response()->json(['status code'=>400,
+    'message'=>'Bad request']);
+
+    }
+    // $user=new User();
+    $user->name=$request->name;
+    $user->email=$request->email;
+    $user->password=bcrypt($request->password);
+    $user->save(); 
+    
+    return response()->json([
+        'status_code'=>200,
+        'message'=>'User edit succesfully'
+    ]);
+}
  
 }
