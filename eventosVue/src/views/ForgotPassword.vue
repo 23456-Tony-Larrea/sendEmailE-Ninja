@@ -7,67 +7,55 @@
 
                 <!-- Icon -->
                 <div class="fadeIn first">
-                  <img src="@/assets/registo.png" id="icon" alt="User Icon" />
+                  <img src="@/assets/userO.png" id="icon" alt="User Icon" />
                 </div>
 
                 <!-- Login Form -->
-                <form v-on:submit.prevent="create">
-                  <input  type="text" id="nombre" class="fadeIn second" name="nombre" placeholder="Nombre" required v-model="form.name">
-                  <input  type="email" id="nombre" class="fadeIn second" name="Email" value placeholder="Email" required v-model="form.email">
-                  <input  type="password" id="nombre" class="fadeIn second" name="password" placeholder="Comtraseña" required v-model="form.password">
-                
-                  <input type="submit" class="fadeIn fifth" value="Registrarme" >
-                
-                <router-link to="/admin">
+                <form v-on:submit.prevent="resetPassword">
+                  <input   type="text" id="nombre" class="fadeIn second" name="Email" value placeholder="Escriba su correo" v-model="form.email" required pattern="[a-zA-Z0-9_]+([.][a-zA-Z0-9_]+)*@[a-zA-Z0-9_]+([.][a-zA-Z0-9_]+)*[.][a-zA-Z]{1,5}">
+                  <input type="submit" class="fadeIn fourth" value="Enviar">
+                 <router-link to="/admin">
                  <input type="button"  class="fadeIn fourth" value="Regresar" >
                 </router-link>
                 </form>
-                  
+               
+                
               </div>
             </div>
 
 </div> 
 </template>
 <script>
-import Header from '@/components/HeaderAdmin.vue'
+import Header from '@/components/Header.vue'
 import axios from 'axios';
  export default {
-    name:"CreateAdmin",
+    name:"ForgotPassword",
     data:function(){
         return {
             form:{
-                "name" : "",
-                "email": "", 
-                "password" : "",
+                "email":this.email,
             }
         }
-    },   
+    },
     components:{
         Header,
-        
     },
      methods:{
-        create(){
-          console.log(this.form)
-            axios.post("http://127.0.0.1:8000/api/register/",this.form)
-            .then(data =>{
-                console.log(data);
-                this.makeToast("Hecho","Usuario creado","success");
-            }).catch( e =>{
-                console.log(e);
-                 this.makeToast("Error","Error al guardar","error");
-            })
-            },
-             makeToast(titulo,texto,tipo) {
-            this.toastCount++
-            this.$bvToast.toast(texto, {
-            title: titulo,
-            variant: tipo,
-            autoHideDelay: 5000,
-            appendToast: true
-            })
+          resetPassword(){
+      axios.get(`http://127.0.0.1:8000/api/sendEmail?email=${this.email}`)
+      .then(data =>{
+        console.log(data);
+        if (data.data=="send"){
+          this.$toaster.success('Se ha manado un correo por favor reviselo');
+        }else{
+          this.$toaster.error('Email no valido por favor escriba un emial valido');
         }
-     }   
+      }).catch(e=>{
+        console.log(e)
+        this.$toaster.error_msg('Email no valido por favor escriba un emial valido');
+      })
+    }
+  }  
 }
 </script>
 <style scoped>
@@ -176,7 +164,6 @@ input[type=button], input[type=submit], input[type=reset]  {
   top: 200px;
 }
 
-
 input[type=button]:hover, input[type=submit]:hover, input[type=reset]:hover  {
   background-color: #000000;
 }
@@ -229,16 +216,64 @@ input[type=email] {
   -webkit-border-radius: 5px 5px 5px 5px;
   border-radius: 5px 5px 5px 5px;
 }
+input[type=number] {
+  background-color: #f6f6f6;
+  border: none;
+  color: #0d0d0d;
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 5px;
+  width: 85%;
+  border: 2px solid #f6f6f6;
+  -webkit-transition: all 0.5s ease-in-out;
+  -moz-transition: all 0.5s ease-in-out;
+  -ms-transition: all 0.5s ease-in-out;
+  -o-transition: all 0.5s ease-in-out;
+  transition: all 0.5s ease-in-out;
+  -webkit-border-radius: 5px 5px 5px 5px;
+  border-radius: 5px 5px 5px 5px;
+}
 
-input[type=password]:focus {
+input[type=number] {
+  background-color: #f6f6f6;
+  border: none;
+  color: #0d0d0d;
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 5px;
+  width: 85%;
+  border: 2px solid #f6f6f6;
+  -webkit-transition: all 0.5s ease-in-out;
+  -moz-transition: all 0.5s ease-in-out;
+  -ms-transition: all 0.5s ease-in-out;
+  -o-transition: all 0.5s ease-in-out;
+  transition: all 0.5s ease-in-out;
+  -webkit-border-radius: 5px 5px 5px 5px;
+  border-radius: 5px 5px 5px 5px;
+}
+input[type=number]:focus {
   background-color: #fff;
   border-bottom: 2px solid #5fbae9;
 }
 
-input[type=password]:placeholder {
+input[type=number]:placeholder {
   color: #cccccc;
 }
-input[type=password] {
+input[type=number]:focus {
+  background-color: #fff;
+  border-bottom: 2px solid #5fbae9;
+}
+
+input[type=number]:placeholder {
+  color: #cccccc;
+}
+input[type=number] {
   background-color: #f6f6f6;
   border: none;
   color: #0d0d0d;
@@ -340,20 +375,16 @@ input[type=password]:placeholder {
 }
 
 .fadeIn.third {
-   -webkit-animation-delay: 0.6s;
-  -moz-animation-delay: 0.6s;
-  animation-delay: 0.6s;
+  -webkit-animation-delay: 0.8s;
+  -moz-animation-delay: 0.8s;
+  animation-delay: 0.8s;
 }
 
 .fadeIn.fourth {
   -webkit-animation-delay: 1s;
   -moz-animation-delay: 1s;
   animation-delay: 1s;
-}
-.fadeIn.fourth {
-  -webkit-animation-delay: 1s;
-  -moz-animation-delay: 1s;
-  animation-delay: 1s;
+  
 }
 
 /* Simple CSS3 Fade-in Animation */
