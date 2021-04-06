@@ -7,21 +7,21 @@
 
                 <!-- Icon -->
                 <div class="fadeIn first">
-                  <img src="@/assets/registo.png" id="icon" alt="User Icon" />
+                  <img src="@/assets/naranjaO.jpg" id="icon" alt="User Icon" />
                 </div>
 
                 <!-- Login Form -->
                 <form v-on:submit.prevent="create">
-                  <input  type="text" id="nombre" class="fadeIn second" name="nombre" placeholder="Nombre" required >
-                  <input  type="email" id="nombre" class="fadeIn second" name="Email" value placeholder="Email" required>
-                  <input  type="password" id="nombre" class="fadeIn second" name="password" placeholder="Comtraseña" >
+                  <input  type="text" id="nombre" class="fadeIn second" name="nombre" placeholder="Nombre" required v-model="form.name">
+                  <input  type="email" id="nombre" class="fadeIn second" name="Email" value placeholder="Email" required v-model="form.email">
+                  <input  type="password" id="nombre" class="fadeIn second" name="password" placeholder="Comtraseña" required v-model="form.password">
                 
                   <input type="submit" class="fadeIn fifth" value="Registrarme" >
-                </form>
+                
                 <router-link to="/admin">
                  <input type="button"  class="fadeIn fourth" value="Regresar" >
                 </router-link>
-                
+                </form>
                   
               </div>
             </div>
@@ -29,7 +29,7 @@
 </div> 
 </template>
 <script>
-import Header from '@/components/Header.vue'
+import Header from '@/components/HeaderAdmin.vue'
 import axios from 'axios';
  export default {
     name:"CreateAdmin",

@@ -1,108 +1,74 @@
 <template>
-  <div class="home">
-      <div class="wrapper fadeInDown">
-        <br>
-        <br>
-        <br>
-        <br>
-        
+   <div>
+       <Header/>
+<div class="wrapper fadeInDown">
               <div id="formContent">
                 <!-- Tabs Titles -->
 
                 <!-- Icon -->
                 <div class="fadeIn first">
-                  <img src="@/assets/ninja.png" id="icon" alt="User Icon" />
+                  <img src="@/assets/userO.png" id="icon" alt="User Icon" />
                 </div>
 
                 <!-- Login Form -->
-                <form v-on:submit.prevent="login">
-                  <input type="text" id="login" class="fadeIn second" name="login" placeholder="email" v-model="email">
-                  <input type="password" id="password" class="fadeIn third" name="login" placeholder="Password" v-model="password">
-                  <br>
-                  <input type="submit" value="Ingresar">
+                <form v-on:submit.prevent="register">
+                  <input  type="text" id="nombre" class="fadeIn second" name="nombre" placeholder="Nombre" required="" v-model="form.nombres">
+                  <input type="password" id="password" class="fadeIn third" name="password" placeholder="Contraseña" v-model="password">
+                  <input type="password" id="password" class="fadeIn third" name="password" placeholder="Confirmar tu contraseña" v-model="confirmpassword">
+                  <input type="submit" class="fadeIn fourth" value="Guardar">
+                 <router-link to="/">
+                 <input type="button"  class="fadeIn fourth" value="Regresar" >
+                </router-link>
+                </form>
                
-                <router-link to="/createAdmin">
-                 <input type="button"  class="fadeIn fourth" value="Registro" >
-                </router-link>
-                 </form>
-                
-                <!-- <input type="submit"  class="fadeIn fourth" value="¿olvido su contraseña?" v-on:click="resetPassword()"> -->
-                               <router-link to="/forgotPassword">
-                 <input type="button"  class="fadeIn fourth" value="¿Olvido su contraseña?" >
-                </router-link>
-                <!-- Remind Passowrd -->
-                <div class="alert alert-danger" role="alert" v-if="error">
-                   {{error_msg}}
-                </div>
-
               </div>
             </div>
 
-  </div>
+</div> 
 </template>
-
 <script>
+import Header from '@/components/HeaderAdmin.vue'
 import axios from 'axios';
-
-export default {
-  name: 'Home',
-  components: {
-
-  },
-  data: function(){
-    return {
-      email: "",
-      password: "",
-      error: false,
-      error_msg: "mensaje",
-    }
-  },
-  methods:{
-    login(){
-        let json = {
-          "email" : this.email,
-          "password": this.password
-        };
-        console.log(json);
-        axios.post('http://127.0.0.1:8000/api/login', json)
-        .then( data =>{
-         console.log(data.data);
-         if(data.data.message==="Unauthorized" || data.data.message==="bad request" ){
-         this.$toaster.error('Usuario Incorecto.');
-            this.$router.push('/admin');
-         }else{
-          this.$toaster.success('Bienvenido Admin.');
-            this.$router.push('/dashboard');
-           
-         } 
-        }).catch(e=>{
-        console.log(e)
-        this.$toaster.error('Usuario incorrecto.');
-            this.$router.push('/admin');
-        })
-    },
-    resetPassword(){
-      axios.get(`http://127.0.0.1:8000/api/sendEmail?email=${this.email}`)
-      .then(data =>{
-        // console.log(data);
-        if (data.data=="send"){
-          this.$toaster.success('Se ha manado un correo por favor reviselo');
-        }else{
-          this.$toaster.error('Email no valido por favor escriba un emial valido');
+ export default {
+    name:"RegisterUser",
+    data:function(){
+        return {
+            form:{
+                "nombres" : "",
+                "apellidos": "", 
+                "password" : "" 
+            }
         }
-      }).catch(e=>{
-        console.log(e)
-        this.$toaster.error_msg('Email no valido por favor escriba un emial valido');
-      })
-    }
-  }
+    },
+    components:{
+        Header,
+    },
+     methods:{
+        register(){
+            this.form.token = localStorage.getItem("token");
+            axios.post("http://127.0.0.1:8000/api/usuarios/",this.form)
+            .then(data =>{
+                console.log(data);
+                this.makeToast("Hecho","Usuario creado","success");
+            }).catch( e =>{
+                console.log(e);
+                 this.makeToast("Error","Error al guardar","error");
+            })
+            },
+
+             makeToast(titulo,texto,tipo) {
+            this.toastCount++
+            this.$bvToast.toast(texto, {
+            title: titulo,
+            variant: tipo,
+            autoHideDelay: 5000,
+            appendToast: true
+            })
+        }
+     }   
 }
 </script>
-
-
 <style scoped>
-
-
 /* BASIC */
 
 html {
@@ -205,10 +171,11 @@ input[type=button], input[type=submit], input[type=reset]  {
   -ms-transition: all 0.3s ease-in-out;
   -o-transition: all 0.3s ease-in-out;
   transition: all 0.3s ease-in-out;
+  top: 200px;
 }
 
 input[type=button]:hover, input[type=submit]:hover, input[type=reset]:hover  {
-  background-color: black;
+  background-color: #000000;
 }
 
 input[type=button]:active, input[type=submit]:active, input[type=reset]:active  {
@@ -239,7 +206,6 @@ input[type=text] {
   -webkit-border-radius: 5px 5px 5px 5px;
   border-radius: 5px 5px 5px 5px;
 }
-
 input[type=password]:focus {
   background-color: #fff;
   border-bottom: 2px solid #5fbae9;
@@ -359,6 +325,7 @@ input[type=password]:placeholder {
   -webkit-animation-delay: 1s;
   -moz-animation-delay: 1s;
   animation-delay: 1s;
+  
 }
 
 /* Simple CSS3 Fade-in Animation */
@@ -392,6 +359,5 @@ input[type=password]:placeholder {
 #icon {
   width:60%;
 }
-
 
 </style>

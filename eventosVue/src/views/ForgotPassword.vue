@@ -1,90 +1,49 @@
 <template>
-  <div class="home">
-      <div class="wrapper fadeInDown">
-        <br>
-        <br>
-        <br>
-        <br>
-        
+   <div>
+       <Header/>
+<div class="wrapper fadeInDown">
               <div id="formContent">
                 <!-- Tabs Titles -->
 
                 <!-- Icon -->
                 <div class="fadeIn first">
-                  <img src="@/assets/ninja.png" id="icon" alt="User Icon" />
+                  <img src="@/assets/userO.png" id="icon" alt="User Icon" />
                 </div>
 
                 <!-- Login Form -->
-                <form v-on:submit.prevent="login">
-                  <input type="text" id="login" class="fadeIn second" name="login" placeholder="email" v-model="email">
-                  <input type="password" id="password" class="fadeIn third" name="login" placeholder="Password" v-model="password">
-                  <br>
-                  <input type="submit" value="Ingresar">
+                <form v-on:submit.prevent="resetPassword">
+                  <input   type="text" id="nombre" class="fadeIn second" name="Email" value placeholder="Escriba su correo" v-model="email" required pattern="[a-zA-Z0-9_]+([.][a-zA-Z0-9_]+)*@[a-zA-Z0-9_]+([.][a-zA-Z0-9_]+)*[.][a-zA-Z]{1,5}">
+                  <input type="submit" class="fadeIn fourth" value="Enviar">
+                 <router-link to="/admin">
+                 <input type="button"  class="fadeIn fourth" value="Regresar" >
+                </router-link>
+                </form>
                
-                <router-link to="/createAdmin">
-                 <input type="button"  class="fadeIn fourth" value="Registro" >
-                </router-link>
-                 </form>
                 
-                <!-- <input type="submit"  class="fadeIn fourth" value="¿olvido su contraseña?" v-on:click="resetPassword()"> -->
-                               <router-link to="/forgotPassword">
-                 <input type="button"  class="fadeIn fourth" value="¿Olvido su contraseña?" >
-                </router-link>
-                <!-- Remind Passowrd -->
-                <div class="alert alert-danger" role="alert" v-if="error">
-                   {{error_msg}}
-                </div>
-
               </div>
             </div>
 
-  </div>
+</div> 
 </template>
-
 <script>
+import Header from '@/components/Header.vue'
 import axios from 'axios';
-
-export default {
-  name: 'Home',
-  components: {
-
-  },
-  data: function(){
-    return {
-      email: "",
-      password: "",
-      error: false,
-      error_msg: "mensaje",
-    }
-  },
-  methods:{
-    login(){
-        let json = {
-          "email" : this.email,
-          "password": this.password
-        };
-        console.log(json);
-        axios.post('http://127.0.0.1:8000/api/login', json)
-        .then( data =>{
-         console.log(data.data);
-         if(data.data.message==="Unauthorized" || data.data.message==="bad request" ){
-         this.$toaster.error('Usuario Incorecto.');
-            this.$router.push('/admin');
-         }else{
-          this.$toaster.success('Bienvenido Admin.');
-            this.$router.push('/dashboard');
-           
-         } 
-        }).catch(e=>{
-        console.log(e)
-        this.$toaster.error('Usuario incorrecto.');
-            this.$router.push('/admin');
-        })
+ export default {
+    name:"ForgotPassword",
+    data:function(){
+        return {
+            email:""       
+            
+            }
     },
-    resetPassword(){
+    components:{
+        Header,
+    },
+     methods:{
+          resetPassword(){
       axios.get(`http://127.0.0.1:8000/api/sendEmail?email=${this.email}`)
       .then(data =>{
-        // console.log(data);
+        console.log(data);
         if (data.data=="send"){
           this.$toaster.success('Se ha manado un correo por favor reviselo');
         }else{
@@ -95,14 +54,10 @@ export default {
         this.$toaster.error_msg('Email no valido por favor escriba un emial valido');
       })
     }
-  }
+  }  
 }
 </script>
-
-
 <style scoped>
-
-
 /* BASIC */
 
 html {
@@ -205,10 +160,11 @@ input[type=button], input[type=submit], input[type=reset]  {
   -ms-transition: all 0.3s ease-in-out;
   -o-transition: all 0.3s ease-in-out;
   transition: all 0.3s ease-in-out;
+  top: 200px;
 }
 
 input[type=button]:hover, input[type=submit]:hover, input[type=reset]:hover  {
-  background-color: black;
+  background-color: #000000;
 }
 
 input[type=button]:active, input[type=submit]:active, input[type=reset]:active  {
@@ -239,16 +195,84 @@ input[type=text] {
   -webkit-border-radius: 5px 5px 5px 5px;
   border-radius: 5px 5px 5px 5px;
 }
+input[type=email] {
+  background-color: #f6f6f6;
+  border: none;
+  color: #0d0d0d;
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 5px;
+  width: 85%;
+  border: 2px solid #f6f6f6;
+  -webkit-transition: all 0.5s ease-in-out;
+  -moz-transition: all 0.5s ease-in-out;
+  -ms-transition: all 0.5s ease-in-out;
+  -o-transition: all 0.5s ease-in-out;
+  transition: all 0.5s ease-in-out;
+  -webkit-border-radius: 5px 5px 5px 5px;
+  border-radius: 5px 5px 5px 5px;
+}
+input[type=number] {
+  background-color: #f6f6f6;
+  border: none;
+  color: #0d0d0d;
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 5px;
+  width: 85%;
+  border: 2px solid #f6f6f6;
+  -webkit-transition: all 0.5s ease-in-out;
+  -moz-transition: all 0.5s ease-in-out;
+  -ms-transition: all 0.5s ease-in-out;
+  -o-transition: all 0.5s ease-in-out;
+  transition: all 0.5s ease-in-out;
+  -webkit-border-radius: 5px 5px 5px 5px;
+  border-radius: 5px 5px 5px 5px;
+}
 
-input[type=password]:focus {
+input[type=number] {
+  background-color: #f6f6f6;
+  border: none;
+  color: #0d0d0d;
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 5px;
+  width: 85%;
+  border: 2px solid #f6f6f6;
+  -webkit-transition: all 0.5s ease-in-out;
+  -moz-transition: all 0.5s ease-in-out;
+  -ms-transition: all 0.5s ease-in-out;
+  -o-transition: all 0.5s ease-in-out;
+  transition: all 0.5s ease-in-out;
+  -webkit-border-radius: 5px 5px 5px 5px;
+  border-radius: 5px 5px 5px 5px;
+}
+input[type=number]:focus {
   background-color: #fff;
   border-bottom: 2px solid #5fbae9;
 }
 
-input[type=password]:placeholder {
+input[type=number]:placeholder {
   color: #cccccc;
 }
-input[type=password] {
+input[type=number]:focus {
+  background-color: #fff;
+  border-bottom: 2px solid #5fbae9;
+}
+
+input[type=number]:placeholder {
+  color: #cccccc;
+}
+input[type=number] {
   background-color: #f6f6f6;
   border: none;
   color: #0d0d0d;
@@ -359,6 +383,7 @@ input[type=password]:placeholder {
   -webkit-animation-delay: 1s;
   -moz-animation-delay: 1s;
   animation-delay: 1s;
+  
 }
 
 /* Simple CSS3 Fade-in Animation */
@@ -392,6 +417,5 @@ input[type=password]:placeholder {
 #icon {
   width:60%;
 }
-
 
 </style>

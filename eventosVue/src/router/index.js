@@ -7,6 +7,8 @@ import Nuevo from '../views/Nuevo.vue';
 import RegisterUser from '../views/RegisterUser.vue';
 import Portada from '../views/Portada.vue';
 import CreateAdmin from '../views/CreateAdmin.vue';
+import ForgotPassword from '../views/ForgotPassword.vue';
+import Profile from '../views/Profile.vue';
 Vue.use(VueRouter)
 
 const routes = [
@@ -46,7 +48,19 @@ const routes = [
   name:'CreateAdmin',
   component: CreateAdmin
   },
- 
+
+  {
+    path:'/forgotPassword',
+    name:'ForgotPassword',
+    component: ForgotPassword
+    },
+
+    {
+      path:'/profile',
+      name:'Profile',
+      component: Profile
+      },
+   
 ]
 
 const router = new VueRouter({
