@@ -8,26 +8,26 @@
                     <div class="form-group left">
                        <label for="" class="control-label col-sm-2">Nombre</label>
                        <div class="col-sm-10">
-                          <input type="text" class="form-control"  minlength="8"  name="nombre" id="nombre" v-model="form.nombres">
+                          <input type="text" class="form-control"  minlength="3" mixlength="" name="nombre" id="nombre" v-model="form.nombres" required>
                        </div>
                     </div>
                     <div class="form-group left">
                        <label for="" class="control-label col-sm-2" >Apellido</label>
                        <div class="col-sm-10">
-                          <input type="text" class="form-control"  minlength="8" name="direccion" id="direccion" v-model="form.apellidos" required>
+                          <input type="text" class="form-control"  minlength="3" maxlength="" name="direccion" id="direccion" v-model="form.apellidos" required>
                        </div>
                     </div>
                     <div class="form-group left row">
                       <div class="col">
                             <label for="" class="control-label col-sm-3">telefono</label>
                             <div class="col-sm-7">
-                                <input type="number" class="form-control" name="telefono" id="telefono" v-model="form.telefono" required >
+                                <input type="number" class="form-control" minlegth="10" maxlegth="10" name="telefono" id="telefono" v-model="form.telefono" required >
                             </div>
                         </div>
                         <div class="col">
                           <label for="" class="control-label col-sm-5">Correo</label>
                           <div class="col-sm-7">
-                              <input type="email" class="form-control" name="email" id="email" v-model="form.correo" pattern="[a-zA-Z0-9_]+([.][a-zA-Z0-9_]+)*@[a-zA-Z0-9_]+([.][a-zA-Z0-9_]+)*[.][a-zA-Z]" required>
+                              <input type="email" class="form-control"  name="email" id="email" v-model="form.correo" pattern="[a-zA-Z0-9_]+([.][a-zA-Z0-9_]+)*@[a-zA-Z0-9_]+([.][a-zA-Z0-9_]+)*[.][a-zA-Z]" required>
                           </div>
                         </div> 
                     </div>
