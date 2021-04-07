@@ -54,7 +54,8 @@ public function login(Request $request){
   $tokenResult=$user->createToken('authToken')->plainTextToken;
   return response()->json([
       'status code'=>200,
-      'token'=>$tokenResult
+      'token'=>$tokenResult,
+      'usuario' => $user->id
   ]) ;
    
 }
