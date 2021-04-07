@@ -8,6 +8,7 @@
                  <input type="text" v-model="buscador"><button class="button"  v-on:click="search(buscador)">Buscar</button>
                  <br>
                  <br>
+                 <button class="button" v-on:click="send()">Enviar Emails</button>
                  <table class="table table-hover">
                 <thead>
                     <tr>
@@ -43,7 +44,8 @@ export default {
         return {
             Listauser:null,
             pagina:1,
-            buscador: null
+            buscador: null,
+            // send:null
         }
     },
     components:{
@@ -62,14 +64,31 @@ export default {
                 let direccion = `http://127.0.0.1:8000/api/buscador?texto=${filter}`;
                 axios.get(direccion).then( data =>{
                 //this.search = data.data;
-                console.log(data);
+                // console.log(data);
                 this.Listauser = data.data;
             });
+             },
+             send(){
+                 console.log(this.Listauser);
+                 this.Listauser.forEach(value => {
+                    console.log(value.correo);
+                    let sent = value.correo;
+                    let url = `http://127.0.0.1:8000/api/sendTwuit?correo=${sent}`;
+                    axios.get(url).then(data=>{
+                        console.log(data);
+                        this.$toaster.success('Se han enviado los twuits a todos los usuarios');
+                    }).catch(e=>{
+                        console.log(e)
+                        this.$toaster.error('Hubo un problema con el servidor');
+                    })
+                });
+                
              } 
 },
     mounted:function(){
         let direccion = "http://127.0.0.1:8000/api/usuarios/";
         axios.get(direccion).then( data =>{
+            console.log(data.data);
             this.Listauser = data.data;
         });
     },
