@@ -12,10 +12,18 @@
 
                 <!-- Login Form -->
                 <form v-on:submit.prevent="register">
-                  <input  type="text" id="nombre" minlength="3" class="fadeIn second" name="nombre" placeholder="Nombre" required="" v-model="form.nombres">
-                  <input  type="text" id="apellido" minlength="3" class="fadeIn second" name="apellido" placeholder="Apellido" required="" v-model="form.apellidos">
-                  <input   type="number" id="telefono" minlength="10" class="fadeIn second" name="telefono" placeholder="Telefono" required="" v-model="form.telefono">
-                  <input   type="email" id="nombre" class="fadeIn second" name="Email" value placeholder="Email" required="" v-model="form.correo" pattern="[a-zA-Z0-9_]+([.][a-zA-Z0-9_]+)*@[a-zA-Z0-9_]+([.][a-zA-Z0-9_]+)*[.][a-zA-Z]">
+                  <input  type="text" id="nombre" class="fadeIn second" name="nombre" placeholder="Nombre" v-model="form.nombres">
+                  <br>
+                    <span class="text-danger" v-if="errores.nombres">{{errores.nombres[0]}}</span>
+                  <input  type="text" id="apellido" class="fadeIn second" name="apellido" placeholder="Apellido" v-model="form.apellidos">
+                  <br>
+                    <span class="text-danger" v-if="errores.apellidos">{{errores.apellidos[0]}}</span>
+                  <input   type="number" id="telefono" class="fadeIn second" name="telefono" placeholder="Telefono" v-model="form.telefono">
+                  <br>
+                    <span class="text-danger" v-if="errores.telefono">{{errores.telefono[0]}}</span>
+                  <input   type="email" id="nombre" class="fadeIn second" name="Email" value placeholder="Email" v-model="form.correo">
+                  <br>
+                    <span class="text-danger" v-if="errores.correo">{{errores.correo[0]}}</span>
                   <input type="submit" class="fadeIn fourth" value="Registrarme">
                  <router-link to="/">
                  <input type="button"  class="fadeIn fourth" value="Regresar" >
