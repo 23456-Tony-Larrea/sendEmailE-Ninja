@@ -33,8 +33,8 @@ class UserRequest extends FormRequest
     {
         return [
             'name.*'=> 'Nombre debe tener 3 caracteres minimo y maximo 150',
-            'email.*'=> 'Apellidos debe tener 3 caracteres minimo y maximo 150',
-            'password.required'=> 'Correo debe tener un correo apropiado'
+            'email.*'=> 'Correo debe tener un correo apropiado',
+            'password.required'=> 'Este campo es requerido'
         ];
     }
 }
