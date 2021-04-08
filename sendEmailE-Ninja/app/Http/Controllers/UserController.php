@@ -7,21 +7,22 @@ use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Mail;
 use App\Mail\TestMail;
+use App\Http\Requests\UserRequest;
 
 class UserController extends Controller
 {
-  public function register( Request $request)
+  public function register( UserRequest $request)
 {
-    $validator= Validator::make($request->all(),[
-        'name'=>'required',
-        'email'=>'required|email',
-        'password'=>'required'
-    ]);
-    if($validator->fails()){
-    return response()->json(['status code'=>400,
-    'message'=>'Bad request']);
+    // $validator= Validator::make($request->all(),[
+    //     'name'=>'required',
+    //     'email'=>'required|email',
+    //     'password'=>'required'
+    // ]);
+    // if($validator->fails()){
+    // return response()->json(['status code'=>400,
+    // 'message'=>'Bad request']);
 
-    }
+    // }
     $user=new User();
     $user->name=$request->name;
     $user->email=$request->email;
