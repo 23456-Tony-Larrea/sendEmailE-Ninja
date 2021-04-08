@@ -3,6 +3,7 @@
         <Header/>
 
             <div class="container izquierda">
+                <br>
                   <button class="button"  v-on:click="nuevo()">Nuevo Usuario</button>
                 <br><br>
                  <input type="text" v-model="buscador"><button class="button"  v-on:click="search(buscador)">Buscar</button>
@@ -11,6 +12,7 @@
                  <button class="button" v-on:click="send()">Enviar Emails</button>
                  <table class="table table-hover">
                 <thead>
+                    <br>
                     <tr>
                         <th scope="col">Id</th>
                         <th scope="col">Nombre</th>

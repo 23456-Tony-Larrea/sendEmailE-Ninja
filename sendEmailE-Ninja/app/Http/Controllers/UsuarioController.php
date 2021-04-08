@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Usuario;
 use Illuminate\Http\Request;
+use App\Http\Requests\ValidacionRequest;
 
 class UsuarioController extends Controller
 {
@@ -24,12 +25,10 @@ class UsuarioController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(ValidacionRequest $request)
     {
         $usuario = new Usuario;
         $usuario->create($request->all());
-        // return $usuario;
-        // return 'guardado';
     }
 
     /**
@@ -56,7 +55,7 @@ class UsuarioController extends Controller
      * @param  \App\Models\Usuario  $usuario
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Usuario $usuario)
+    public function update(ValidacionRequest $request, Usuario $usuario)
     {
         $usuario->update($request->all());
     }

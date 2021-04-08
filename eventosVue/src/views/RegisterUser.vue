@@ -44,7 +44,8 @@ import axios from 'axios';
                 "correo":"",
                 "estado_id":1,
                 "token" : "" 
-            }
+            },
+            errores:{}
         }
     },
     components:{
@@ -58,8 +59,11 @@ import axios from 'axios';
                 console.log(data);
                 this.makeToast("Hecho","Usuario creado","success");
             }).catch( e =>{
-                console.log(e);
-                 this.makeToast("Error","Error al guardar","error");
+              if(e.response.data){
+                this.errores = e.response.data.errors
+              }
+                // console.log(e.response.data);
+                //  this.makeToast("Error","Error al guardar","error");
             })
             },
 
