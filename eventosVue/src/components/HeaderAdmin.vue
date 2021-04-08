@@ -18,7 +18,7 @@
           <template #button-content>
             <em>User</em>
           </template>
-          <b-dropdown-item href="/profile">Perfil</b-dropdown-item>
+          <b-dropdown-item href="/profile/:id">Perfil</b-dropdown-item>
           <b-dropdown-item href="/admin">Sign Out</b-dropdown-item>
         </b-nav-item-dropdown>
       </b-navbar-nav>
@@ -27,6 +27,7 @@
 </div>
     
 </template>
+
 <style scoped>
 .imagen{
  width:10%;

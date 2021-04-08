@@ -3,20 +3,17 @@
        <Header/>
 <div class="wrapper fadeInDown">
               <div id="formContent">
-                <!-- Tabs Titles -->
-
                 <!-- Icon -->
                 <div class="fadeIn first">
                   <img src="@/assets/userO.png" id="icon" alt="User Icon" />
                 </div>
-
+                <input v-model="form.name">
                 <!-- Login Form -->
-                <form v-on:submit.prevent="register">
-                  <input  type="text" id="nombre" class="fadeIn second" name="nombre" placeholder="Nombre" required="" v-model="form.nombres">
-                  <input type="password" id="password" class="fadeIn third" name="password" placeholder="Contraseña" v-model="password">
+                <form action @submit.prevent="handleSubmit()">
+                  <input type="password" id="password" class="fadeIn third" name="password" placeholder="Contraseña" v-model="form.password">
                   <input type="password" id="password" class="fadeIn third" name="password" placeholder="Confirmar tu contraseña" v-model="confirmpassword">
                   <input type="submit" class="fadeIn fourth" value="Guardar">
-                 <router-link to="/">
+                 <router-link to="/dashboard">
                  <input type="button"  class="fadeIn fourth" value="Regresar" >
                 </router-link>
                 </form>
@@ -33,10 +30,11 @@ import axios from 'axios';
     name:"RegisterUser",
     data:function(){
         return {
+          confirmpassword:"",
+          id:this.$route.params.id,  
             form:{
-                "nombres" : "",
-                "apellidos": "", 
-                "password" : "" 
+
+                "password" : "",
             }
         }
     },
@@ -44,28 +42,29 @@ import axios from 'axios';
         Header,
     },
      methods:{
-        register(){
-            this.form.token = localStorage.getItem("token");
-            axios.post("http://127.0.0.1:8000/api/usuarios/",this.form)
-            .then(data =>{
-                console.log(data);
-                this.makeToast("Hecho","Usuario creado","success");
-            }).catch( e =>{
-                console.log(e);
-                 this.makeToast("Error","Error al guardar","error");
-            })
-            },
-
-             makeToast(titulo,texto,tipo) {
-            this.toastCount++
-            this.$bvToast.toast(texto, {
-            title: titulo,
-            variant: tipo,
-            autoHideDelay: 5000,
-            appendToast: true
-            })
-        }
-     }   
+      
+      handleSubmit(){
+          this.form.id = this.$route.params.id;
+        axios.put(`http://127.0.0.1:8000/api/user/${this.form.id}`,this.form)
+          .then( data =>{
+           console.log(data);
+            this.$toaster.success('editar con exito.');
+            this.$router.push('/dashboard');  
+          })
+          
+      },
+     },
+      mounted:function(){
+      this.form.id = this.$route.params.id;
+      console.log(this.form.id)
+      axios.get("http://127.0.0.1:8000/api/user/"+ this.form.id)
+      .then( datos => {    
+        console.log(datos);
+       this.form.name=datos.data.name;
+       })  
+  }
+     
+     
 }
 </script>
 <style scoped>

@@ -73,27 +73,13 @@ export default {
          }else{
           this.$toaster.success('Bienvenido Admin.');
             this.$router.push('/dashboard');
-           
+             
          } 
         }).catch(e=>{
         console.log(e)
         this.$toaster.error('Usuario incorrecto.');
             this.$router.push('/admin');
         })
-    },
-    resetPassword(){
-      axios.get(`http://127.0.0.1:8000/api/sendEmail?email=${this.email}`)
-      .then(data =>{
-        // console.log(data);
-        if (data.data=="send"){
-          this.$toaster.success('Se ha manado un correo por favor reviselo');
-        }else{
-          this.$toaster.error('Email no valido por favor escriba un emial valido');
-        }
-      }).catch(e=>{
-        console.log(e)
-        this.$toaster.error_msg('Email no valido por favor escriba un emial valido');
-      })
     }
   }
 }

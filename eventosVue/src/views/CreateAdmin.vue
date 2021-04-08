@@ -1,6 +1,6 @@
 <template>
    <div>
-       <Header/>
+      
 <div class="wrapper fadeInDown">
               <div id="formContent">
                 <!-- Tabs Titles -->
@@ -29,7 +29,6 @@
 </div> 
 </template>
 <script>
-import Header from '@/components/HeaderAdmin.vue'
 import axios from 'axios';
  export default {
     name:"CreateAdmin",
@@ -43,7 +42,7 @@ import axios from 'axios';
         }
     },   
     components:{
-        Header,
+      
         
     },
      methods:{
