@@ -72,7 +72,9 @@ export default {
             this.$router.push('/admin');
          }else{
           this.$toaster.success('Bienvenido Admin.');
-            this.$router.push('/dashboard');
+          console.log(data.data.usuario);
+            this.$router.push('/dashboard/' + data.data.usuario);
+           
            
          } 
         }).catch(e=>{

@@ -11,8 +11,6 @@
 
       <!-- Right aligned nav items -->
       <b-navbar-nav class="ml-auto">
-        
-
         <b-nav-item-dropdown right>
           <!-- Using 'button-content' slot -->
           <template #button-content>
