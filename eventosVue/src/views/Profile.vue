@@ -12,9 +12,9 @@
 
                 <!-- Login Form -->
                 <form v-on:submit.prevent="register">
-                  <input  type="text" id="nombre" class="fadeIn second" name="nombre" placeholder="Nombre" required="" v-model="form.nombres">
-                  <input type="password" id="password" class="fadeIn third" name="password" placeholder="Contraseña" v-model="password">
-                  <input type="password" id="password" class="fadeIn third" name="password" placeholder="Confirmar tu contraseña" v-model="confirmpassword">
+                  <input  type="text" id="nombre" class="fadeIn second" minlength="3" maxlength="" name="nombre" placeholder="Nombre" required="" v-model="form.nombres">
+                  <input type="password" id="password" class="fadeIn third" name="password" placeholder="Contraseña" v-model="password" required>
+                  <input type="password" id="password" class="fadeIn third" name="password" placeholder="Confirmar tu contraseña" v-model="confirmpassword" required>
                   <input type="submit" class="fadeIn fourth" value="Guardar">
                  <router-link to="/">
                  <input type="button"  class="fadeIn fourth" value="Regresar" >

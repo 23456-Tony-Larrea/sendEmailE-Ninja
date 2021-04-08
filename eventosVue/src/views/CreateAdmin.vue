@@ -12,9 +12,9 @@
 
                 <!-- Login Form -->
                 <form v-on:submit.prevent="create">
-                  <input  type="text" id="nombre" class="fadeIn second" name="nombre" placeholder="Nombre" required v-model="form.name">
-                  <input  type="email" id="nombre" class="fadeIn second" name="Email" value placeholder="Email" required v-model="form.email">
-                  <input  type="password" id="nombre" class="fadeIn second" name="password" placeholder="Comtraseña" required v-model="form.password">
+                  <input  type="text" id="nombre" class="fadeIn second" minlength="3" maxlength="" name="nombre" placeholder="Nombre" required="" v-model="form.name">
+                  <input  type="email" id="nombre" class="fadeIn second" name="Email" value placeholder="Email" required="" v-model="form.email">
+                  <input  type="password" id="nombre" class="fadeIn second" minlegth="8" maxlegth="8" name="password" placeholder="Comtraseña" required="" v-model="form.password">
                 
                   <input type="submit" class="fadeIn fifth" value="Registrarme" >
                 
