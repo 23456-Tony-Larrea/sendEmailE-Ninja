@@ -22,7 +22,7 @@ class TwuitsFactory extends Factory
     public function definition()
     {
         return [
-            'fecha' => $this->faker->dateTimeThisMonth()->format('Y-m-d H:i:s'),
+            // 'fecha' => $this->faker->dateTimeThisMonth()->format('Y-m-d H:i:s'),
             'publicaciones' => $this->faker->text,
         ];
     }

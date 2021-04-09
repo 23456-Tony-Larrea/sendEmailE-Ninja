@@ -15,7 +15,7 @@ class CreateTwuitsTable extends Migration
     {
         Schema::create('twuits',function(Blueprint $table){
             $table->bigIncrements('id');
-            $table->date('fecha');
+            // $table->date('fecha');
             $table->string('publicaciones');
             $table->timestamps();
         });
