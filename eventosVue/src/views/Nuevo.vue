@@ -1,46 +1,47 @@
 <template>
-    <div>
-        <Header />
+        <div>
+          <Header />
             <div class="container">
-                
-
                 <form action="" class="form-horizontal">
                     <div class="form-group left">
                        <label for="" class="control-label col-sm-2">Nombre</label>
                        <div class="col-sm-10">
-                          <input type="text" class="form-control"  minlength="8"  name="nombre" id="nombre" v-model="form.nombres">
+                          <input type="text" class="form-control" name="nombre" id="nombre" v-model="form.nombres">
+                            <span class="text-danger" v-if="errores.nombres">{{errores.nombres[0]}}</span>
                        </div>
                     </div>
-                    <div class="form-group left">
-                       <label for="" class="control-label col-sm-2" >Apellido</label>
+                     <div class="form-group left">
+                       <label for="" class="control-label col-sm-2">Apellidos</label>
                        <div class="col-sm-10">
-                          <input type="text" class="form-control"  minlength="8" name="direccion" id="direccion" v-model="form.apellidos" required>
+                          <input type="text" class="form-control" name="direccion" id="direccion" v-model="form.apellidos">
+                            <span class="text-danger" v-if="errores.apellidos">{{errores.apellidos[0]}}</span>
                        </div>
                     </div>
                     <div class="form-group left row">
                       <div class="col">
-                            <label for="" class="control-label col-sm-3">telefono</label>
+                            <label for="" class="control-label col-sm-3">Telefono</label>
                             <div class="col-sm-7">
-                                <input type="number" class="form-control" name="telefono" id="telefono" v-model="form.telefono" required >
+                                <input type="text" class="form-control" name="correo" id="correo" v-model="form.telefono">
+                                <span class="text-danger" v-if="errores.telefono">{{errores.telefono[0]}}</span>
                             </div>
                         </div>
                         <div class="col">
                           <label for="" class="control-label col-sm-5">Correo</label>
                           <div class="col-sm-7">
-                              <input type="email" class="form-control" name="email" id="email" v-model="form.correo" pattern="[a-zA-Z0-9_]+([.][a-zA-Z0-9_]+)*@[a-zA-Z0-9_]+([.][a-zA-Z0-9_]+)*[.][a-zA-Z]" required>
+                              <input type="text" class="form-control" name="correo" id="codigopostal" v-model="form.correo">
+                              <span class="text-danger" v-if="errores.correo">{{errores.correo[0]}}</span>
                           </div>
                         </div> 
                     </div>
-                   
-                    <div class="form-group">
-                       <button class="button" v-on:click="guardar()">Suscríbete</button>
-                       <button class="buttonuno" v-on:click="salir()" >Salir</button>
+                 
+                   <div class="form-group">
+                      <button type="button" class="btn btn-primary" v-on:click="guardar()" >Añadir</button>
+                      <button type="button" class="btn btn-dark margen" v-on:click="salir()"  >Salir</button>
                     </div> 
                 </form>
-
-
             </div>
-    </div>
+        </div>
+    
 </template>
 <script>
 import Header from '@/components/HeaderAdmin.vue'
@@ -56,7 +57,8 @@ export default {
                 "correo":"",
                 "estado_id":1,
                 "token" : "" 
-            }
+            },
+            errores:{}
         }
     },
     components:{
@@ -69,10 +71,12 @@ export default {
             .then(data =>{
                 console.log(data);
                 this.makeToast("Hecho","Usuario creado","success");
-                this.$router.push("/dashboard");
             }).catch( e =>{
-                console.log(e);
-                 this.makeToast("Error","Error al guardar","error");
+              if(e.response.data){
+                this.errores = e.response.data.errors
+              }
+                // console.log(e.response.data);
+                //  this.makeToast("Error","Error al guardar","error");
             })
         }, 
         salir(){

@@ -1,6 +1,6 @@
 <template>
    <div>
-      
+       <Header/>
 <div class="wrapper fadeInDown">
               <div id="formContent">
                 <!-- Tabs Titles -->
@@ -12,10 +12,16 @@
 
                 <!-- Login Form -->
                 <form v-on:submit.prevent="create">
-                  <input  type="text" id="nombre" class="fadeIn second" name="nombre" placeholder="Nombre" required v-model="form.name">
-                  <input  type="email" id="nombre" class="fadeIn second" name="Email" value placeholder="Email" required v-model="form.email">
-                  <input  type="password" id="nombre" class="fadeIn second" name="password" placeholder="Comtraseña" required v-model="form.password">
-                
+                  <input  type="text" id="nombre" class="fadeIn second" name="nombre" placeholder="Nombre" v-model="form.name">
+                    <br>
+                    <span class="text-danger" v-if="errores.name">{{errores.name[0]}}</span>
+                  <input  type="email" id="nombre" class="fadeIn second" name="Email" value placeholder="Email" v-model="form.email">
+                  <br>
+                  <span class="text-danger" v-if="errores.email">{{errores.email[0]}}</span>
+                  <input  type="password" id="nombre" class="fadeIn second" name="password" placeholder="Comtraseña" v-model="form.password">
+                  <br>
+                  <span class="text-danger" v-if="errores.password">{{errores.password[0]}}</span>
+                  <br>
                   <input type="submit" class="fadeIn fifth" value="Registrarme" >
                 
                 <router-link to="/admin">
@@ -29,6 +35,7 @@
 </div> 
 </template>
 <script>
+import Header from '@/components/Header.vue'
 import axios from 'axios';
  export default {
     name:"CreateAdmin",
@@ -38,11 +45,12 @@ import axios from 'axios';
                 "name" : "",
                 "email": "", 
                 "password" : "",
-            }
+            },
+            errores:{}
         }
     },   
     components:{
-      
+        Header,
         
     },
      methods:{
@@ -53,8 +61,11 @@ import axios from 'axios';
                 console.log(data);
                 this.makeToast("Hecho","Usuario creado","success");
             }).catch( e =>{
-                console.log(e);
-                 this.makeToast("Error","Error al guardar","error");
+              if(e.response.data){
+                this.errores = e.response.data.errors
+              }
+                // console.log(e.response.data);
+                //  this.makeToast("Error","Error al guardar","error");
             })
             },
              makeToast(titulo,texto,tipo) {

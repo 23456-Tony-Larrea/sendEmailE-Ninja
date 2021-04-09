@@ -18,7 +18,7 @@ const routes = [
     component: Home
   },
   {
-    path: '/dashboard',
+    path: '/dashboard/:id',
     name: 'Dashboard',
     component: Dashboard
   },
@@ -69,5 +69,5 @@ const router = new VueRouter({
   routes
 })
 
-export default router
+export default router 
 
