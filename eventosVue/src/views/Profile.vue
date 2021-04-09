@@ -78,7 +78,7 @@ export default {
         }
       },
       salir(){
-        this.$router.push("/dashboard/");
+        this.$router.push("/dashboard/"+this.form.id);
       },
 
   },

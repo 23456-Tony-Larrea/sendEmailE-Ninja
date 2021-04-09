@@ -50,6 +50,7 @@ export default {
     name:"Nuevo",
     data:function(){
         return {
+          id:null,
             form:{
                 "nombres" : "",
                 "apellidos": "", 
@@ -67,10 +68,12 @@ export default {
     methods:{
         guardar(){
             this.form.token = localStorage.getItem("token");
+            this.form.id = this.$route.params.id;
             axios.post("http://127.0.0.1:8000/api/usuarios/",this.form)
             .then(data =>{
                 console.log(data);
-                this.makeToast("Hecho","Usuario creado","success");
+                this.$toaster.success('Exito al guardar');
+                this.$router.push('/dashboard/'+this.form.id);
             }).catch( e =>{
               if(e.response.data){
                 this.errores = e.response.data.errors
@@ -80,7 +83,8 @@ export default {
             })
         }, 
         salir(){
-            this.$router.push("/dashboard");
+          this.form.id = this.$route.params.id;
+            this.$router.push("/dashboard/"+this.form.id);
         },
         makeToast(titulo,texto,tipo) {
             this.toastCount++

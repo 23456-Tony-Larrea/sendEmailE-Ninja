@@ -28,7 +28,7 @@ const routes = [
     component: Editar
   },
   {
-    path: '/nuevo',
+    path: '/nuevo/:id',
     name: 'Nuevo',
     component: Nuevo
   },

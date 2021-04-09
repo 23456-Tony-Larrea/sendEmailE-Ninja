@@ -7,7 +7,7 @@
                      </div>
             <div class="container izquierda">
                 <br>
-                  <button class="button"  v-on:click="nuevo()">Nuevo Usuario</button>
+                  <button class="button"  v-on:click="nuevo(idprofile)">Nuevo Usuario</button>
                 <br><br>
                  <input type="text" v-model="buscador"><button class="button"  v-on:click="search(buscador)">Buscar</button>
                  <br>
@@ -62,8 +62,8 @@ export default {
             editar(id){
                 this.$router.push('/editar/' + id);
                },
-            nuevo(){
-                this.$router.push('/nuevo');
+            nuevo(idprofile){
+                this.$router.push('/nuevo/'+idprofile);
              }, 
              perfil(idprofile){
         
