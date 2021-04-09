@@ -16,7 +16,7 @@
           <template #button-content>
             <em>User</em>
           </template>
-          <b-dropdown-item href="/admin">Sign Out</b-dropdown-item>
+          <b-dropdown-item href="/admin">Salir</b-dropdown-item>
         </b-nav-item-dropdown>
       </b-navbar-nav>
     </b-collapse>
