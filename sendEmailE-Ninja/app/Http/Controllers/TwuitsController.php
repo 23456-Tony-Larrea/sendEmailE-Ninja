@@ -70,16 +70,23 @@ class TwuitsController extends Controller
     public function sendTwuits(Request $request){
         $usuario = usuario::where('correo', $request->correo)->first();
         if($usuario != null){
-            $twuits = Twuits::get();
-            // $twuits = DB::select ('SELECT publicaciones FROM twuits');
-            // print_r($twuits);
-            $details = [
-                'user'=> $usuario->nombres,
-                'twuit'=>$twuits
-            ];
-          //   Mail::to($user->email)->send(new TestMail($details));
-          Mail::to($usuario->correo)->send(new EnvioTwuits($details));
-            return 'send';
+            $estado = $usuario->estado_id;
+            if($estado == 1){
+                $twuits = Twuits::get();
+                // $twuits = DB::select ('SELECT publicaciones FROM twuits');
+                // print_r($twuits);
+                $details = [
+                    'user'=> $usuario->nombres,
+                    'twuit'=>$twuits
+                ];
+              //   Mail::to($user->email)->send(new TestMail($details));
+              Mail::to($usuario->correo)->send(new EnvioTwuits($details));
+                return 'send';
+            }else{
+                return response()->json([
+                    'message'=>'Este usuario no esta disponible'
+                ]);    
+            }
         }else{
             return response()->json([
                 'message'=>'Este correo electronico no es valido'

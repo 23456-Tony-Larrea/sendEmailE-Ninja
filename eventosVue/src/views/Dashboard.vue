@@ -9,7 +9,7 @@
                 <br>
                   <button class="button"  v-on:click="nuevo(idprofile)">Nuevo Usuario</button>
                 <br><br>
-                 <input type="text" v-model="buscador"><button class="button"  v-on:click="search(buscador)">Buscar</button>
+                 <input type="text" placeholder="Busqueda por apellido" v-model="buscador"><button class="button"  v-on:click="search(buscador)">Buscar</button>
                  <br>
                  <br>
                  <button class="button" v-on:click="send()">Enviar Emails</button>
@@ -82,16 +82,21 @@ export default {
              send(){
                  console.log(this.Listauser);
                  this.Listauser.forEach(value => {
-                    console.log(value.correo);
-                    let sent = value.correo;
-                    let url = `http://127.0.0.1:8000/api/sendTwuit?correo=${sent}`;
-                    axios.get(url).then(data=>{
-                        console.log(data);
-                        this.$toaster.success('Se han enviado los twuits a todos los usuarios');
-                    }).catch(e=>{
-                        console.log(e)
-                        this.$toaster.error('Hubo un problema con el servidor');
-                    })
+                    // console.log(value.nombre);
+                    let comprobate = value.nombre;
+                    if(comprobate == 'Activo'){
+                        let sent = value.correo;
+                        let url = `http://127.0.0.1:8000/api/sendTwuit?correo=${sent}`;
+                            axios.get(url).then(data=>{
+                            console.log(data);
+                            this.$toaster.success('Se han enviado los twuits a este usuario');
+                        }).catch(e=>{
+                            console.log(e)
+                            this.$toaster.error('Hubo un problema con el servidor');
+                        })
+                    }else{
+                        this.$toaster.error('Este Usuario Esta desabilitado si quiere mandar un correo cambie su estado');
+                    }
                 });
                 
              } 
