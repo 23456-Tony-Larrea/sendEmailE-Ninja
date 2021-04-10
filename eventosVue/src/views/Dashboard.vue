@@ -23,15 +23,17 @@
                         <th scope="col">Apellido</th>
                         <th scope="col">Telefono</th>
                         <th scope="col">Correo</th>
+                        <th scope="col">Estado</th>
                     </tr>
                 </thead>
                 <tbody>
-                    <tr v-for="user in Listauser" :key="user.id" v-on:click="editar(user.id)">
+                    <tr v-for="user in Listauser" :key="user.id" v-on:click="editar(user.id,idprofile)">
                         <th scope="row">{{ user.id}}</th>
                         <td>{{ user.nombres }}</td>
                         <td>{{ user.apellidos }}</td>
                         <td>{{ user.telefono }}</td>
-                        <td>{{ user.correo }}</td>                 
+                        <td>{{ user.correo }}</td>
+                        <td>{{ user.nombre }}</td>                 
                     </tr>
             
                 </tbody>
@@ -59,8 +61,8 @@ export default {
     },
     methods:{
           
-            editar(id){
-                this.$router.push('/editar/' + id);
+            editar(id,idprofile){
+                this.$router.push(`/dashboard/${idprofile}/editar/ ` + id);
                },
             nuevo(idprofile){
                 this.$router.push('/nuevo/'+idprofile);

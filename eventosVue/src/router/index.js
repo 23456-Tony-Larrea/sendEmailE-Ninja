@@ -23,7 +23,7 @@ const routes = [
     component: Dashboard
   },
   {
-    path: '/editar/:id',
+    path: '/dashboard/:id/editar/:id',
     name: 'Editar',
     component: Editar
   },

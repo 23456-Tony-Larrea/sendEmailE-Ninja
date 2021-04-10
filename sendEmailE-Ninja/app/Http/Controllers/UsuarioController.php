@@ -16,7 +16,9 @@ class UsuarioController extends Controller
     public function index()
     {
         // return usuario::Where('estado_id',1)->latest()->paginate(2);
-        return usuario::Where('estado_id',1)->get();
+        return usuario::join('estados', 'estados.id', '=', 'estado_id')->select('usuarios.id','usuarios.nombres','usuarios.apellidos',
+        'usuarios.telefono','usuarios.correo','estados.nombre')->get();
+        // return usuario::Where('estado_id',1)->get();
     }
 
     /**
@@ -73,5 +75,9 @@ class UsuarioController extends Controller
 
     public function getInactivo(){
         return usuario::Where('estado_id',2)->get();
+    }
+    public function decath(Request $request, Usuario $usuario)
+    {
+        $usuario->update($request->all());
     }
 }

@@ -63,6 +63,8 @@ export default {
   data:function(){
     return {
       id:null,
+      idAdmin:null,
+      estado:null,
         alerta: false,
       alert_msg: "tus datos han sido actualizados exitosamente",
     
@@ -76,17 +78,21 @@ export default {
    formDisconnect:{
      "estado_id":2
    },
+   formConnect:{
+     "estado_id":1
+   },
    errores:{}     
     }
   },
   methods:{
       editar(){
           this.form.id = this.$route.params.id;
+          this.idAdmin = this.$route.params.idprofile;
           axios.put("http://127.0.0.1:8000/api/usuarios/"+this.form.id,this.form)
           .then( data =>{
            console.log(data);
             this.$toaster.success('editar con exito.');
-            this.$router.push('/dashboard');  
+            this.$router.push('/dashboard/'+this.idAdmin);  
           }).catch( e =>{
               if(e.response.data){
                 this.errores = e.response.data.errors
@@ -97,22 +103,34 @@ export default {
           
       },
       salir(){
-        this.$router.push("/dashboard");
+        this.idAdmin = this.$route.params.idprofile;
+        this.$router.push("/dashboard/"+ this.idAdmin);
       },
       eliminar(){
-         this.form.id = this.$route.params.id;
-        axios.put("http://127.0.0.1:8000/api/usuarios/"+this.form.id,this.formDisconnect)
+        if(this.formDisconnect.estado == 1){
+        this.form.id = this.$route.params.id;
+        axios.put("http://127.0.0.1:8000/api/usuario/"+this.form.id,this.formDisconnect)
         .then( datos => {
             console.log(datos);
               this.$toaster.success('el usuario fue dado de baja con exito.');
-             this.$router.push("/dashboard"); 
+             this.$router.push("/dashboard/" + this.idAdmin); 
         });
-
+        }else{
+          this.form.id = this.$route.params.id;
+          axios.put("http://127.0.0.1:8000/api/usuario/"+this.form.id,this.formConnect)
+          .then( datos => {
+              console.log(datos);
+                this.$toaster.success('el usuario fue reestablecido con exito.');
+                this.$router.push("/dashboard/" + this.idAdmin);
+        });
+        }
       }
   },
   mounted:function(){
       this.form.id = this.$route.params.id;
-      console.log(this.form.id)
+      this.idAdmin = this.$route.params.idprofile;
+      console.log(this.form.id);
+      console.log(this.form.idAdmin);
       axios.get("http://127.0.0.1:8000/api/usuarios/"+ this.form.id)
       .then( datos => {    
         console.log(datos);
@@ -120,6 +138,7 @@ export default {
       this.form.apellidos=datos.data.apellidos;
       this.form.telefono=datos.data.telefono;
       this.form.correo=datos.data.correo;
+      this.estado = datos.data.estado_id;
        })
      
   }  
