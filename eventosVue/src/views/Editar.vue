@@ -44,7 +44,7 @@
                  
                    <div class="form-group">
                       <button type="button" class="btn btn-primary" v-on:click="editar()" >Editar</button>
-                      <button type="button" class="btn btn-danger margen" v-on:click="eliminar()" >Eliminar</button>
+                      <button type="button" class="btn btn-danger margen" v-on:click="eliminar()" >Cambiar estado</button>
                       <button type="button" class="btn btn-dark margen" v-on:click="salir()"  >Salir</button>
                     </div> 
                 </form>
@@ -107,7 +107,7 @@ export default {
         this.$router.push("/dashboard/"+ this.idAdmin);
       },
       eliminar(){
-        if(this.formDisconnect.estado == 1){
+        if(this.estado == 1){
         this.form.id = this.$route.params.id;
         axios.put("http://127.0.0.1:8000/api/usuario/"+this.form.id,this.formDisconnect)
         .then( datos => {
@@ -128,9 +128,9 @@ export default {
   },
   mounted:function(){
       this.form.id = this.$route.params.id;
-      this.idAdmin = this.$route.params.idprofile;
+       this.idAdmin = this.$route.params.idprofile;
       console.log(this.form.id);
-      console.log(this.form.idAdmin);
+      console.log(this.$route.params);
       axios.get("http://127.0.0.1:8000/api/usuarios/"+ this.form.id)
       .then( datos => {    
         console.log(datos);

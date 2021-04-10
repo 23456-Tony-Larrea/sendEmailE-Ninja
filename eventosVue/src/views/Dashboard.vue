@@ -53,7 +53,7 @@ export default {
             Listauser:null,
             pagina:1,
             buscador: null,
-            idprofile:this.$route.params.id
+            idprofile:this.$route.params.id,
         }
     },
     components:{
@@ -62,7 +62,7 @@ export default {
     methods:{
           
             editar(id,idprofile){
-                this.$router.push(`/dashboard/${idprofile}/editar/ ` + id);
+                this.$router.push(`/dashboard/${idprofile}/editar/${id}`);
                },
             nuevo(idprofile){
                 this.$router.push('/nuevo/'+idprofile);
