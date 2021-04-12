@@ -31,6 +31,7 @@ Route::get('/user/{user}', [UserController::class, 'showUser']);
 Route::put('/user/{user}', [UserController::class, 'uptadeUser']);
 Route::get('/sendTwuit', [TwuitsController::class, 'sendTwuits']);
 Route::put('/usuario/{usuario}', [UsuarioController::class, 'decath']);
+Route::get('/sendEmailUser',[TwuitsController::class, 'sendEventoUser']);
 Route::group(['middleware'=>['auth:sanctum']],function(){
 Route::post('/logout',[UserController::class,'logout']); 
 });
