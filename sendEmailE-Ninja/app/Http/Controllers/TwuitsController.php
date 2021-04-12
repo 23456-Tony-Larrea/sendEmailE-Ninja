@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Twuits;
 use App\Models\Usuario;
+use App\Models\PublicacionUser;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Mail;
 use App\Mail\EnvioTwuits;
@@ -78,6 +79,32 @@ class TwuitsController extends Controller
                 $details = [
                     'user'=> $usuario->nombres,
                     'twuit'=>$twuits
+                ];
+              //   Mail::to($user->email)->send(new TestMail($details));
+              Mail::to($usuario->correo)->send(new EnvioTwuits($details));
+                return 'send';
+            }else{
+                return response()->json([
+                    'message'=>'Este usuario no esta disponible'
+                ]);    
+            }
+        }else{
+            return response()->json([
+                'message'=>'Este correo electronico no es valido'
+            ]);
+        }
+    }
+    public function sendEventoUser(Request $request){
+        $usuario = usuario::where('correo', $request->correo)->first();
+        if($usuario != null){
+            $estado = $usuario->estado_id;
+            if($estado == 1){
+                $publicacion = PublicacionUser::get();
+                // $twuits = DB::select ('SELECT publicaciones FROM twuits');
+                // print_r($twuits);
+                $details = [
+                    'user'=> $usuario->nombres,
+                    'twuit'=>$publicacion
                 ];
               //   Mail::to($user->email)->send(new TestMail($details));
               Mail::to($usuario->correo)->send(new EnvioTwuits($details));
