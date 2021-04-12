@@ -36,7 +36,19 @@ class PublicacionUserController extends Controller
      */
     public function show(PublicacionUser $publicacionUser)
     {
-        //
+        $postUser=new PublicacionUser;
+        $postUser->nombre=$publicacionUser->nombre;
+        $postUser->email=$publicacionUser->email;
+        $postUser->tituloEvento=$publicacionUser->tituloEvento;
+        $postUser->tematicaEvento=$publicacionUser->tematicaEvento;
+        $postUser->enlaceEvento=$publicacionUser->enlanceEvento;
+        $postUser->fechaEvento=$publicacionUser->fechaEvento;
+         if($postUser){
+            return ["Result"=>"creado con exito"];
+        }else{
+             
+           return ["Result"=>"fallo"];
+         }
     }
 
     /**

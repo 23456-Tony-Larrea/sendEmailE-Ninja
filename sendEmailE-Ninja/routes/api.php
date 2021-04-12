@@ -5,6 +5,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\UsuarioController;
 use App\Http\Controllers\TwuitsController;
+use App\Http\Controllers\PublicacionUserController;
 use Atymic\Twitter\Facades\Twitter;
 use App\Models\Twuits;
 /*
@@ -33,19 +34,7 @@ Route::put('/usuario/{usuario}', [UsuarioController::class, 'decath']);
 Route::group(['middleware'=>['auth:sanctum']],function(){
 Route::post('/logout',[UserController::class,'logout']); 
 });
-
-/* Route::get('/teewt', function ($hashtag) {
-    $twitters = Twitter::getSearch(['q' => $hashtag, 'count' => 50]);
-    $sentimientos = ['negative', 'positive', 'neutral'];
-    $twitters_array = $twitters->statuses;
-    foreach ($twitters_array as $twitter) {
-        $traduccion = TranslateClient::translate('es', 'en', $twitter->text);
-        $sentimiento = SentimentAnalysis::decision($traduccion);
-        $sentimientos[] = $sentimiento;
-    }
-    $sentimiento_twitter = array_count_values($sentimientos);
-    return view('twitter', compact('sentimiento_twitter', 'twitters_array', 'hashtag'));
-}); */
+Route::post('/postUser',[PublicacionUserController::class,'show']);
 Route::get('/teewt', function()
 {
     $twuitters = Twitter::getListStatuses(['list_id'=>1000]);
@@ -62,4 +51,5 @@ Route::get('/teewt', function()
 	// return Twitter::getListStatuses(['list_id'=>1000]);
     // return Twitter::getSearch(['q'=>'RT']);
 });
+
 
