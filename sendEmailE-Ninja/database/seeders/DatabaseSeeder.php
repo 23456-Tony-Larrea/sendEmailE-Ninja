@@ -20,5 +20,6 @@ class DatabaseSeeder extends Seeder
         \App\Models\Twuits::factory(2)->create();
         \App\Models\Rol::factory(2)->create();
         \App\Models\RolUsuario::factory(2)->create();
+        \App\Models\PublicacionUser::factory(2)->create();
     }
 }
