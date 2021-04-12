@@ -15,6 +15,7 @@ class PublicacionUser extends Model
         'tituloEvento',
         'tematicaEvento',
         'enlaceEvento',
-        'fechaEvento'
+        'fechaEvento',
+        'descripcion'
     ];
 }

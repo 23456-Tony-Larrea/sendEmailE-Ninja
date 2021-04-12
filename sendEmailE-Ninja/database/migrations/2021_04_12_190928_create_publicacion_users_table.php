@@ -21,6 +21,7 @@ class CreatePublicacionUsersTable extends Migration
             $table->string('tematicaEvento');
             $table->string('enlaceEvento');
             $table->date('fechaEvento');
+            $table->date('descripcion');
             $table->timestamps();
         });
     }

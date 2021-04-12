@@ -28,6 +28,7 @@ class PublicacionUserFactory extends Factory
             'tematicaEvento' => $this->faker->text,
             'enlaceEvento' => $this->faker->text,
             'fechaEvento' => $this->faker->date,
+            'descripcion' => $this->faker->text,
         ];
     }
 }

@@ -43,6 +43,7 @@ class PublicacionUserController extends Controller
         $postUser->tematicaEvento=$publicacionUser->tematicaEvento;
         $postUser->enlaceEvento=$publicacionUser->enlanceEvento;
         $postUser->fechaEvento=$publicacionUser->fechaEvento;
+        $postUser->descripcion=$publicacionUser->descripcion;
          if($postUser){
             return ["Result"=>"creado con exito"];
         }else{
