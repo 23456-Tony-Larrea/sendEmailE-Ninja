@@ -7,6 +7,7 @@ import Nuevo from '../views/Nuevo.vue';
 import RegisterUser from '../views/RegisterUser.vue';
 import Portada from '../views/Portada.vue';
 import CreateAdmin from '../views/CreateAdmin.vue';
+import ShareEvent from '../views/ShareEvent'; 
 import ForgotPassword from '../views/ForgotPassword.vue';
 import Profile from '../views/Profile.vue';
 Vue.use(VueRouter)
@@ -60,6 +61,11 @@ const routes = [
       name:'Profile',
       component: Profile
       },
+      {
+        path: '/ShareEvent',
+        name: 'ShareEvent',
+        component: ShareEvent
+      }
    
 ]
 
