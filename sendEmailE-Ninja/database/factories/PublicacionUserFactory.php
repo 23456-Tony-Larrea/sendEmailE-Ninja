@@ -24,8 +24,9 @@ class PublicacionUserFactory extends Factory
         return [
             'nombre' => $this->faker->name,
             'email' => $this->faker->unique()->safeEmail,
-            'tituloEvento' => $this->faker->text,
+            'tituloEvento' => $this->faker->text,            
             'tematicaEvento' => $this->faker->text,
+            'descripcionEvento' => $this->faker->text,
             'enlaceEvento' => $this->faker->text,
             'fechaEvento' => $this->faker->date,
         ];

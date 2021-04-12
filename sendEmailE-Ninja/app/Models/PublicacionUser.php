@@ -14,6 +14,7 @@ class PublicacionUser extends Model
         'email',
         'tituloEvento',
         'tematicaEvento',
+        'descripcionEvento',   
         'enlaceEvento',
         'fechaEvento'
     ];

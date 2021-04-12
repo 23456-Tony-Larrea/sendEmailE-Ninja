@@ -41,6 +41,7 @@ class PublicacionUserController extends Controller
         $postUser->email=$publicacionUser->email;
         $postUser->tituloEvento=$publicacionUser->tituloEvento;
         $postUser->tematicaEvento=$publicacionUser->tematicaEvento;
+        $postUser->descripcionEvento=$publicacionUser->tematicaEvento;
         $postUser->enlaceEvento=$publicacionUser->enlanceEvento;
         $postUser->fechaEvento=$publicacionUser->fechaEvento;
          if($postUser){
