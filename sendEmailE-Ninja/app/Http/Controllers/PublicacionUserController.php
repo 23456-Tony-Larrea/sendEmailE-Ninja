@@ -24,7 +24,7 @@ class PublicacionUserController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(UserRequest $request)
     {
         $postUser=new PublicacionUser;
         $postUser->create($request->all());
