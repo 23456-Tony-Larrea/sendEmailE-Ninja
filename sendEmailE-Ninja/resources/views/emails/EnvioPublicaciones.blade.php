@@ -17,26 +17,25 @@
             <center>
             <h1 style="color: #7c795d; font-family: 'Source Sans Pro', sans-serif; font-size: 28px; font-weight: 400; line-height: 32px; margin: 0 0 24px;">Hola {{$details['user']}} Eventos.Ninja te saluda </h1>
             <br>
-            <h1 style="color: #7c795d; font-family: 'Source Sans Pro', sans-serif; font-size: 28px; font-weight: 400; line-height: 32px; margin: 0 0 24px;">mira todos los twuits y selecciona cualquiera que te guste</h1>
+            <h1 style="color: #7c795d; font-family: 'Source Sans Pro', sans-serif; font-size: 28px; font-weight: 400; line-height: 32px; margin: 0 0 24px;">mira todos las publicaciones y selecciona cualquiera que te guste</h1>
             </center>
     <center>
     @foreach ($details['twuit'] as $publicacion)
-    <p style="
-	
-	background:linear-gradient(to bottom, #ffec64 5%, #ffab23 100%);
-	background-color:#ffec64;
-	border-radius:6px;
-	border:1px solid #ffaa22;
-	display:inline-block;
-	cursor:pointer;
-	color:#333333;
-	font-family:Arial;
-	font-size:15px;
-	font-weight:bold;
-	padding:6px 24px;
-	text-decoration:none;
-	text-shadow:0px 1px 0px #ffee66;
-  ">{{$publicacion->publicaciones}}</p>
+        <p>{{$publicacion->id}}</p>
+        <br>
+        <p>{{$publicacion->nombre}}</p>
+        <br>
+        <p>{{$publicacion->email}}</p>
+        <br>
+        <p>{{$publicacion->tituloEvento}}</p>
+        <br>
+        <p>{{$publicacion->tematicaEvento}}</p>
+        <br>
+        <p>{{$publicacion->descripcionEvento}}</p>
+        <br>
+        <p>{{$publicacion->enlaceEvento}}</p>
+        <br>
+        <p>{{$publicacion->fechaEvento}}</p>
   @endforeach
     <p>Gracias</p>
             </div>
