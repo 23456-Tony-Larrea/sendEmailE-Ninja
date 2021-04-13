@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\PublicacionUser;
 use Illuminate\Http\Request;
+use App\Http\Requests\UserRequest;
 
 class PublicacionUserController extends Controller
 {
@@ -25,7 +26,8 @@ class PublicacionUserController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $postUser=new PublicacionUser;
+        $postUser->create($request->all());
     }
 
     /**
@@ -36,20 +38,7 @@ class PublicacionUserController extends Controller
      */
     public function show(PublicacionUser $publicacionUser)
     {
-        $postUser=new PublicacionUser;
-        $postUser->nombre=$publicacionUser->nombre;
-        $postUser->email=$publicacionUser->email;
-        $postUser->tituloEvento=$publicacionUser->tituloEvento;
-        $postUser->tematicaEvento=$publicacionUser->tematicaEvento;
-        $postUser->descripcionEvento=$publicacionUser->tematicaEvento;
-        $postUser->enlaceEvento=$publicacionUser->enlanceEvento;
-        $postUser->fechaEvento=$publicacionUser->fechaEvento;
-         if($postUser){
-            return ["Result"=>"creado con exito"];
-        }else{
-             
-           return ["Result"=>"fallo"];
-         }
+        //
     }
 
     /**

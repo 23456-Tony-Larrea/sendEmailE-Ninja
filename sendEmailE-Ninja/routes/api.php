@@ -35,7 +35,7 @@ Route::get('/sendEmailUser',[TwuitsController::class, 'sendEventoUser']);
 Route::group(['middleware'=>['auth:sanctum']],function(){
 Route::post('/logout',[UserController::class,'logout']); 
 });
-Route::post('/postUser',[PublicacionUserController::class,'show']);
+Route::apiResource('/postUser',PublicacionUserController::class);
 Route::get('/teewt', function()
 {
     $twuitters = Twitter::getListStatuses(['list_id'=>1000]);
