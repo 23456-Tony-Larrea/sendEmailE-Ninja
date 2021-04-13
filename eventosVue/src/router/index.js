@@ -7,9 +7,9 @@ import Nuevo from '../views/Nuevo.vue';
 import RegisterUser from '../views/RegisterUser.vue';
 import Portada from '../views/Portada.vue';
 import CreateAdmin from '../views/CreateAdmin.vue';
-import ShareEvent from '../views/ShareEvent'; 
 import ForgotPassword from '../views/ForgotPassword.vue';
 import Profile from '../views/Profile.vue';
+import CompartirEventos from '../views/CompartirEventos.vue';
 Vue.use(VueRouter)
 
 const routes = [
@@ -62,11 +62,11 @@ const routes = [
       component: Profile
       },
       {
-        path: '/ShareEvent',
-        name: 'ShareEvent',
-        component: ShareEvent
-      }
-   
+        path:'/compartirEventos',
+        name:'CompartirEventos',
+        component: CompartirEventos
+        },
+        
 ]
 
 const router = new VueRouter({

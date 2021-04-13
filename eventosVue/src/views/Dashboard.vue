@@ -3,7 +3,7 @@
         <Header/>
 
                     <div class="left">
-                     <button class="btn btn-success" v-on:click="perfil(idprofile)">Perfil</button>
+                     <a class="boton" v-on:click="perfil(idprofile)">Perfil</a>
                      </div>
             <div class="container izquierda">
                 <br>
@@ -13,6 +13,7 @@
                  <br>
                  <br>
                  <button class="button" v-on:click="send()">Enviar Emails</button>
+                 <button class="button" v-on:click="sendEventos()">Enviar Eventos</button>
             
                  <table class="table table-hover">
                 <thead>
@@ -98,8 +99,29 @@ export default {
                         this.$toaster.error('Este Usuario Esta desabilitado si quiere mandar un correo cambie su estado');
                     }
                 });
+                },
+                 sendEventos(){
+                 console.log(this.Listauser);
+                 this.Listauser.forEach(value => {
+                    // console.log(value.nombre);
+                    let comprobate = value.nombre;
+                    if(comprobate == 'Activo'){
+                        let sent = value.correo;
+                        let url = `http://127.0.0.1:8000/api/sendEmailUser?correo=${sent}`;
+                            axios.get(url).then(data=>{
+                            console.log(data);
+                            this.$toaster.success('Se han enviado los eventos a este usuario');
+                        }).catch(e=>{
+                            console.log(e)
+                            this.$toaster.error('Hubo un problema con el servidor');
+                        })
+                    }else{
+                        this.$toaster.error('Este Usuario Esta desabilitado si quiere mandar un correo cambie su estado');
+                    }
+                });
                 
-             } 
+    } 
+             
 },
     mounted:function(){
         let direccion = "http://127.0.0.1:8000/api/usuarios/";
@@ -129,6 +151,22 @@ export default {
 }
 
 .button:hover {background-color: #000000;
+color: #e9e7e6;
+}
+.boton {
+  display: inline-block;
+  padding: 5px 10px;
+  font-size: 24px;
+  cursor: pointer;
+  text-align: center;	
+  text-decoration: none;
+  outline: none;
+  color: #000000;
+  background-color:#ff5f45;
+  border: none;
+}
+
+.boton:hover {background-color: #000000;
 color: #e9e7e6;
 }
 .left{

@@ -1,29 +1,33 @@
 <template>
         <div>
           <Header />
+          <br>
+           <br>
             <div class="container">
+            <br>
 
                 <form action="" class="form-horizontal">
+                <br>
+                 <img src="@/assets/logoblack.png" id="icon" alt="User Icon"  width="20%" height="20%" />
                     <div class="form-group left">
-                       <label for="" class="control-label col-sm-2">Nombre</label>
+                       <label for="" class="control-label col-sm-2"><h6 style="color: white">Nombre</h6></label>
                        <div class="col-sm-10">
                           <input type="text" class="form-control" disabled name="nombre" id="nombre" v-model="form.name">
                        </div>
-                       <label for="" class="control-label col-sm-2">Correo</label>
+                       <label for="" class="control-label col-sm-2"><h6 style="color: white">Correo</h6></label>
                         <div class="col-sm-10">
                           <input type="text" class="form-control" disabled name="email" id="email" v-model="form.email">
                        </div>
-                    </div>
-
-          <div class="form-group left">
-        <label for="">Contraseña</label>
-        <input type="password" class="form-control" id="pass1" v-model="form.password">
-    </div>
-    <div class="form-group left">
-        <label for="">Vuelve a escribir la Contraseña</label>
-        <input type="password" class="form-control" id="pass2" v-model="password2" >
-    </div>
-
+                       <label for=""><h6 style="color: white">Contraseña</h6></label>
+                        <div class="col-sm-10">
+                          <input type="password" class="form-control" id="pass1" v-model="form.password">
+                        </div>
+                    <label for=""><h6 style="color: white">Vuelve a escribir la Contraseña</h6></label>
+                      <div class="col-sm-10">
+                        <input type="password" class="form-control" id="pass2" v-model="password2" >
+                      </div>
+                   </div>
+          
                         <div class="alert alert-danger" role="alert" v-if="alerta">
                    {{alert_msg}}
                       
@@ -110,5 +114,8 @@ export default {
  
 .mostrar {
     display: block;
+}
+.container{
+  background-color: #ff5f45;
 }
 </style>
