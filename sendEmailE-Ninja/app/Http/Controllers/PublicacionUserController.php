@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\PublicacionUser;
 use Illuminate\Http\Request;
-use App\Http\Requests\UserRequest;
+use App\Http\Requests\PublicacionesRequest;
 
 class PublicacionUserController extends Controller
 {
@@ -24,9 +24,9 @@ class PublicacionUserController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(UserRequest $request)
+    public function store(Request $request)
     {
-        $postUser=new PublicacionUser;
+        $postUser = new PublicacionUser;
         $postUser->create($request->all());
     }
 
