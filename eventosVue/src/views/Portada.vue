@@ -32,7 +32,7 @@
                    conocido por más personas, nosotros <br>
                     te ayudamos.</h3>
 
-               <button class="button"  onclick="window.location='/registerUser'">Compartir</button>
+               <button class="button"  onclick="window.location='/compartirEventos'">Compartir</button>
               
 
                 </td>

@@ -1,9 +1,13 @@
 <template>
         <div>
           <Header />
+          <br>
+           <br>
             <div class="container">
 
                 <form action="" class="form-horizontal">
+                <br>
+                 <img src="@/assets/logoblack.png" id="icon" alt="User Icon"  width="20%" height="20%" />
                     <div class="form-group left">
                        <label for="" class="control-label col-sm-2">Nombre</label>
                        <div class="col-sm-10">
@@ -13,16 +17,21 @@
                         <div class="col-sm-10">
                           <input type="text" class="form-control" disabled name="email" id="email" v-model="form.email">
                        </div>
+                       
+                       
                     </div>
 
-          <div class="form-group left">
-        <label for="">Contraseña</label>
-        <input type="password" class="form-control" id="pass1" v-model="form.password">
-    </div>
-    <div class="form-group left">
-        <label for="">Vuelve a escribir la Contraseña</label>
-        <input type="password" class="form-control" id="pass2" v-model="password2" >
-    </div>
+          <div class="form-group left ">
+            <label for="">Contraseña</label>
+            <div class="col-sm-10">
+            <input type="password" class="form-control" id="pass1" v-model="form.password">
+        </div>
+          
+            <label for="">Vuelve a escribir la Contraseña</label>
+            <div class="col-sm-10">
+            <input type="password" class="form-control" id="pass2" v-model="password2" >
+           </div>
+            </div>
 
                         <div class="alert alert-danger" role="alert" v-if="alerta">
                    {{alert_msg}}
@@ -110,5 +119,8 @@ export default {
  
 .mostrar {
     display: block;
+}
+.container{
+  background-color: #ff5f45;
 }
 </style>

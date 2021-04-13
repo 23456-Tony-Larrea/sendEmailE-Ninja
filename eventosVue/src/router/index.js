@@ -9,6 +9,7 @@ import Portada from '../views/Portada.vue';
 import CreateAdmin from '../views/CreateAdmin.vue';
 import ForgotPassword from '../views/ForgotPassword.vue';
 import Profile from '../views/Profile.vue';
+import CompartirEventos from '../views/CompartirEventos.vue';
 Vue.use(VueRouter)
 
 const routes = [
@@ -60,7 +61,12 @@ const routes = [
       name:'Profile',
       component: Profile
       },
-   
+      {
+        path:'/compartirEventos',
+        name:'CompartirEventos',
+        component: CompartirEventos
+        },
+        
 ]
 
 const router = new VueRouter({
