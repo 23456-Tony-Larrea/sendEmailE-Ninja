@@ -66,7 +66,11 @@ const routes = [
         name:'CompartirEventos',
         component: CompartirEventos
         },
-        
+        {
+          path: '/profile/:3',
+          name: 'profile',
+          component: Profile
+        }
 ]
 
 const router = new VueRouter({

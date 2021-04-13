@@ -18,7 +18,7 @@
                   <input  type="email" id="nombre" class="fadeIn second" name="Email" value placeholder="Email" v-model="form.email">
                   <br>
                   <span class="text-danger" v-if="errores.email">{{errores.email[0]}}</span>
-                  <input  type="password" id="nombre" class="fadeIn second" name="password" placeholder="Comtraseña" v-model="form.password">
+                  <input  type="password" id="nombre" class="fadeIn second" name="password" placeholder="Contraseña" v-model="form.password">
                   <br>
                   <span class="text-danger" v-if="errores.password">{{errores.password[0]}}</span>
                   <br>
