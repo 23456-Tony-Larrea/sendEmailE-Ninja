@@ -107,7 +107,7 @@ export default {
                     let comprobate = value.nombre;
                     if(comprobate == 'Activo'){
                         let sent = value.correo;
-                        let url = `http://127.0.0.1:8000/api/sendTwuit?correo=${sent}`;
+                        let url = `http://127.0.0.1:8000/api/sendEmailUser?correo=${sent}`;
                             axios.get(url).then(data=>{
                             console.log(data);
                             this.$toaster.success('Se han enviado los eventos a este usuario');
