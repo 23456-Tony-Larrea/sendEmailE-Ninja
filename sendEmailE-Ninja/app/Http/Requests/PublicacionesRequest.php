@@ -13,7 +13,7 @@ class PublicacionesRequest extends FormRequest
      */
     public function authorize()
     {
-        return false;
+        return true;
     }
 
     /**
@@ -28,6 +28,7 @@ class PublicacionesRequest extends FormRequest
             'email'=> 'required|email:rfc,dns',
             'tituloEvento'=> 'required|min:2|max:150',
             'tematicaEvento'=> 'required|min:2|max:150',
+            'descripcionEvento'=> 'required',
             'enlaceEvento' => 'required',
             'fecha'=>'required'
         ];
@@ -41,7 +42,8 @@ class PublicacionesRequest extends FormRequest
             'tituloEvento.*'=> 'Titulo debe tener 2 caracteres minimo y maximo 150',
             'tematicaEvento.*'=> 'Titulo debe tener 2 caracteres minimo y maximo 150',
             'enlaceEvento.required' => 'El Enlace es requerido',
-            'fecha.required' => 'El Enlace es requerido'
+            'fecha.required' => 'El Enlace es requerido',
+            'descripcionEvento.required'=> 'Este campo es requerido'
         ];
     }
 }
