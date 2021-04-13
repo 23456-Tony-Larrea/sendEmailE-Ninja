@@ -28,7 +28,7 @@ class PublicacionesRequest extends FormRequest
             'email'=> 'required|email:rfc,dns',
             'tituloEvento'=> 'required|min:2|max:150',
             'tematicaEvento'=> 'required|min:2|max:150',
-            'descripcionEvento'=> 'requerid',
+            'descripcionEvento'=> 'required',
             'enlaceEvento' => 'required',
             'fecha'=>'required'
         ];
@@ -43,7 +43,7 @@ class PublicacionesRequest extends FormRequest
             'tematicaEvento.*'=> 'Titulo debe tener 2 caracteres minimo y maximo 150',
             'enlaceEvento.required' => 'El Enlace es requerido',
             'fecha.required' => 'El Enlace es requerido',
-            'descripcionEvento'=> 'Este campo es requerido'
+            'descripcionEvento.required'=> 'Este campo es requerido'
         ];
     }
 }
