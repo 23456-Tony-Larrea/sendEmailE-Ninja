@@ -59,7 +59,9 @@ import axios from 'axios';
             axios.post("http://127.0.0.1:8000/api/register/",this.form)
             .then(data =>{
                 console.log(data);
-                this.makeToast("Hecho","Usuario creado","success");
+                // this.makeToast("Hecho","Usuario creado","success");
+                this.$toaster.success('Administrador creado con exito.');
+                this.$router.push('/admin');
             }).catch( e =>{
               if(e.response.data){
                 this.errores = e.response.data.errors
