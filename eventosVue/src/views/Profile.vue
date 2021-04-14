@@ -454,7 +454,7 @@ input[type=password]:placeholder {
 } 
 
 #icon {
-  width:60%;
+  width:40%;
 }
 
 </style>
