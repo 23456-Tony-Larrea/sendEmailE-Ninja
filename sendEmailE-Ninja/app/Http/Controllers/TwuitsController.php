@@ -8,6 +8,7 @@ use App\Models\PublicacionUser;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Mail;
 use App\Mail\EnvioTwuits;
+use App\Mail\EnvioPublicaciones;
 use Illuminate\Support\Facades\DB;
 
 class TwuitsController extends Controller
@@ -101,13 +102,13 @@ class TwuitsController extends Controller
             if($estado == 1){
                 $publicacion = PublicacionUser::get();
                 // $twuits = DB::select ('SELECT publicaciones FROM twuits');
-                // print_r($twuits);
+                // print_r($publicacion);
                 $details = [
                     'user'=> $usuario->nombres,
                     'twuit'=>$publicacion
                 ];
               //   Mail::to($user->email)->send(new TestMail($details));
-              Mail::to($usuario->correo)->send(new EnvioTwuits($details));
+              Mail::to($usuario->correo)->send(new EnvioPublicaciones($details));
                 return 'send';
             }else{
                 return response()->json([

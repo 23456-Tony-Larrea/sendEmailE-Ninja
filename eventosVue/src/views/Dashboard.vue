@@ -14,8 +14,8 @@
                  <input type="text" placeholder="Busqueda por apellido" v-model="buscador">   <button class="button"  v-on:click="search(buscador)">Buscar</button>
                  <br>
                  <br>
-                 <button class="button" v-on:click="send()">Enviar Emails</button>
-                 <button class="button" v-on:click="sendEventos()">Enviar Eventos</button>
+                 <button class="button" v-on:click="send()"> <b-icon icon="envelope"></b-icon>Enviar Emails</button>
+                 <button class="button" v-on:click="sendEventos()"> <b-icon icon="envelope"></b-icon>Enviar Eventos</button>
             
                  <table class="table table-hover">
                 <thead>
@@ -158,7 +158,7 @@ color: #e9e7e6;
 .boton {
   display: inline-block;
   padding: 5px 10px;
-  font-size: 24px;
+  font-size: 20px;
   cursor: pointer;
   text-align: center;	
   text-decoration: none;
