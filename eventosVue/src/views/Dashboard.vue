@@ -4,14 +4,14 @@
 
                     <div class="container left">
                         <br>
-                     <a class="boton" v-on:click="perfil(idprofile)">Perfil</a>
+                     <a class="boton" v-on:click="perfil(idprofile)"><b-icon icon="person-fill"></b-icon>Perfil</a>
                      </div>
                      <br>
             <div class="container izquierda">
                 <br>
                   <button class="button"  v-on:click="nuevo(idprofile)">Nuevo Usuario</button>
                 <br><br>
-                 <input type="text" placeholder="Busqueda por apellido" v-model="buscador">   <button class="button"  v-on:click="search(buscador)">Buscar</button>
+                 <input type="text" placeholder="Busqueda por apellido" v-model="buscador">   <button class="button"  v-on:click="search(buscador)"><b-icon icon="search"></b-icon>Buscar</button>
                  <br>
                  <br>
                  <button class="button" v-on:click="send()"> <b-icon icon="envelope"></b-icon>Enviar Emails</button>
