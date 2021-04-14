@@ -16,46 +16,45 @@
                        <label for="" class="control-label col-sm-2"><h5 style="color: white">Nombre</h5></label>
                        <div class="col-sm-10">
                           <input type="text" class="form-control"  name="nombre" id="nombre" v-model="form.nombre">
-<br>
-                     <!--<span class="text-danger" v-if="errores.nombre">{{errores.nombre[0]}}</span>-->
+                     <span class="text-white" v-if="errores.nombre">{{errores.nombre[0]}}</span>
                        </div>
+                       <br>
                        <label for="" class="control-label col-sm-2"><h5 style="color: white">Correo</h5></label>
                         <div class="col-sm-10">
                           <input type="text" class="form-control"  name="email" id="email" v-model="form.email">
-                          <br>
-                          <!--<span class="text-danger" v-if="errores.email">{{errores.email[0]}}</span>-->
+                          <span class="text-white" v-if="errores.email">{{errores.email[0]}}</span>
                        </div>
+                       <br>
                        <label for="" class="control-label col-sm-4"><h5 style="color: white">Título de Evento</h5></label>
                        <div class="col-sm-10">
                           <input type="text" class="form-control"  name="titulo" id="titulo" v-model="form.tituloEvento">
-                          <br>
-                          <!--<span class="text-danger" v-if="errores.tituloEvento">{{errores.tituloEvento[0]}}</span>-->
+                          <span class="text-white" v-if="errores.tituloEvento">{{errores.tituloEvento[0]}}</span>
                        </div>
+                       <br>
                        <label for="" class="control-label col-sm-4"><h5 style="color: white">Temática de Evento</h5></label>
                         <div class="col-sm-10">
                           <input type="text" class="form-control"  name="tematica" id="tematica" v-model="form.tematicaEvento">
-                          <br>
-                          <!--<span class="text-danger" v-if="errores.tematicaEvento">{{errores.tematicaEvento[0]}}</span>-->
+                          <span class="text-white" v-if="errores.tematicaEvento">{{errores.tematicaEvento[0]}}</span>
                        </div>
+                       <br>
                         <label for="" class="control-label col-sm-4"><h5 style="color: white">Enlace del Evento</h5></label>
                         <div class="col-sm-10">
                           <input type="text" class="form-control"  name="enlace" id="enlace" v-model="form.enlaceEvento">
-                          <br>
-                          <!--<span class="text-danger" v-if="errores.enlaceEvento">{{errores.enlaceEvento[0]}}</span>-->
+                          <span class="text-white" v-if="errores.enlaceEvento">{{errores.enlaceEvento[0]}}</span>
                        </div>
+                       <br>
                        <label for="" class="control-label col-sm-2"><h5 style="color: white">Fecha</h5></label>
                         <div class="col-sm-10">
                           <input type="date" class="form-control"  name="Fecha" id="Fecha" v-model="form.fechaEvento">
-                          <br>
-                          <!--<span class="text-danger" v-if="errores.fechaEvento">{{errores.fechaEvento[0]}}</span>-->
+                          <span class="text-white" v-if="errores.fechaEvento">{{errores.fechaEvento[0]}}</span>
 
                        </div>
+                       <br>
                         <label for="" class="control-label col-sm-4"><h5 style="color: white">Descripción</h5></label>
                         <div class="col-sm-10">
                           <input type="text" class="form-control"  name="descripcion" id="decripcion" v-model="form.descripcionEvento">
-                           <br>
-                          <!--<span class="text-danger" v-if="errores.descripciónEvento">{{errores.descripciónEvento[0]}}</span>-->
-
+                          <span class="text-white" v-if="errores.descripcionEvento">{{errores.descripcionEvento[0]}}</span>
+<br>
                           <button type="button" class="button" v-on:click="guardar()">Enviar</button>
                        </div>
                     </div>
@@ -99,7 +98,7 @@ export default {
         "descripcionEvento":"",
 
  }, 
- //errores:{}    
+ errores:{}    
     }
   },
    methods:{
@@ -107,7 +106,9 @@ export default {
             axios.post("http://127.0.0.1:8000/api/postUser",this.form)
             .then(data =>{
                 console.log(data);
-                this.makeToast("Hecho","evento guardado","success");
+                // this.makeToast("Hecho","evento guardado","success");
+                this.$toaster.success('Evento guardado con exito.');
+                this.$router.push('/');
             }).catch( e =>{
               if(e.response.data){
                 this.errores = e.response.data.errors

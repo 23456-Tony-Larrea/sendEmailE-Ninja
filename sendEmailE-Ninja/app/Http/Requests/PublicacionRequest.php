@@ -4,7 +4,7 @@ namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class PublicacionesRequest extends FormRequest
+class PublicacionRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -30,10 +30,9 @@ class PublicacionesRequest extends FormRequest
             'tematicaEvento'=> 'required|min:2|max:150',
             'descripcionEvento'=> 'required',
             'enlaceEvento' => 'required',
-            'fecha'=>'required'
+            'fechaEvento'=>'required'
         ];
     }
-
     public function messages()
     {
         return [
@@ -41,9 +40,10 @@ class PublicacionesRequest extends FormRequest
             'email.*'=> 'Correo debe tener un correo apropiado',
             'tituloEvento.*'=> 'Titulo debe tener 2 caracteres minimo y maximo 150',
             'tematicaEvento.*'=> 'Titulo debe tener 2 caracteres minimo y maximo 150',
+            'descripcionEvento.required'=> 'Este campo es requerido',
             'enlaceEvento.required' => 'El Enlace es requerido',
-            'fecha.required' => 'El Enlace es requerido',
-            'descripcionEvento.required'=> 'Este campo es requerido'
+            'fechaEvento.required' => 'Este campo es requerido',
+            
         ];
     }
 }

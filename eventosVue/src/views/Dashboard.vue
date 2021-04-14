@@ -2,18 +2,20 @@
     <div>
         <Header/>
 
-                    <div class="left">
+                    <div class="container left">
+                        <br>
                      <a class="boton" v-on:click="perfil(idprofile)">Perfil</a>
                      </div>
+                     <br>
             <div class="container izquierda">
                 <br>
                   <button class="button"  v-on:click="nuevo(idprofile)">Nuevo Usuario</button>
                 <br><br>
-                 <input type="text" placeholder="Busqueda por apellido" v-model="buscador"><button class="button"  v-on:click="search(buscador)">Buscar</button>
+                 <input type="text" placeholder="Busqueda por apellido" v-model="buscador">   <button class="button"  v-on:click="search(buscador)">Buscar</button>
                  <br>
                  <br>
-                 <button class="button" v-on:click="send()">Enviar Emails</button>
-                 <button class="button" v-on:click="sendEventos()">Enviar Eventos</button>
+                 <button class="button" v-on:click="send()"> <b-icon icon="envelope"></b-icon>Enviar Emails</button>
+                 <button class="button" v-on:click="sendEventos()"> <b-icon icon="envelope"></b-icon>Enviar Eventos</button>
             
                  <table class="table table-hover">
                 <thead>
@@ -137,7 +139,7 @@ export default {
         text-align: left;
     }
      .button {
-  display: inline-block;
+  text-align: right;
   padding: 5px 10px;
   font-size: 24px;
   cursor: pointer;
@@ -156,7 +158,7 @@ color: #e9e7e6;
 .boton {
   display: inline-block;
   padding: 5px 10px;
-  font-size: 24px;
+  font-size: 20px;
   cursor: pointer;
   text-align: center;	
   text-decoration: none;
@@ -167,6 +169,9 @@ color: #e9e7e6;
 }
 
 .boton:hover {background-color: #000000;
+display: inline-flexbox;
+width: right 2px;
+height: left 3px;
 color: #e9e7e6;
 }
 .left{

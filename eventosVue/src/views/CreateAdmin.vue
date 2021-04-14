@@ -18,7 +18,7 @@
                   <input  type="email" id="nombre" class="fadeIn second" name="Email" value placeholder="Email" v-model="form.email">
                   <br>
                   <span class="text-danger" v-if="errores.email">{{errores.email[0]}}</span>
-                  <input  type="password" id="nombre" class="fadeIn second" name="password" placeholder="Comtraseña" v-model="form.password">
+                  <input  type="password" id="nombre" class="fadeIn second" name="password" placeholder="Contraseña" v-model="form.password">
                   <br>
                   <span class="text-danger" v-if="errores.password">{{errores.password[0]}}</span>
                   <br>
@@ -59,7 +59,9 @@ import axios from 'axios';
             axios.post("http://127.0.0.1:8000/api/register/",this.form)
             .then(data =>{
                 console.log(data);
-                this.makeToast("Hecho","Usuario creado","success");
+                // this.makeToast("Hecho","Usuario creado","success");
+                this.$toaster.success('Administrador creado con exito.');
+                this.$router.push('/admin');
             }).catch( e =>{
               if(e.response.data){
                 this.errores = e.response.data.errors
