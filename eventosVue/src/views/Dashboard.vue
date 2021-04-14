@@ -3,17 +3,18 @@
         <Header/>
 
                     <div class="left">
-                     <a class="boton" v-on:click="perfil(idprofile)">Perfil</a>
+                    <br>
+                     <a class="boton" v-on:click="perfil(idprofile)"> <b-icon icon="person-fill"></b-icon> Perfil</a>
                      </div>
             <div class="container izquierda">
                 <br>
                   <button class="button"  v-on:click="nuevo(idprofile)">Nuevo Usuario</button>
                 <br><br>
-                 <input type="text" placeholder="Busqueda por apellido" v-model="buscador"><button class="button"  v-on:click="search(buscador)">Buscar</button>
+                 <input type="text" placeholder="Busqueda por apellido" v-model="buscador"><button class="button"  v-on:click="search(buscador)"><b-icon icon="search"></b-icon>Buscar</button>
                  <br>
                  <br>
-                 <button class="button" v-on:click="send()">Enviar Emails</button>
-                 <button class="button" v-on:click="sendEventos()">Enviar Eventos</button>
+                 <button class="button" v-on:click="send()"> <b-icon icon="envelope"></b-icon>Enviar Emails</button>
+                 <button class="button" v-on:click="sendEventos()"> <b-icon icon="envelope"></b-icon>Enviar Eventos</button>
             
                  <table class="table table-hover">
                 <thead>
@@ -156,7 +157,7 @@ color: #e9e7e6;
 .boton {
   display: inline-block;
   padding: 5px 10px;
-  font-size: 24px;
+  font-size: 20px;
   cursor: pointer;
   text-align: center;	
   text-decoration: none;
