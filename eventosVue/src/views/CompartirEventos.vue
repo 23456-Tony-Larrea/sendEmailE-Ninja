@@ -20,6 +20,7 @@
                        </div>
                        <br>
                        <label for="" class="control-label col-sm-2"><h5 style="color: white">Correo</h5></label>
+                        <span class="text-white" v-if="errores.correo">{{errores.correo[0]}}</span>
                         <div class="col-sm-10">
                           <input type="text" class="form-control"  name="email" id="email" v-model="form.email">
                           <span class="text-white" v-if="errores.email">{{errores.email[0]}}</span>
