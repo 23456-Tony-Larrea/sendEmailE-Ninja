@@ -14,14 +14,14 @@
                <input  type="text" id="nombre" class="fadeIn second" name="nombre" placeholder="Nombre" v-model="form.nombres">
                   <br>
                     <!--<span class="text-danger" v-if="errores.nombres">{{errores.nombres[0]}}</span>-->
-                  <input   type="email" id="email" class="fadeIn second" name="Email" value placeholder="Email" v-model="form.correo">
+                  <input   type="email" id="nombre" class="fadeIn second" name="Email" value placeholder="Email" v-model="form.correo">
                   <br>
                     <!--<span class="text-danger" v-if="errores.apellidos">{{errores.apellidos[0]}}</span>-->
-                  <input  type="password" id="password" class="fadeIn third" name="login" placeholder="Contraseña" v-model="password">
+                  <input  type="password" id="password" class="fadeIn second" name="password" placeholder="Contraseña" v-model="form.password">
                   <br>
                     <!--<span class="text-danger" v-if="errores.telefono">{{errores.telefono[0]}}</span>-->
-                  <br>
-                  <input  type="password" id="password" class="fadeIn third" name="login" placeholder="Vuelva a escribir su contraseña" v-model="password">
+                  
+                  <input  type="password" id="nombre" class="fadeIn second" name="password" placeholder="Vuelva a escribir su contraseña" v-model="form.password">
                   <br>
 
                         <div class="alert alert-danger" role="alert" v-if="alerta">
@@ -31,7 +31,7 @@
                  <br>
                    <div class="form-group">
                       <button type="button" class="btn btn-primary" v-on:click="editar()">Guardar</button>
-                      <button type="button" class="btn btn-dark margen" v-on:click="salir()" >Salir</button>
+                      <button type="button" class="btn btn-dark margen" v-on:click="salir()"  >Salir</button>
                   </div> 
                 </form>
             </div>
@@ -254,7 +254,7 @@ input[type=email] {
   -webkit-border-radius: 5px 5px 5px 5px;
   border-radius: 5px 5px 5px 5px;
 }
-input[type=number] {
+input[type=password] {
   background-color: #f6f6f6;
   border: none;
   color: #0d0d0d;
@@ -275,7 +275,7 @@ input[type=number] {
   border-radius: 5px 5px 5px 5px;
 }
 
-input[type=number] {
+input[type=password] {
   background-color: #f6f6f6;
   border: none;
   color: #0d0d0d;
