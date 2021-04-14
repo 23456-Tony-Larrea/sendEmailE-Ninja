@@ -16,7 +16,8 @@
                  <br>
                  <button class="button" v-on:click="send()"> <b-icon icon="envelope"></b-icon>Enviar Emails</button>
                  <button class="button" v-on:click="sendEventos()"> <b-icon icon="envelope"></b-icon>Enviar Eventos</button>
-            
+                <button class="button" onclick="window.location='/'"><b-icon icon="arrow-right"></b-icon>Salir</button>
+
                  <table class="table table-hover">
                 <thead>
                     <br>
