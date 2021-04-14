@@ -11,17 +11,14 @@
 
                 <!-- Login Form -->
                 <form v-on:submit.prevent="Profile">
-               <input  type="text" id="nombre" class="fadeIn second" name="nombre" placeholder="Nombre" v-model="form.nombres">
+               <input  type="text" id="nombre" class="fadeIn second" disabled name="nombre" placeholder="Nombre" v-model="form.name">
                   <br>
-                    <!--<span class="text-danger" v-if="errores.nombres">{{errores.nombres[0]}}</span>-->
-                  <input   type="email" id="nombre" class="fadeIn second" name="Email" value placeholder="Email" v-model="form.correo">
+                  <input   type="email" id="nombre" class="fadeIn second"  disabled name="Email" value placeholder="Email" v-model="form.email">
                   <br>
-                    <!--<span class="text-danger" v-if="errores.apellidos">{{errores.apellidos[0]}}</span>-->
-                  <input  type="password" id="password" class="fadeIn second" name="password" placeholder="Contraseña" v-model="form.password">
+                  <input  type="password" id="password" class="fadeIn third" name="password" placeholder="Contraseña" v-model="form.password">
                   <br>
-                    <!--<span class="text-danger" v-if="errores.telefono">{{errores.telefono[0]}}</span>-->
                   
-                  <input  type="password" id="nombre" class="fadeIn second" name="password" placeholder="Vuelva a escribir su contraseña" v-model="form.password">
+                  <input  type="password" id="nombre" class="fadeIn second" name="password2" placeholder="Vuelva a escribir su contraseña" v-model="password2">
                   <br>
 
                         <div class="alert alert-danger" role="alert" v-if="alerta">
