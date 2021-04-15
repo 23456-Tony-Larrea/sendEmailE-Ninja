@@ -6,7 +6,7 @@
             <div class="container">
             <br>
                 <div class="fadeIn first">
-                  <img src="@/assets/userO.png" id="icon" alt="User Icon" />
+                  <img src="@/assets/userO.png" id="icon" alt="User Icon" class="icono"/>
                 </div>
 
                 <!-- Login Form -->
@@ -91,7 +91,6 @@ export default {
      
   } 
 }
- 
 </script>
 <style scoped>
 /* BASIC */
@@ -111,7 +110,10 @@ a {
   text-decoration: none;
   font-weight: 400;
 }
-
+.icono{
+  width: 10%;
+  height: 10%;
+}
 h2 {
   text-align: center;
   font-size: 16px;
