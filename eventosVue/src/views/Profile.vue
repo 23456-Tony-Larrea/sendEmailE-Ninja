@@ -6,7 +6,7 @@
             <div class="container">
             <br>
                 <div class="fadeIn first">
-                  <img src="@/assets/userO.png" id="icon" alt="User Icon" />
+                  <img src="@/assets/logoblack.png" id="icon" class="icon" />
                 </div>
 
                 <!-- Login Form -->
@@ -450,8 +450,9 @@ input[type=password]:placeholder {
     outline: none;
 } 
 
-#icon {
-  width:60%;
+.icon {
+  width:25%;
+  width: 25%;
 }
 
 </style>
