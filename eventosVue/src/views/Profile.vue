@@ -401,12 +401,15 @@ input[type=password]:placeholder {
   -webkit-animation-delay: 0.4s;
   -moz-animation-delay: 0.4s;
   animation-delay: 0.4s;
+  display: inline;
+  width: 500px;
+  height: 500px;
 }
 
 .fadeIn.second {
   -webkit-animation-delay: 0.6s;
   -moz-animation-delay: 0.6s;
-  animation-delay: 0.6s;
+  animation-delay: 0.7s;
 }
 
 .fadeIn.third {
@@ -451,8 +454,8 @@ input[type=password]:placeholder {
 } 
 
 .icon {
-  width:25%;
-  width: 25%;
+  width:15%;
+  width: 15%;
 }
 
 </style>
