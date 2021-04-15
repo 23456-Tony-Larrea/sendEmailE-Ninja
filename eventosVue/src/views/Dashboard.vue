@@ -44,9 +44,9 @@
                 </table>
               <nav aria-label="Page navigation example">
   <ul class="pagination">
-    <li class="page-item"><a v-on:click="getpreviospage()" class="page-link" href="#">Previous</a></li>
+    <li class="page-item"><a v-on:click="getpreviospage()" class="page-link" href="#">Antes</a></li>
     <li v-for="pagina in totalpag()" :key="pagina" v-on:click="getpag(pagina)" class="page-item"><a class="page-link" href="#">{{pagina}}</a></li>
-    <li class="page-item"><a v-on:click="getnextpage()" class="page-link" href="#">Next</a></li>
+    <li class="page-item"><a v-on:click="getnextpage()" class="page-link" href="#">Sigiente</a></li>
   </ul>
 </nav>
 
@@ -62,18 +62,17 @@ export default {
     data(){
         return {
             Listauser:null,
-            pagina:1,
-            buscador: null,
-            idprofile:this.$route.params.id,
             elementosporpag:5,
             datospaginado:[],
             paginaActual:1,
-
         }
     },
     components:{
         Header,
     },
+    //mounted(){
+       // this.getpag(1);//
+    
     methods:{
             totalpag(){
                 return Math.ceil(this.Listauser.length / this.elementosporpag);
@@ -100,7 +99,6 @@ export default {
             }
             this.getpag(this.paginaActual);
          },
-
 
             editar(id,idprofile){
                 this.$router.push(`/dashboard/${idprofile}/editar/${id}`);
