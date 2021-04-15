@@ -11,6 +11,7 @@ use App\Mail\EnvioTwuits;
 use App\Mail\EnvioPublicaciones;
 use Illuminate\Support\Facades\DB;
 
+
 class TwuitsController extends Controller
 {
     /**

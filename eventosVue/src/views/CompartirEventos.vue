@@ -20,6 +20,7 @@
                        </div>
                        <br>
                        <label for="" class="control-label col-sm-2"><h5 style="color: white">Correo</h5></label>
+                        <span class="text-white" v-if="errores.correo">{{errores.correo[0]}}</span>
                         <div class="col-sm-10">
                           <input type="text" class="form-control"  name="email" id="email" v-model="form.email">
                           <span class="text-white" v-if="errores.email">{{errores.email[0]}}</span>
@@ -56,6 +57,9 @@
                           <span class="text-white" v-if="errores.descripcionEvento">{{errores.descripcionEvento[0]}}</span>
 <br>
                           <button type="button" class="button" v-on:click="guardar()">Enviar</button>
+                          <br>
+                          <br>
+                          <button type="button" class="button1" onclick="window.location='/'">Salir</button>
                        </div>
                     </div>
                     
@@ -170,6 +174,19 @@ background-color: #ff5f45;
 .button {
   display: inline-block;
   padding: 1% 48%;
+  font-size: 15px;
+  cursor: pointer;
+  text-align: center;	
+  text-decoration: none;
+  outline: none;
+  color: #FFFAF0;
+  background-color: #000000;
+  border: none;
+  box-shadow: 0 9px #808080;
+}
+.button1 {
+  display: inline-block;
+  padding: 1% 49%;
   font-size: 15px;
   cursor: pointer;
   text-align: center;	

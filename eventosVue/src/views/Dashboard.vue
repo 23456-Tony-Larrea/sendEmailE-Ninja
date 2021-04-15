@@ -16,7 +16,8 @@
                  <br>
                  <button class="button" v-on:click="send()"> <b-icon icon="envelope"></b-icon>Enviar Emails</button>
                  <button class="button" v-on:click="sendEventos()"> <b-icon icon="envelope"></b-icon>Enviar Eventos</button>
-            
+               
+
                  <table class="table table-hover">
                 <thead>
                     <br>
@@ -30,7 +31,7 @@
                     </tr>
                 </thead>
                 <tbody>
-                    <tr v-for="user in Listauser" :key="user.id" v-on:click="editar(user.id,idprofile)">
+                    <tr v-for="user in datospaginado" :key="user.id" v-on:click="editar(user.id,idprofile)">
                         <th scope="row">{{ user.id}}</th>
                         <td>{{ user.nombres }}</td>
                         <td>{{ user.apellidos }}</td>
@@ -41,8 +42,15 @@
             
                 </tbody>
                 </table>
+              <nav aria-label="Page navigation example">
+  <ul class="pagination">
+    <li class="page-item"><a v-on:click="getpreviospage()" class="page-link" href="#">Previous</a></li>
+    <li v-for="pagina in totalpag()" :key="pagina" v-on:click="getpag(pagina)" class="page-item"><a class="page-link" href="#">{{pagina}}</a></li>
+    <li class="page-item"><a v-on:click="getnextpage()" class="page-link" href="#">Next</a></li>
+  </ul>
+</nav>
 
-            </div>
+    </div>
     </div>
     
 </template>
@@ -57,13 +65,43 @@ export default {
             pagina:1,
             buscador: null,
             idprofile:this.$route.params.id,
+            elementosporpag:5,
+            datospaginado:[],
+            paginaActual:1,
+
         }
     },
     components:{
         Header,
     },
     methods:{
-          
+            totalpag(){
+                return Math.ceil(this.Listauser.length / this.elementosporpag);
+               },
+            getpag(numpag){
+                this.datospaginado = [];
+                let ini = (numpag * this.elementosporpag) - this.elementosporpag;
+                let fin = (numpag * this.elementosporpag);
+                 this.datospaginado = this.Listauser.slice(ini , fin);
+   
+            },
+            getpreviospage(){
+          if(this.paginaActual > 1 )
+             {
+              this.paginaActual-- ;
+               }
+             this.getpag(this.paginaActual);
+        },
+
+            getnextpage(){
+             if(this.paginaActual < this.totalpag())
+             {
+            this.paginaActual ++;
+            }
+            this.getpag(this.paginaActual);
+         },
+
+
             editar(id,idprofile){
                 this.$router.push(`/dashboard/${idprofile}/editar/${id}`);
                },

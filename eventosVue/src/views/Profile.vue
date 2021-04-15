@@ -6,7 +6,7 @@
             <div class="container">
             <br>
                 <div class="fadeIn first">
-                  <img src="@/assets/userO.png" id="icon" alt="User Icon" class="icono"/>
+                  <img src="@/assets/logoblack.png" id="icon" class="icon" />
                 </div>
 
                 <!-- Login Form -->
@@ -403,12 +403,15 @@ input[type=password]:placeholder {
   -webkit-animation-delay: 0.4s;
   -moz-animation-delay: 0.4s;
   animation-delay: 0.4s;
+  display: inline;
+  width: 500px;
+  height: 500px;
 }
 
 .fadeIn.second {
   -webkit-animation-delay: 0.6s;
   -moz-animation-delay: 0.6s;
-  animation-delay: 0.6s;
+  animation-delay: 0.7s;
 }
 
 .fadeIn.third {
@@ -452,8 +455,9 @@ input[type=password]:placeholder {
     outline: none;
 } 
 
-#icon {
-  width:60%;
+.icon {
+  width:15%;
+  width: 15%;
 }
 
 </style>

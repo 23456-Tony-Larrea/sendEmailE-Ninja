@@ -64,6 +64,7 @@
         },
         {
             "name": "atymic/twitter",
+<<<<<<< HEAD
             "version": "3.1.4",
             "source": {
                 "type": "git",
@@ -74,6 +75,18 @@
                 "type": "zip",
                 "url": "https://api.github.com/repos/atymic/twitter/zipball/90978dda3386f1f2089e3e75b9f002695456e9e6",
                 "reference": "90978dda3386f1f2089e3e75b9f002695456e9e6",
+=======
+            "version": "3.1.2",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/atymic/twitter.git",
+                "reference": "335feedcaf6d7389a1c43ecae6445fbb760097e1"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/atymic/twitter/zipball/335feedcaf6d7389a1c43ecae6445fbb760097e1",
+                "reference": "335feedcaf6d7389a1c43ecae6445fbb760097e1",
+>>>>>>> cbca808fda66e15c4ce02e00158e43e836ad6d57
                 "shasum": ""
             },
             "require": {
@@ -137,7 +150,11 @@
             ],
             "support": {
                 "issues": "https://github.com/atymic/twitter/issues",
+<<<<<<< HEAD
                 "source": "https://github.com/atymic/twitter/tree/3.1.4"
+=======
+                "source": "https://github.com/atymic/twitter/tree/3.1.2"
+>>>>>>> cbca808fda66e15c4ce02e00158e43e836ad6d57
             },
             "funding": [
                 {
@@ -149,7 +166,11 @@
                     "type": "github"
                 }
             ],
+<<<<<<< HEAD
             "time": "2021-04-15T09:56:16+00:00"
+=======
+            "time": "2021-04-14T11:40:40+00:00"
+>>>>>>> cbca808fda66e15c4ce02e00158e43e836ad6d57
         },
         {
             "name": "brick/math",
