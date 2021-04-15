@@ -6,7 +6,6 @@ use App\Http\Controllers\UserController;
 use App\Http\Controllers\UsuarioController;
 use App\Http\Controllers\TwuitsController;
 use App\Http\Controllers\PublicacionUserController;
-use Atymic\Twitter\Facades\Twitter;
 use App\Models\Twuits;
 /*
 |--------------------------------------------------------------------------
@@ -52,5 +51,12 @@ Route::get('/teewt', function()
 	// return Twitter::getListStatuses(['list_id'=>1000]);
     // return Twitter::getSearch(['q'=>'RT']);
 });
-
+Route::get('/userTimeline', function()
+{
+   $tweets=Twitter::getSearch(array('q' => 'webminar','emprendimiento', 'count' => 1, 'format' => 'json'));
+   foreach($tweets as $tweet->statuses) {
+    echo $tweet->statuses['text'];
+}/* echo ($tweets); */ 
+});
+    
 
