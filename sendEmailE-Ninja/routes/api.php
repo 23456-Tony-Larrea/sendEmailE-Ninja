@@ -53,10 +53,18 @@ Route::get('/teewt', function()
 });
 Route::get('/userTimeline', function()
 {
-   $tweets=Twitter::getSearch(array('q' => 'webminar','emprendimiento', 'count' => 1, 'format' => 'json'));
-   foreach($tweets as $tweet->statuses) {
-    echo $tweet->statuses['text'];
-}/* echo ($tweets); */ 
+   $tweets=Twitter::getSearch(['q' => 'emprendimiento']);
+//    print_r ($tweets->statuses);
+   foreach ($tweets->statuses as $tweet_array) {
+        // echo $tweet_array->text;
+        $twuits = new Twuits;
+        $twuits->publicaciones=$tweet_array->text;
+        $twuits->save();
+    } 
+    return response()->json([
+        'status_code'=>200,
+        'message'=>'twuits español enviado con exito!'
+    ]);
 });
     
 
