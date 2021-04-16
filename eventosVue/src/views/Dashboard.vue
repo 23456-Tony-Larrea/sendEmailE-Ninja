@@ -31,6 +31,7 @@
                     </tr>
                 </thead>
                 <tbody>
+                    
                     <tr v-for="user in datospaginado" :key="user.id" v-on:click="editar(user.id,idprofile)">
                         <th scope="row">{{ user.id}}</th>
                         <td>{{ user.nombres }}</td>
@@ -43,9 +44,9 @@
                 </tbody>
                 </table>
               <nav aria-label="Page navigation example">
-  <ul class="pagination">
+        <ul class="pagination justify-content-center">
     <li class="page-item"><a v-on:click="getpreviospage()" class="page-link" href="#">Antes</a></li>
-    <li v-for="pagina in totalpag()" :key="pagina" v-on:click="getpag(pagina)" class="page-item"><a class="page-link" href="#">{{pagina}}</a></li>
+    <li v-for="pagina in totalpag()" :key="pagina" v-on:click="getpag(pagina)" id="cargar" class="page-item"><a class="page-link" href="#">{{pagina}}</a></li>
     <li class="page-item"><a v-on:click="getnextpage()" class="page-link" href="#">Sigiente</a></li>
   </ul>
 </nav>
@@ -57,6 +58,7 @@
 <script>
 import Header from '@/components/HeaderAdmin.vue';
 import axios from 'axios';
+
 export default {
     name:"Dashboard",
     data(){
@@ -70,29 +72,38 @@ export default {
     components:{
         Header,
     },
-    //mounted(){
-       // this.getpag(1);//
-    
     methods:{
+        
             totalpag(){
+                console.log("entra")
+               
                 return Math.ceil(this.Listauser.length / this.elementosporpag);
+
+                
                },
+
             getpag(numpag){
-                this.datospaginado = [];
+                console.log(numpag);  
+                //this.datospaginado = [];
                 let ini = (numpag * this.elementosporpag) - this.elementosporpag;
                 let fin = (numpag * this.elementosporpag);
+                this.datospaginado = this.Listauser.slice(ini , fin);  
                  this.datospaginado = this.Listauser.slice(ini , fin);
-   
+                this.datospaginado = this.Listauser.slice(ini , fin);  
+                
             },
             getpreviospage(){
-          if(this.paginaActual > 1 )
+          if(this.paginaActual > 1)
              {
+                 console.log("si")
               this.paginaActual-- ;
                }
              this.getpag(this.paginaActual);
+             
         },
 
             getnextpage(){
+                
              if(this.paginaActual < this.totalpag())
              {
             this.paginaActual ++;
@@ -165,7 +176,8 @@ export default {
         let direccion = "http://127.0.0.1:8000/api/usuarios/";
         axios.get(direccion).then( data =>{
             console.log(data.data);
-            this.Listauser = data.data;
+            this.Listauser = data.data.sort((a,b)=>a.id-b.id);
+            this.getpag(1);
         });
     },
     }
