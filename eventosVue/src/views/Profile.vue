@@ -27,7 +27,7 @@
                     </div>
                  <br>
                    <div class="form-group">
-                      <button type="button" class="btn btn-primary" v-on:click="editar()">Guardar</button>
+                      <button style="margin: 10px" type="button" class="btn btn-primary" v-on:click="editar()">Guardar</button>
                       <button type="button" class="btn btn-dark margen" v-on:click="salir()"  >Salir</button>
                   </div> 
                 </form>

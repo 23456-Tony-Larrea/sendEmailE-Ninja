@@ -11,10 +11,10 @@
                 <br>
                   <button class="button"  v-on:click="nuevo(idprofile)">Nuevo Usuario</button>
                 <br><br>
-                 <input type="text" placeholder="Busqueda por apellido" v-model="buscador">   <button class="button"  v-on:click="search(buscador)"><b-icon icon="search"></b-icon>Buscar</button>
+                 <input style="margin: 10px" type="text" placeholder="Busqueda por apellido" v-model="buscador">   <button class="button"  v-on:click="search(buscador)"><b-icon icon="search"></b-icon>Buscar</button>
                  <br>
                  <br>
-                 <button class="button" v-on:click="send()"> <b-icon icon="envelope"></b-icon>Enviar Emails</button>
+                 <button style="margin: 10px" class="button" v-on:click="send()"> <b-icon icon="envelope"></b-icon>Enviar Emails</button>
                  <button class="button" v-on:click="sendEventos()"> <b-icon icon="envelope"></b-icon>Enviar Eventos</button>
                
 
@@ -84,7 +84,6 @@ export default {
 
             getpag(numpag){
                 console.log(numpag);  
-                //this.datospaginado = [];
                 let ini = (numpag * this.elementosporpag) - this.elementosporpag;
                 let fin = (numpag * this.elementosporpag);
                 this.datospaginado = this.Listauser.slice(ini , fin);  
