@@ -63,7 +63,9 @@ export default {
     name:"Dashboard",
     data(){
         return {
-            Listauser:null,
+           Listauser:null,
+            buscador: null,
+            idprofile:this.$route.params.id,    
             elementosporpag:5,
             datospaginado:[],
             paginaActual:1,
@@ -74,27 +76,22 @@ export default {
     },
     methods:{
         
-            totalpag(){
-                console.log("entra")
-               
+            totalpag(){               
                 return Math.ceil(this.Listauser.length / this.elementosporpag);
 
                 
                },
 
             getpag(numpag){
-                console.log(numpag);  
                 let ini = (numpag * this.elementosporpag) - this.elementosporpag;
                 let fin = (numpag * this.elementosporpag);
-                this.datospaginado = this.Listauser.slice(ini , fin);  
-                 this.datospaginado = this.Listauser.slice(ini , fin);
                 this.datospaginado = this.Listauser.slice(ini , fin);  
                 
             },
             getpreviospage(){
           if(this.paginaActual > 1)
              {
-                 console.log("si")
+                
               this.paginaActual-- ;
                }
              this.getpag(this.paginaActual);
@@ -121,15 +118,14 @@ export default {
                this.$router.push('/profile/'+idprofile);
              },
             search(filter){
-                console.log(filter);
                 let direccion = `http://127.0.0.1:8000/api/buscador?texto=${filter}`;
                 axios.get(direccion).then( data =>{
                 
                 this.Listauser = data.data;
+                this.getpag(this.paginaActual);
             });
              },
              send(){
-                 console.log(this.Listauser);
                  this.Listauser.forEach(value => {
                     // console.log(value.nombre);
                     let comprobate = value.nombre;
@@ -149,7 +145,6 @@ export default {
                 });
                 },
                  sendEventos(){
-                 console.log(this.Listauser);
                  this.Listauser.forEach(value => {
                     // console.log(value.nombre);
                     let comprobate = value.nombre;
@@ -174,9 +169,8 @@ export default {
     mounted:function(){
         let direccion = "http://127.0.0.1:8000/api/usuarios/";
         axios.get(direccion).then( data =>{
-            console.log(data.data);
             this.Listauser = data.data.sort((a,b)=>a.id-b.id);
-            this.getpag(1);
+            this.getpag(this.paginaActual);
         });
     },
     }

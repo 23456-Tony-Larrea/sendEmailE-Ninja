@@ -128,5 +128,10 @@
                 </div>
             </div>
         </div>
+        <script>
+          window.addEventListener('load', function() {
+document.getElementById('cargar').click();
+})
+        </script>
     </body>
 </html>
