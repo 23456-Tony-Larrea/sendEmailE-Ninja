@@ -53,7 +53,7 @@ Route::get('/teewt', function()
 });
 Route::get('/userTimeline', function()
 {
-   $tweets=Twitter::getSearch(['q' => 'emprendimiento']);
+   $tweets=Twitter::getSearch(['q' => 'emprendimiento', 'empredimiento']);
 //    print_r ($tweets->statuses);
    foreach ($tweets->statuses as $tweet_array) {
         // echo $tweet_array->text;

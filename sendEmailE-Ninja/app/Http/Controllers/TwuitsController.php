@@ -75,16 +75,18 @@ class TwuitsController extends Controller
         if($usuario != null){
             $estado = $usuario->estado_id;
             if($estado == 1){
-                $twuits = Twuits::get();
-                // $twuits = DB::select ('SELECT publicaciones FROM twuits');
-                // print_r($twuits);
-                $details = [
+                //$twuits = Twuits::Where('publicaciones','like','%'.'https'.'%',
+               //'and','publicaciones','not like','RT'.'%')->get();
+                $twuits = DB::select ("SELECT * FROM twuits Where publicaciones
+                like '%https%' and publicaciones not like 'RT%'" );
+               //print_r($twuits);
+               $details = [
                     'user'=> $usuario->nombres,
-                    'twuit'=>$twuits
-                ];
+                  'twuit'=>$twuits
+             ];
               //   Mail::to($user->email)->send(new TestMail($details));
-              Mail::to($usuario->correo)->send(new EnvioTwuits($details));
-                return 'send';
+            Mail::to($usuario->correo)->send(new EnvioTwuits($details));
+              return 'send';
             }else{
                 return response()->json([
                     'message'=>'Este usuario no esta disponible'
