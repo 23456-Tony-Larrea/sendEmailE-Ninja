@@ -55,7 +55,7 @@
                         <div class="col-sm-10">
                           <input type="text" class="form-control"  name="descripcion" id="decripcion" v-model="form.descripcionEvento">
                           <span class="text-white" v-if="errores.descripcionEvento">{{errores.descripcionEvento[0]}}</span>
-<br>
+                         <br>
                           <button type="button" class="button" v-on:click="guardar()">Enviar</button>
                           <br>
                           <br>
@@ -107,13 +107,13 @@ export default {
   },
    methods:{
        guardar(){
-            axios.post("http://127.0.0.1:8000/api/postUser",this.form)
-            .then(data =>{
+            axios.post("http://127.0.0.1:8000/api/postUser",this.form) 
+            .then(data =>{ 
                 console.log(data);
                 // this.makeToast("Hecho","evento guardado","success");
                 this.$toaster.success('Evento guardado con exito.');
                 this.$router.push('/');
-            }).catch( e =>{
+            }).catch( e =>{  
               if(e.response.data){
                 this.errores = e.response.data.errors
               }

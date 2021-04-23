@@ -21,7 +21,7 @@
                   <input   type="number" id="telefono" class="fadeIn second" name="telefono" placeholder="Telefono" v-model="form.telefono">
                   <br>
                     <span class="text-danger" v-if="errores.telefono">{{errores.telefono[0]}}</span>
-                  <input   type="email" id="nombre" class="fadeIn second" name="Email" value placeholder="Email" v-model="form.correo">
+                  <input   type="email" id="nombre" class="fadeIn second" name="Email" value placeholder="Email" v-model="form.correo">  
                   <br>
                     <span class="text-danger" v-if="errores.correo">{{errores.correo[0]}}</span>
                   <input type="submit" class="fadeIn fourth" value="Registrarme">
@@ -45,7 +45,8 @@ import axios from 'axios';
     name:"RegisterUser",
     data:function(){
         return {
-            form:{
+     
+            form:{ 
                 "nombres" : "",
                 "apellidos": "", 
                 "telefono" : "",
@@ -62,13 +63,13 @@ import axios from 'axios';
      methods:{
         register(){
             this.form.token = localStorage.getItem("token");
-            axios.post("http://127.0.0.1:8000/api/usuarios/",this.form)
-            .then(data =>{
+            axios.post("http://127.0.0.1:8000/api/usuarios/",this.form) 
+            .then(data =>{   
                 console.log(data);
                 // this.makeToast("Hecho","Usuario creado","success");
                 this.$toaster.success('Usuario creado con exito.');
                 this.$router.push('/');
-            }).catch( e =>{
+            }).catch( e =>{       
               if(e.response.data){
                 this.errores = e.response.data.errors
               }

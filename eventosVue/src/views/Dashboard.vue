@@ -45,9 +45,9 @@
                 </table>
               <nav aria-label="Page navigation example">
         <ul class="pagination justify-content-center">
-    <li class="page-item"><a v-on:click="getpreviospage()" class="page-link" href="#">Antes</a></li>
-    <li v-for="pagina in totalpag()" :key="pagina" v-on:click="getpag(pagina)" id="cargar" class="page-item"><a class="page-link" href="#">{{pagina}}</a></li>
-    <li class="page-item"><a v-on:click="getnextpage()" class="page-link" href="#">Sigiente</a></li>
+    <li class="page-item"><a v-on:click="getpreviospage()" class="page-link">Antes</a></li>
+    <li v-for="pagina in totalpag()" :key="pagina" v-on:click="getpag(pagina)" id="cargar" class="page-item"><a class="page-link">{{pagina}}</a></li>
+    <li class="page-item"><a v-on:click="getnextpage()" class="page-link">Sigiente</a></li>
   </ul>
 </nav>
 
@@ -83,10 +83,10 @@ export default {
                },
 
             getpag(numpag){
+               
                 let ini = (numpag * this.elementosporpag) - this.elementosporpag;
                 let fin = (numpag * this.elementosporpag);
                 this.datospaginado = this.Listauser.slice(ini , fin);  
-                
             },
             getpreviospage(){
           if(this.paginaActual > 1)
@@ -181,7 +181,7 @@ export default {
     }
      .button {
   text-align: right;
-  padding: 10px 10px;
+  padding: 2px 5px;
   font-size: 24px;
   cursor: pointer;
   text-align: center;	
@@ -198,7 +198,7 @@ color: #e9e7e6;
 }
 .boton {
   display: inline-block;
-  padding: 5px 10px;
+  padding: 5px 15px;
   font-size: 20px;
   cursor: pointer;
   text-align: center;	
@@ -211,7 +211,7 @@ color: #e9e7e6;
 
 .boton:hover {background-color: #000000;
 display: inline-flexbox;
-width: right 2px;
+width: right 3px;
 height: left 3px;
 color: #e9e7e6;
 }
